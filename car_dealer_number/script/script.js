@@ -26,10 +26,21 @@ var arrayEnd = [];
 function generateEndArray(id) {
 	arrayEnd = [];
 	arrayEnd.push(arrayRandomNumbers[id]);
-	arrayEnd.push(arrayListNumbers[Math.floor(Math.random() * stop)]);
-	arrayEnd.push(arrayListNumbers[Math.floor(Math.random() * stop)]);
-	arrayEnd.push(arrayListNumbers[Math.floor(Math.random() * stop)]);
-	arrayEnd.push(arrayListNumbers[Math.floor(Math.random() * stop)]);
+	for (let i = 0; i < 4; i++) {
+		var n = Math.floor(Math.random() * max) + min;
+		var check = arrayEnd.includes(n);
+
+		if (check === false) arrayEnd.push(n);
+		else {
+			while (check === true) {
+				n = Math.floor(Math.random() * max) + min;
+				check = arrayEnd.includes(n);
+				if (check === false) {
+					arrayEnd.push(n);
+				}
+			}
+		}
+	}
 	searchNumber.textContent = arrayRandomNumbers[id];
 	createNumbers(arrayEnd);
 }
