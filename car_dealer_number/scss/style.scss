@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	font-family: 'Poppins', sans-serif;
+}
+body {
+	background-color: black;
+}
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 20px;
+	user-select: none;
+
+	.hackBox {
+		width: 720px;
+		height: 720px;
+		background-color: rgba(14 14 14);
+		padding: 10px;
+
+		.hackStart {
+			margin: 0;
+			display: flex;
+			border: none !important;
+			background-color: rgba(38 38 38);
+			padding: 20px;
+			color: white;
+			cursor: pointer;
+			border-radius: 5px;
+			width: 100%;
+			border: 1px solid;
+			text-align: center;
+			justify-content: space-around;
+
+			&:hover {
+				background-color: rgba(7 125 58);
+			}
+		}
+
+		.hackText {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			text-align: center;
+			color: white;
+
+			h3 {
+				font-size: 12px;
+				margin: 3px;
+				text-transform: uppercase;
+			}
+
+			h2 {
+				font-size: 20px;
+				text-transform: uppercase;
+			}
+		}
+
+		.hackInfo {
+			font-size: 20px;
+			display: flex;
+			height: 310px;
+			justify-content: space-around;
+			transform: translateY(100%);
+			text-align: center;
+			color: white;
+
+			h2 {
+				font-size: 13px;
+				font-weight: 500;
+			}
+		}
+
+		.hackFunction {
+			display: grid;
+			grid-template-columns: repeat(6, minmax(0, 1fr));
+			grid-template-rows: repeat(6, auto);
+			place-items: center;
+			gap: 10px;
+			padding: 140px;
+			min-width: 200px;
+			margin: 20px;
+
+			.el {
+				color: white;
+				font-size: 10px;
+				background: rgba(38 38 38);
+				width: 56px;
+				height: 31px;
+				display: flex;
+				aspect-ratio: 1/1 !important;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				text-align: center;
+				padding: 5px;
+				box-sizing: border-box;
+
+				&:hover {
+					background-color: rgba(7 125 58);
+					cursor: pointer;
+				}
+
+				.name {
+					font-size: 11px;
+					font-weight: 400;
+				}
+			}
+		}
+
+		.hackFooter {
+			position: fixed;
+			bottom: 220px;
+			width: 720px;
+
+			.progressBox {
+				height: 4px;
+				width: 100%;
+				background-color: rgba(34 34 34);
+				border-radius: 5px;
+
+				.progressBar {
+					height: 4px;
+					background-color: rgba(16 255 205);
+				}
+			}
+		}
+	}
+}
