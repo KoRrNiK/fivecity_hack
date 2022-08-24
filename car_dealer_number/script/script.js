@@ -138,7 +138,7 @@ function createNumbers(array) {
 
 const gameOver = () => {
 	hackInfo.style.display = 'block';
-	textInfo.innerHTML = 'Hack nie udany!';
+	textInfo.innerHTML = 'Hack nieudany!';
 	container.style.display = 'none';
 	//container.style.opacity = "0";
 	containerText.style.display = 'none';

@@ -23,7 +23,7 @@ const start = () => {
 
 const gameOver = () => {
 	hackInfo.style.display = 'block';
-	textInfo.innerHTML = 'Hack nie udany!';
+	textInfo.innerHTML = 'Hack nieudany!';
 	container.style.display = 'none';
 	containerText.style.display = 'none';
 	document.getElementById('hackFunction2').style.display = 'none';
