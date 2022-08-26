@@ -17,7 +17,8 @@ body {
 	height: 100vh;
 }
 
-.home {
+a .home {
+	z-index: 5;
 	position: fixed;
 	display: flex;
 	align-items: center;
