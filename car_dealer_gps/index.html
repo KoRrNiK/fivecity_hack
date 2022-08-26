@@ -12,9 +12,42 @@
 	<body>
 		<div class="container">
 			<div class="hackBox">
-				<button class="hackStart" id="buttonStart" onclick="start()">
+				<div class="hackStart" id="buttonStart" onclick="start()">
 					Zacznij Hackowac...
-				</button>
+				</div>
+
+				<div class="hackOptions">
+					<div class="hackButton">
+						<div class="hackDesc">Czas długości hackowania</div>
+						<input
+							class="progress"
+							type="range"
+							min="10"
+							max="60"
+							value="20"
+							step="1"
+							oninput="timeChangeFunction()"
+							id="timeChangeInput"
+						/>
+						<div class="hackCount" id="timeChangeId"></div>
+					</div>
+					<div class="hackButton">
+						<div class="hackDesc">
+							Szybkość pojawiania kwadratów
+						</div>
+						<input
+							class="progress"
+							type="range"
+							min="100"
+							max="1000"
+							value="350"
+							step="50"
+							oninput="spawnChangeFunction()"
+							id="spawnChangeInput"
+						/>
+						<div class="hackCount" id="spawnChangeId"></div>
+					</div>
+				</div>
 
 				<div class="hackInfo">
 					<h2 id="textInfo"></h2>
@@ -29,11 +62,7 @@
 				<div class="hackFooter">
 					<div id="progressBox">
 						<div class="progressBox">
-							<div
-								class="progressBar"
-								role="progressbar"
-								id="progress-bar"
-							></div>
+							<div class="progressBar" id="progress-bar"></div>
 						</div>
 					</div>
 				</div>
