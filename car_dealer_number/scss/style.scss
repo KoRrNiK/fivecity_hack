@@ -7,15 +7,64 @@
 	padding: 0;
 	font-family: 'Poppins', sans-serif;
 }
+
+::-webkit-scrollbar {
+	display: none;
+}
+
 body {
 	background-color: black;
+	height: 100vh;
 }
+
+a .home {
+	z-index: 5;
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	left: -150px;
+	animation: animation-left-author 1s cubic-bezier(0.55, 0.5, 0.45, 0.5)
+		forwards;
+	animation-delay: -0.5s;
+	top: 15px;
+	width: 32px;
+	height: 32px;
+	border-radius: 0 5px 5px 0px;
+	background-color: rgba(38 38 38);
+	color: #aaa;
+	cursor: pointer;
+	border-left: 1px solid rgba(16 255 205 / 20%);
+	text-shadow: 0 0 3px #aaa;
+	opacity: 0.8;
+	user-select: none;
+	&::before {
+		content: '';
+		position: absolute;
+		height: 100%;
+		width: 2px;
+		background-color: rgba(16 255 205 / 70%);
+		left: -5px;
+		top: 0px;
+		filter: blur(3px);
+		animation: animation-left-author-blur 5s linear infinite;
+	}
+	&:hover {
+		opacity: 1;
+		color: #fff;
+		text-shadow: 0 0 3px #fff;
+	}
+}
+
 .container {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	margin: 20px;
 	user-select: none;
+	margin-top: 0px;
+	position: relative;
+	top: 15px;
 
 	.hackBox {
 		width: 720px;
@@ -24,19 +73,19 @@ body {
 		padding: 10px;
 
 		.hackStart {
-			margin: 0;
+			margin-bottom: 20px;
 			display: flex;
 			border: none !important;
 			background-color: rgba(38 38 38);
-			padding: 20px;
-			color: white;
+			padding: 15px;
+			color: #fff;
 			cursor: pointer;
 			border-radius: 5px;
-			width: 100%;
+			font-size: 13px;
 			border: 1px solid;
 			text-align: center;
 			justify-content: space-around;
-
+			transition: all 0.2s;
 			&:hover {
 				background-color: rgba(7 125 58);
 			}
@@ -48,7 +97,7 @@ body {
 			justify-content: center;
 			flex-direction: column;
 			text-align: center;
-			color: white;
+			color: #fff;
 
 			h3 {
 				font-size: 12px;
@@ -69,7 +118,7 @@ body {
 			justify-content: space-around;
 			transform: translateY(100%);
 			text-align: center;
-			color: white;
+			color: #fff;
 
 			h2 {
 				font-size: 13px;
@@ -88,7 +137,7 @@ body {
 			margin: 20px;
 
 			.el {
-				color: white;
+				color: #fff;
 				font-size: 10px;
 				background: rgba(38 38 38);
 				width: 56px;
@@ -115,9 +164,9 @@ body {
 		}
 
 		.hackFooter {
-			position: fixed;
-			bottom: 220px;
 			width: 720px;
+			position: absolute;
+			bottom: 20px;
 
 			.progressBox {
 				height: 4px;
@@ -131,5 +180,26 @@ body {
 				}
 			}
 		}
+	}
+}
+
+@keyframes animation-left-author {
+	from {
+		left: -500px;
+	}
+	to {
+		left: 20px;
+	}
+}
+
+@keyframes animation-left-author-blur {
+	0% {
+		filter: blur(3px);
+	}
+	50% {
+		filter: blur(4px);
+	}
+	100% {
+		filter: blur(3px);
 	}
 }

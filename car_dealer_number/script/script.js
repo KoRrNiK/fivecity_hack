@@ -1,5 +1,17 @@
-var min = 1000;
-var max = 8999;
+const hackFunction = document.querySelector('.hackFunction');
+const hackText = document.querySelector('.hackText');
+const searchNumber = document.getElementById('searchNumber');
+const progressBar = document.getElementById('progressBox');
+const buttonStart = document.getElementById('buttonStart');
+const hackInfo = document.querySelector('.hackInfo');
+const textInfo = document.getElementById('textInfo');
+const progressBarId = document.getElementById('progress-bar');
+const changeGrid = document.getElementById('changeGrid');
+const levelHackId = document.getElementById('levelHack');
+const textGame = document.getElementById('textGame');
+
+var min = 0;
+var max = 9999;
 var stop = 36;
 
 var arrayListNumbers = [];
@@ -7,19 +19,9 @@ var arrayRandomNumbers = [];
 var levelHack = 0;
 var chooseCorrect = false;
 
-var resetStatus = 100;
+var resetStatus = 1000;
 
 var progressBarInterval;
-
-const container = document.querySelector('.hackFunction');
-const containerText = document.querySelector('.hackText');
-
-const searchNumber = document.getElementById('searchNumber');
-const progressBar = document.getElementById('progressBox');
-const buttonStart = document.getElementById('buttonStart');
-const hackInfo = document.querySelector('.hackInfo');
-const textInfo = document.getElementById('textInfo');
-const progressBarId = document.getElementById('progress-bar');
 
 var arrayEnd = [];
 
@@ -27,13 +29,13 @@ function generateEndArray(id) {
 	arrayEnd = [];
 	arrayEnd.push(arrayRandomNumbers[id]);
 	for (let i = 0; i < 4; i++) {
-		var n = Math.floor(Math.random() * max) + min;
+		var n = addedZero(Math.floor(Math.random() * max) + min);
 		var check = arrayEnd.includes(n);
 
 		if (check === false) arrayEnd.push(n);
 		else {
 			while (check === true) {
-				n = Math.floor(Math.random() * max) + min;
+				n = addedZero(Math.floor(Math.random() * max) + min);
 				check = arrayEnd.includes(n);
 				if (check === false) {
 					arrayEnd.push(n);
@@ -46,7 +48,7 @@ function generateEndArray(id) {
 }
 
 function createNumbers(array) {
-	container.innerHTML = '';
+	hackFunction.innerHTML = '';
 
 	let currentIndex = array.length,
 		randomIndex;
@@ -69,39 +71,32 @@ function createNumbers(array) {
 		name.textContent = array[currentIndex];
 		el.appendChild(name);
 
-		container.appendChild(el);
+		hackFunction.appendChild(el);
 
 		el.onclick = function () {
 			if (el.id === searchNumber.textContent) {
 				if (chooseCorrect === false) {
 					if (levelHack == 2) {
-						document.getElementById('searchNumber').innerHTML = '';
-						document.getElementById('textGame').innerHTML =
-							'Wybierz poprawny';
+						searchNumber.innerHTML = '';
+						textGame.innerHTML = 'Wybierz poprawny';
 						levelHack = 0;
-						document.getElementById('levelHack').textContent =
-							levelHack + 1;
-						document.getElementById(
-							'changeGrid'
-						).style.gridTemplateColumns =
+						levelHackId.textContent = levelHack + 1;
+						changeGrid.style.gridTemplateColumns =
 							'repeat(5, minmax(0, 1fr))';
-						document.getElementById('changeGrid').style.padding =
-							'180px';
+						changeGrid.style.padding = '180px';
 						clearInterval(progressBarInterval);
 						searchNumber.style.opacity = '0';
-						progressBarId.style.width = '100%';
-						progressBarStart('game', 400, 100);
+						progressBarStart('game', 40);
 						chooseCorrect = true;
 						generateEndArray(0);
 					} else {
 						createNumbers(arrayListNumbers);
-						resetStatus = 100;
+						resetStatus = 1000;
 						searchNumber.textContent =
 							arrayListNumbers[Math.floor(Math.random() * stop)];
 						//console.log(searchNumber.textContent);
 						levelHack++;
-						document.getElementById('levelHack').textContent =
-							levelHack + 1;
+						levelHackId.textContent = levelHack + 1;
 						arrayRandomNumbers.push(
 							parseInt(searchNumber.textContent)
 						);
@@ -118,16 +113,14 @@ function createNumbers(array) {
 					if (levelHack == 2) {
 						hackInfo.style.display = 'block';
 						textInfo.innerHTML = 'Hack Udany';
-						container.style.display = 'none';
-						//container.style.opacity = "0";
-						containerText.style.display = 'none';
+						hackFunction.style.display = 'none';
+						hackText.style.display = 'none';
 
-						progressBarStart('end', 20, 100);
+						progressBarStart('end', 2);
 					}
 
 					levelHack++;
-					document.getElementById('levelHack').textContent =
-						levelHack + 1;
+					levelHackId.textContent = levelHack + 1;
 				}
 			} else {
 				gameOver();
@@ -139,24 +132,35 @@ function createNumbers(array) {
 const gameOver = () => {
 	hackInfo.style.display = 'block';
 	textInfo.innerHTML = 'Hack nieudany!';
-	container.style.display = 'none';
-	//container.style.opacity = "0";
-	containerText.style.display = 'none';
+	hackFunction.style.display = 'none';
+	hackText.style.display = 'none';
 
-	progressBarStart('end', 20, 100);
+	progressBarStart('end', 2);
 };
+
+function addedZero(n) {
+	if (n < 10) {
+		return '000' + n.toString();
+	} else if (n < 100) {
+		return '00' + n.toString();
+	} else if (n < 1000) {
+		return '0' + n.toString();
+	} else {
+		return n;
+	}
+}
 
 const randomNumbers = () => {
 	arrayListNumbers = [];
 	for (let i = 0; i < stop; i++) {
-		var n = Math.floor(Math.random() * max) + min;
+		var n = addedZero(Math.floor(Math.random() * max) + min);
 		var check = arrayListNumbers.includes(n);
 
 		if (check === false) {
 			arrayListNumbers.push(n);
 		} else {
 			while (check === true) {
-				n = Math.floor(Math.random() * max) + min;
+				n = addedZero(Math.floor(Math.random() * max) + min);
 				check = arrayListNumbers.includes(n);
 				if (check === false) {
 					arrayListNumbers.push(n);
@@ -177,35 +181,36 @@ function start() {
 		arrayListNumbers[Math.floor(Math.random() * stop)];
 
 	//console.log(searchNumber.textContent);
-	document.getElementById('levelHack').textContent = levelHack + 1;
-	document.getElementById('textGame').innerHTML = 'Znajdź i zapamiętaj';
+	levelHackId.textContent = levelHack + 1;
+	textGame.innerHTML = 'Znajdź i zapamiętaj';
 	arrayRandomNumbers.push(parseInt(searchNumber.textContent));
 	chooseCorrect = false;
 	levelHack = 0;
-	resetStatus = 100;
+	resetStatus = 1000;
 	buttonStart.style.display = 'none';
 	progressBar.style.display = 'block';
 	hackInfo.style.display = 'block';
 	textInfo.innerHTML = 'Przygotuj sie...';
-	document.getElementById('changeGrid').style.gridTemplateColumns =
-		'repeat(6, minmax(0, 1fr))';
-	document.getElementById('changeGrid').style.padding = '140px';
-	document.getElementById('levelHack').textContent = levelHack + 1;
+	changeGrid.style.gridTemplateColumns = 'repeat(6, minmax(0, 1fr))';
+	changeGrid.style.padding = '140px';
+	levelHackId.textContent = levelHack + 1;
 	searchNumber.style.opacity = '1';
 
-	progressBarStart('start', 20, 100);
+	progressBarStart('start', 2);
 }
 
 function progressBarStart(type = 'start', time, width) {
+	var maxwidth = 1000;
+	var width = maxwidth;
 	const process = () => {
 		if (width > 0) {
-			width--;
-
-			progressBarId.style.width = width + '%';
+			if (type == 'start' || type == 'end') width = width - 3;
+			else width--;
+			progressBarId.style.width = (width * 100.0) / maxwidth + '%';
 
 			if (type == 'game') {
 				resetStatus--;
-				if (resetStatus % 20 == 1) {
+				if (resetStatus % 200 == 1) {
 					if (levelHack < 3 && chooseCorrect === false) {
 						createNumbers(arrayListNumbers);
 					}
@@ -213,31 +218,25 @@ function progressBarStart(type = 'start', time, width) {
 			}
 		} else {
 			if (type == 'start') {
-				container.style.display = '';
-				//container.style.opacity = "1";
-				containerText.style.display = '';
+				hackFunction.style.display = '';
+				hackText.style.display = '';
 				hackInfo.style.display = 'none';
-				progressBarId.style.width = '100%';
-				progressBarStart('game', 400, 100);
+				progressBarStart('game', 40);
 				return;
 			}
 
 			if (type == 'game') {
-				container.style.display = '';
-				//container.style.opacity = "1";
-				containerText.style.display = '';
+				hackFunction.style.display = '';
+				hackText.style.display = '';
 				hackInfo.style.display = 'none';
-				progressBarId.style.width = '100%';
 				gameOver();
 				return;
 			} else if (type == 'end') {
-				container.style.display = 'none';
-				//container.style.opacity = "1";
-				containerText.style.display = 'none';
+				hackFunction.style.display = 'none';
+				hackText.style.display = 'none';
 				hackInfo.style.display = 'none';
 				buttonStart.style.display = '';
 				progressBar.style.display = 'none';
-				progressBarId.style.width = '100%';
 			}
 
 			clearInterval(progressBarInterval);
@@ -248,8 +247,9 @@ function progressBarStart(type = 'start', time, width) {
 	progressBarInterval = setInterval(process, time);
 }
 
-container.style.display = 'none';
-//container.style.opacity = "0";
-containerText.style.display = 'none';
+hackFunction.style.display = 'none';
+hackText.style.display = 'none';
 progressBar.style.display = 'none';
 hackInfo.style.display = 'none';
+
+//document.addEventListener('contextmenu', event => event.preventDefault());
