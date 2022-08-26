@@ -14,6 +14,7 @@
 
 body {
 	background-color: black;
+	height: 100vh;
 }
 
 .home {
@@ -56,6 +57,9 @@ body {
 	justify-content: center;
 	margin: 20px;
 	user-select: none;
+	margin-top: 0px;
+	position: relative;
+	top: 15px;
 
 	.hackBox {
 		width: 720px;
@@ -227,7 +231,7 @@ body {
 		.hackFooter {
 			width: 720px;
 			position: absolute;
-			bottom: 210px;
+			bottom: 20px;
 
 			.progressBox {
 				height: 4px;
