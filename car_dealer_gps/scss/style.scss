@@ -23,7 +23,10 @@ a .home {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	left: 20px;
+	left: -150px;
+	animation: animation-left-author 1s cubic-bezier(0.55, 0.5, 0.45, 0.5)
+		forwards;
+	animation-delay: -0.5s;
 	top: 15px;
 	width: 32px;
 	height: 32px;
@@ -44,6 +47,7 @@ a .home {
 		left: -5px;
 		top: 0px;
 		filter: blur(3px);
+		animation: animation-left-author-blur 5s linear infinite;
 	}
 	&:hover {
 		opacity: 1;
@@ -246,5 +250,26 @@ a .home {
 				}
 			}
 		}
+	}
+}
+
+@keyframes animation-left-author {
+	from {
+		left: -500px;
+	}
+	to {
+		left: 20px;
+	}
+}
+
+@keyframes animation-left-author-blur {
+	0% {
+		filter: blur(3px);
+	}
+	50% {
+		filter: blur(4px);
+	}
+	100% {
+		filter: blur(3px);
 	}
 }
