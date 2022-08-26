@@ -15,6 +15,41 @@
 body {
 	background-color: black;
 }
+
+.home {
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	left: 20px;
+	top: 15px;
+	width: 32px;
+	height: 32px;
+	border-radius: 0 5px 5px 0px;
+	background-color: rgba(38 38 38);
+	color: #aaa;
+	cursor: pointer;
+	border-left: 1px solid rgba(16 255 205 / 20%);
+	text-shadow: 0 0 3px #aaa;
+	opacity: 0.8;
+	user-select: none;
+	&::before {
+		content: '';
+		position: absolute;
+		height: 100%;
+		width: 2px;
+		background-color: rgba(16 255 205 / 70%);
+		left: -5px;
+		top: 0px;
+		filter: blur(3px);
+	}
+	&:hover {
+		opacity: 1;
+		color: #fff;
+		text-shadow: 0 0 3px #fff;
+	}
+}
+
 .container {
 	display: flex;
 	align-items: center;
