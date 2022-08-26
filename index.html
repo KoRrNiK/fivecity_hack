@@ -9,7 +9,6 @@
 	<body>
 		<style>
 			@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
 			*,
 			*::after,
 			*::before {
@@ -18,12 +17,10 @@
 				font-family: 'Poppins', sans-serif;
 				text-decoration: none;
 			}
-
 			body {
 				background-color: black;
 				height: 100vh;
 			}
-
 			.container {
 				display: flex;
 				align-items: center;
@@ -34,7 +31,6 @@
 				position: relative;
 				top: 15px;
 			}
-
 			.container .hackBox {
 				width: 720px;
 				height: 720px;
@@ -46,7 +42,6 @@
 				padding: 10px;
 				border-radius: 0 40px 0 40px;
 			}
-
 			.container .hackBox h2 {
 				display: flex;
 				align-items: center;
@@ -56,7 +51,6 @@
 				color: #fff;
 				padding: 20px;
 			}
-
 			.container .hackBox .boxButton {
 				margin-bottom: 10px;
 				display: flex;
@@ -83,16 +77,13 @@
 				text-transform: uppercase;
 				transition: all 0.2s;
 			}
-
 			.container .hackBox .boxButton > div {
 				font-size: 10px;
 				color: #fff;
 			}
-
 			.container .hackBox .boxButton:hover {
 				opacity: 1;
 			}
-
 			@keyframes background-rotate {
 				from {
 					background-position: 0 0, 0 0;
@@ -101,6 +92,31 @@
 				to {
 					background-position: 0 0, 320px 640px;
 				}
+			}
+			.contact {
+				color: #aaa;
+				position: relative;
+				background: linear-gradient(
+					135deg,
+					rgb(18 32 47 / 50%),
+					rgb(24 18 45 / 50%)
+				);
+
+				padding: 15px;
+				margin: 15px auto;
+				border-radius: 0 0 0 20px;
+				width: 400px;
+				text-align: center;
+				user-select: none;
+				font-size: 12px;
+			}
+			.contact a {
+				color: #bbb;
+				text-decoration: none;
+			}
+			.contact a:hover {
+				color: #ccc;
+				opacity: 0.5;
 			}
 		</style>
 
@@ -120,6 +136,19 @@
 					</button>
 				</a>
 			</div>
+		</div>
+
+		<div class="contact">
+			Jeśli znalazłeś błąd napisz do mnie na discordzie
+			<b>KoRrNiK#3933</b>
+			<br />
+			<a
+				target="_blank"
+				href="https://github.com/KoRrNiK/fivecity_hack/issues"
+			>
+				Albo na
+				<b>github</b> umieść Issues
+			</a>
 		</div>
 	</body>
 </html>
