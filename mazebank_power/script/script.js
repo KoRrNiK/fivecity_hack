@@ -10,7 +10,8 @@ const changeGrid = document.getElementById('changeGrid');
 const levelHackId = document.getElementById('levelHack');
 const textGame = document.getElementById('textGame');
 
-const characters = 'ΩωΘθΞξΓγΖζΛλΦφΧχμΨψΣσςΠπ';
+//const characters = 'ΩωΘθΞξΓγΖζΛλΦφΧχμΨψΣσςΠπ';
+const characters = 'ΑαΒβΓγΔδΕεΖζΗηΘθΙιΚκΛλΜμΝνΞξΟοΠπΡρΣσςΤτΥυΦφΧχΨψΩω';
 
 var stop = 36;
 
