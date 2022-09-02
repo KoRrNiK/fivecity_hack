@@ -24,6 +24,40 @@ var resetStatus = 1000;
 
 var progressBarInterval;
 
+var arrayEnd = [];
+
+function generateEndArray(id) {
+	arrayEnd = [];
+	arrayEnd.push(arrayRandomCharacter[id]);
+	var n = '';
+	for (let i = 0; i < 4; i++) {
+		for (let i = 0; i < 4; i++) {
+			n += characters.charAt(
+				Math.floor(Math.random() * characters.length)
+			);
+		}
+		var check = arrayEnd.includes(n);
+
+		if (check === false) arrayEnd.push(n);
+		else {
+			while (check === true) {
+				for (let i = 0; i < 4; i++) {
+					n += characters.charAt(
+						Math.floor(Math.random() * characters.length)
+					);
+				}
+				check = arrayEnd.includes(n);
+				if (check === false) {
+					arrayEnd.push(n);
+				}
+			}
+		}
+		n = '';
+	}
+	searchNumber.textContent = arrayRandomCharacter[id];
+	createNumbers(arrayEnd);
+}
+
 function createNumbers(array) {
 	hackFunction.innerHTML = '';
 
@@ -64,12 +98,9 @@ function createNumbers(array) {
 						clearInterval(progressBarInterval);
 						searchNumber.style.opacity = '0';
 
-						hackInfo.style.display = 'block';
-						textInfo.innerHTML = 'Hack Udany';
-						hackFunction.style.display = 'none';
-						hackText.style.display = 'none';
-
-						progressBarStart('end', 2);
+						progressBarStart('game', 40);
+						chooseCorrect = true;
+						generateEndArray(0);
 					} else {
 						createNumbers(arrayListNumbers);
 						resetStatus = 1000;
@@ -79,6 +110,26 @@ function createNumbers(array) {
 						levelHackId.textContent = levelHack + 1;
 						arrayRandomCharacter.push(searchNumber.textContent);
 					}
+				} else {
+					//console.log(arrayEnd);
+
+					if (levelHack == 0) {
+						generateEndArray(1);
+					}
+					if (levelHack == 1) {
+						generateEndArray(2);
+					}
+					if (levelHack == 2) {
+						hackInfo.style.display = 'block';
+						textInfo.innerHTML = 'Hack Udany';
+						hackFunction.style.display = 'none';
+						hackText.style.display = 'none';
+
+						progressBarStart('end', 2);
+					}
+
+					levelHack++;
+					levelHackId.textContent = levelHack + 1;
 				}
 			} else {
 				gameOver();
@@ -134,6 +185,7 @@ const randomCharacter = () => {
 function start() {
 	arrayListNumbers = [];
 	arrayRandomCharacter = [];
+	arrayEnd = [];
 
 	randomCharacter();
 	createNumbers(arrayListNumbers);
