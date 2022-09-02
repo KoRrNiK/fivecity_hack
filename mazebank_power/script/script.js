@@ -221,7 +221,7 @@ function progressBarStart(type = 'start', time, width) {
 
 			if (type == 'game') {
 				resetStatus--;
-				if (resetStatus % 125 == 1) {
+				if (resetStatus % 200 == 1) {
 					if (levelHack < 3 && chooseCorrect === false) {
 						createNumbers(arrayListNumbers);
 					}
