@@ -20,7 +20,7 @@ const start = () => {
 	buttonStart.style.display = 'none';
 	progressBar.style.display = 'block';
 	hackInfo.style.display = 'block';
-	textInfo.innerHTML = 'Przygotuj sie...';
+	textInfo.innerHTML = 'Przygotuj się...';
 	resetAllInputs();
 	progressBarStart('start', 2);
 };

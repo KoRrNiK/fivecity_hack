@@ -201,7 +201,7 @@ function start() {
 	buttonStart.style.display = 'none';
 	progressBar.style.display = 'block';
 	hackInfo.style.display = 'block';
-	textInfo.innerHTML = 'Przygotuj sie...';
+	textInfo.innerHTML = 'Przygotuj się...';
 	changeGrid.style.gridTemplateColumns = 'repeat(6, minmax(0, 1fr))';
 	changeGrid.style.padding = '140px';
 	levelHackId.textContent = levelHack + 1;
