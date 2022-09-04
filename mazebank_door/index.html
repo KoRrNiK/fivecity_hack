@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>MazeBan - HACK DOOR ( FIVE CITY )</title>
+
+		<link rel="stylesheet" href="./css/style.css" />
+		<script src="./script/script.js" defer></script>
+	</head>
+	<body>
+		<a href="../">
+			<div class="home"><</div>
+		</a>
+		<div class="container">
+			<div class="hackBox">
+				<div class="hackStart" id="buttonStart" onclick="start()">
+					Zacznij Hackowac
+				</div>
+
+				<div class="hackInfo">
+					<h2 id="textInfo"></h2>
+				</div>
+				<div class="hackText">
+					<h2 id="textInfo">ROZWIĄŻ ZAGADKĘ!</h2>
+				</div>
+
+				<div class="hackFunction">
+					<div class=""></div>
+					<div id="number0" class="el numbers"></div>
+					<div class=""></div>
+					<div id="number1" class="el numbers"></div>
+					<div class=""></div>
+					<div id="number2" class="el numbers"></div>
+					<div class=""></div>
+					<div id="number3" class="el numbers"></div>
+					<input id="input0" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="el input"></input>
+					<div id="symbol0" class="el symbols"></div>
+					<input id="input3" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="el input"></input>
+					<div id="symbol1" class="el symbols"></div>
+					<input id="input6" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="el input"></input>
+					<div id="number9" class="el numbers"></div>
+					<div class=""></div>
+					<div id="symbol2" class="el symbols"></div>
+					<div class=""></div>
+					<div id="symbol3" class="el symbols"></div>
+					<div class=""></div>
+					<div id="symbol4" class="el symbols"></div>
+					<div class=""></div>
+					<div id="number4" class="el numbers"></div>
+					<input id="input1" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="el input"></input>
+					<div id="symbol5" class="el symbols"></div>
+					<input id="input4" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="el input"></input>
+					<div id="symbol6" class="el symbols"></div>
+					<input id="input7" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="el input"></input>
+					<div id="number10" class="el numbers"></div>
+					<div class=""></div>
+					<div id="symbol7" class="el symbols"></div>
+					<div class=""></div>
+					<div id="symbol8" class="el symbols"></div>
+					<div class=""></div>
+					<div id="symbol9" class="el symbols"></div>
+					<div class=""></div>
+					<div id="number5" class="el numbers"></div>
+					<input id="input2" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="el input"></input>
+					<div id="symbol10" class="el symbols"></div>
+					<input id="input5" class="el input"></input>
+					<div id="symbol11" class="el symbols"></div>
+					<input id="input8" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="el input"></input>
+					<div id="number11" class="el numbers"></div>
+					<div class=""></div>
+					<div id="number6" class="el numbers"></div>
+					<div class=""></div>
+					<div id="number7" class="el numbers"></div>
+					<div class=""></div>
+					<div id="number8" class="el numbers"></div>
+					<div class=""></div>
+				</div>
+
+				<div class="hacButtons">
+					<button class="check" onclick="checkValueAll()">Potwierdź</button>
+					<button class="reset" onclick="resetAllInputs()">Reset</button>
+				</div>
+
+
+
+				<div class="hackFooter">
+					<div id="progressBox">
+						<div class="progressBox">
+							<div class="progressBar" id="progress-bar"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
