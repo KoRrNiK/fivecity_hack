@@ -15,9 +15,6 @@ var __timePlay = 22;
 var progressBarInterval;
 var allSquares;
 
-var xposition = [];
-var yposition = [];
-
 var lpm = {};
 var rpm = {};
 
@@ -66,7 +63,7 @@ function progressBarStart(type, time) {
 				hackInfo.style.display = 'block';
 				textInfo.innerHTML = 'Hack Udany';
 				hackText.style.display = 'none';
-				progressBarStart('end', 2);
+				gameOver();
 				return;
 			}
 
