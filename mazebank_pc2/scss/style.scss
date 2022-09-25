@@ -264,11 +264,13 @@ a .home {
 					}
 				}
 
-				&:not(.block) .smallel:hover {
-					z-index: 4;
-					background-color: rgba(1 230 150 / 50%);
-					border: 1px solid rgba(1 230 150);
-					cursor: pointer;
+				&:not(.aha) {
+					&:not(.block) .smallel:hover {
+						z-index: 4;
+						background-color: rgba(1 230 150 / 50%);
+						border: 1px solid rgba(1 230 150);
+						cursor: pointer;
+					}
 				}
 
 				&:first-child {

@@ -141,9 +141,12 @@ function createNumbers() {
 			square.setAttribute('id', 's' + xCoord + ',' + yCoord);
 
 			square.onclick = function () {
+				if (el.classList.contains('aha')) return;
+
 				if (!el.classList.contains('block')) {
 					square.classList.add('checked');
 					el.classList.add('block');
+					el.classList.add('aha');
 
 					let clickElement = square.textContent;
 
