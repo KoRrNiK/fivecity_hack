@@ -12,12 +12,15 @@ const input = document.getElementsByClassName('input')[0];
 const levelHackId = document.getElementById('levelHack');
 
 var __timePlay = 5;
-var progressBarInterval;
+let min = 2;
+let max = 10;
 var stageLevel = 0;
 let randomColor = 0;
 let whiteCount, greenCount, purpleCount;
 
-var colors = ['białego', 'zielonego', 'fioletowegoo'];
+var colors = ['białego', 'zielonego', 'fioletowego'];
+
+var progressBarInterval;
 
 const start = () => {
 	buttonStart.style.display = 'none';
@@ -49,6 +52,15 @@ const gameFinish = () => {
 };
 
 const nextStage = () => {
+	let hackId = document.getElementById('hackId');
+	whiteCount = hackId.getElementsByClassName('white').length;
+	greenCount = hackId.getElementsByClassName('green').length;
+	purpleCount = hackId.getElementsByClassName('purple').length;
+
+	console.log(whiteCount + ' ' + colors[0]);
+	console.log(greenCount + ' ' + colors[1]);
+	console.log(purpleCount + ' ' + colors[2]);
+
 	randomColor = colors[Math.floor(Math.random() * colors.length)];
 	input.value = '';
 	input.placeholder = 'Ile było pól koloru ' + randomColor + '?';
@@ -59,6 +71,10 @@ const nextStage = () => {
 	hackCount2.style.display = '';
 	progressBarStart('next', 5);
 };
+
+function hasClass(element, className) {
+	return (' ' + element.className + ' ').indexOf(' ' + className + ' ') > -1;
+}
 
 function progressBarStart(type, time) {
 	var maxwidth = 1000;
@@ -138,42 +154,9 @@ function createNumbers() {
 		hackFunction.appendChild(el);
 	}
 
-	let min = 2;
-	let max = 7;
-
-	let randomGreen = Math.floor(Math.random() * (max - min + 1) + min);
-	let randomPurple = Math.floor(Math.random() * (max - min + 1) + min);
-	let randomWhite = Math.floor(Math.random() * (max - min + 1) + min);
-
-	for (let j = 0; j < randomWhite; j++) {
-		random = Math.floor(Math.random() * 98);
-		if (!document.getElementById(random).classList.contains('white')) {
-			document.getElementById(random).classList.add('white');
-		} else {
-			random = Math.floor(Math.random() * 98);
-			document.getElementById(random).classList.add('white');
-		}
-	}
-
-	for (let j = 0; j < randomPurple; j++) {
-		random = Math.floor(Math.random() * 98);
-		if (!document.getElementById(random).classList.contains('purple')) {
-			document.getElementById(random).classList.add('purple');
-		} else {
-			random = Math.floor(Math.random() * 98);
-			document.getElementById(random).classList.add('purple');
-		}
-	}
-
-	for (let j = 0; j < randomGreen; j++) {
-		random = Math.floor(Math.random() * 98);
-		if (!document.getElementById(random).classList.contains('green')) {
-			document.getElementById(random).classList.add('green');
-		} else {
-			random = Math.floor(Math.random() * 98);
-			document.getElementById(random).classList.add('green');
-		}
-	}
+	generateColors('white');
+	generateColors('green');
+	generateColors('purple');
 
 	stageLevel++;
 
@@ -181,16 +164,32 @@ function createNumbers() {
 	hackFunction2.style.display = 'none';
 	textInfoUp.innerHTML = 'ZAPAMIĘTAJ';
 	levelHackId.textContent = stageLevel;
-
-	let hackId = document.getElementById('hackId');
-	whiteCount = hackId.getElementsByClassName('white').length;
-	greenCount = hackId.getElementsByClassName('green').length;
-	purpleCount = hackId.getElementsByClassName('purple').length;
-
-	console.log(whiteCount + colors[0]);
-	console.log(greenCount + colors[1]);
-	console.log(purpleCount + colors[2]);
 }
+
+const generateColors = color => {
+	let randomColors = Math.floor(Math.random() * (max - min + 1) + min);
+	for (let j = 0; j < randomColors; j++) {
+		random = Math.floor(Math.random() * 98);
+		let element = document.getElementById(random);
+		let good = true;
+
+		if (
+			hasClass(element, 'white') ||
+			hasClass(element, 'green') ||
+			hasClass(element, 'purple')
+		) {
+			good = false;
+		}
+
+		if (good) {
+			document.getElementById(random).classList.add(color);
+		} else {
+			document.getElementById(random).classList.remove('white');
+			document.getElementById(random).classList.remove('green');
+			document.getElementById(random).classList.remove('purple');
+		}
+	}
+};
 
 const checkClick = () => {
 	if (randomColor === colors[0]) {
