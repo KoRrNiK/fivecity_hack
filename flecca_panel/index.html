@@ -28,7 +28,11 @@
 
 				<div id="hackId" class="hackFunction"></div>
 				<div id="hackCount" class="hackFunction2">
-					<input class="input" placeholder="" />
+					<input
+						onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+						class="input"
+						placeholder=""
+					/>
 				</div>
 
 				<div class="hackFooter">
