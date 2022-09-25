@@ -212,7 +212,7 @@ function createNumbers() {
 						}
 					}
 
-					if (endSquare == el) {
+					if (endSquare == el && square.textContent == symbols[3]) {
 						arr1[0][0] = 0;
 
 						if (countPaths(arr1) > 0) {
