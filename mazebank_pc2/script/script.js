@@ -10,17 +10,8 @@ const hacklpm = document.querySelector('.hacklpm');
 const hackrpm = document.querySelector('.hackrpm');
 
 var __timePlay = 22;
-
 var progressBarInterval;
-var allSquares;
-
-var lpm = {};
-var rpm = {};
-
-var allClickSquare = 0;
-
 var symbols = ['🡪', '🡨', '🡩', '🡫'];
-
 var symbols1 = [
 	['🡩', '🡨', '🡪', '🡫'],
 	['🡫', '🡨', '🡩', '🡪'],
@@ -28,11 +19,11 @@ var symbols1 = [
 	['🡪', '🡩', '🡨', '🡫'],
 ];
 
-let path;
+var path;
 
-let R = 6;
-let C = 6;
-var arr1 = [
+var R = 6;
+var C = 6;
+var arrayDefault = [
 	[0, -1, -1, -1, -1, -1],
 	[-1, -1, -1, -1, -1, -1],
 	[-1, -1, -1, -1, -1, -1],
@@ -43,7 +34,6 @@ var arr1 = [
 
 const start = () => {
 	path = randomPath(R, C);
-	allClickSquare = 0;
 	buttonStart.style.display = 'none';
 	progressBar.style.display = 'block';
 	hackInfo.style.display = 'block';
@@ -107,17 +97,14 @@ function progressBarStart(type, time) {
 	progressBarInterval = setInterval(process, time);
 }
 
-function hasClass(element, className) {
-	return (' ' + element.className + ' ').indexOf(' ' + className + ' ') > -1;
-}
-
 function createNumbers() {
 	hackFunction.innerHTML = '';
 
 	var width = 6;
 	var height = 6;
+	var random = 0;
 
-	for (var i = 0; i < width * height; i++) {
+	for (let i = 0; i < width * height; i++) {
 		const el = document.createElement('div');
 		el.classList.add('el');
 		if (i != 0) el.classList.add('block');
@@ -130,13 +117,24 @@ function createNumbers() {
 
 		el.setAttribute('id', xCoord + ',' + yCoord);
 
-		for (var j = 0; j < 4; j++) {
+		for (let j = 0; j < 4; j++) {
 			const square = document.createElement('div');
 			square.classList.add('smallel');
 			if (i < 1 || i > 34) square.textContent = symbols[j];
-			else
-				square.textContent =
-					symbols[Math.floor(Math.random() * symbols.length)];
+			else {
+				random = Math.floor(Math.random() * 100);
+				if (random < 30) {
+					if (random < 10) {
+						square.textContent = symbols[3];
+					} else if (random < 30) {
+						square.textContent = symbols[0];
+					} else if (random < 50) {
+						square.textContent = symbols[1];
+					} else square.textContent = symbols[2];
+				} else if (random < 50) {
+					square.textContent = symbols[2];
+				} else square.textContent = symbols[1];
+			}
 
 			square.setAttribute('id', 's' + xCoord + ',' + yCoord);
 
@@ -150,10 +148,8 @@ function createNumbers() {
 
 					let clickElement = square.textContent;
 
-					for (var x = 0; x < 4; x++) {
+					for (let x = 0; x < 4; x++) {
 						if (clickElement === symbols[x]) {
-							//console.log(symbols[x]);
-
 							if (clickElement === symbols[0]) {
 								const x = Number(el.dataset.x) + 1;
 								const y = Number(el.dataset.y);
@@ -193,38 +189,32 @@ function createNumbers() {
 						}
 					}
 
-					let endSquare = document.getElementById('6,6');
-
-					arr1[Number(el.dataset.y) - 1][
+					arrayDefault[Number(el.dataset.y) - 1][
 						Number(el.dataset.x) - 1
 					] = 0;
 
-					for (let index = 0; index < arr1.length; index++) {
-						if (
-							arr1[index] === '1' ||
-							arr1[index] === '2' ||
-							arr1[index] === '3' ||
-							arr1[index] === '4' ||
-							arr1[index] === '5'
-						) {
-							arr1[index] = '0';
-							break;
+					for (let i = 0; i < arrayDefault.length; i++) {
+						for (let j = 1; j < 6; j++) {
+							if (arrayDefault[i] === j) {
+								arrayDefault[i] = '0';
+								break;
+							}
 						}
 					}
 
-					if (endSquare == el && square.textContent == symbols[3]) {
-						arr1[0][0] = 0;
-
-						if (countPaths(arr1) > 0) {
+					if (
+						document.getElementById('6,6') == el &&
+						square.textContent == symbols[3]
+					) {
+						arrayDefault[0][0] = 0;
+						if (countPaths(arrayDefault) > 0) {
 							gameFinish();
 						}
 					}
 				}
-				//	};
 			};
 			el.appendChild(square);
 		}
-
 		hackFunction.appendChild(el);
 	}
 	generateArrows();
@@ -232,84 +222,25 @@ function createNumbers() {
 }
 
 function generateArrows() {
-	let x = 0,
-		y = 0;
-
+	let x = 0;
+	let y = 0;
 	let squareElement;
 
 	for (let i = 0; i < path.length; i++) {
 		x = Number(path[i][0]) + 1;
 		y = Number(path[i][1]) + 1;
-		//console.log(x + ' ' + y);
-
 		squareElement = document.getElementById(x + ',' + y);
 
 		var random = Math.floor(Math.random() * symbols.length);
 
-		for (var j = 0; j < 4; j++) {
+		for (let j = 0; j < 4; j++) {
 			const square = document.getElementById('s' + x + ',' + y);
 			square.classList.add('smallel');
-
 			square.textContent = symbols1[random][j];
-
 			squareElement.appendChild(square);
 		}
 	}
 }
-
-function* uniqIter(a) {
-	let seen = new Set();
-	for (let x of a) {
-		if (!seen.has(x)) {
-			seen.add(x);
-			yield x;
-		}
-	}
-}
-
-function* randomPos() {
-	while (1)
-		yield parseInt(
-			(1 + Math.floor(Math.random() * (7 - 1 + 1)))
-				.toString()
-				.concat(
-					(1 + Math.floor(Math.random() * (7 - 1 + 1))).toString()
-				)
-		);
-}
-
-function generatePos() {
-	let count = 10;
-	let x = 0;
-
-	hackrpm.textContent = '';
-	hacklpm.textContent = '';
-
-	for (let r of uniqIter(randomPos())) {
-		if (x < 5) {
-			lpm[x] = {
-				x: r.toString().slice(0, -1),
-				y: r.toString().substring(1),
-			};
-			const el = document.createElement('div');
-			el.textContent = lpm[x].x + ', ' + lpm[x].y;
-			hacklpm.appendChild(el);
-		} else {
-			rpm[x] = {
-				x: r.toString().slice(0, -1),
-				y: r.toString().substring(1),
-			};
-			const el = document.createElement('div');
-			el.textContent = rpm[x].x + ', ' + rpm[x].y;
-			hackrpm.appendChild(el);
-		}
-
-		x++;
-
-		if (--count === 0) break;
-	}
-}
-
 hackFunction.style.display = 'none';
 hackText.style.display = 'none';
 progressBar.style.display = 'none';
@@ -333,9 +264,7 @@ function countPaths(maze) {
 	for (let i = 1; i < R; i++) {
 		for (let j = 1; j < C; j++) {
 			if (maze[i][j] == -1) continue;
-
 			if (maze[i - 1][j] > 0) maze[i][j] = maze[i][j] + maze[i - 1][j];
-
 			if (maze[i][j - 1] > 0) maze[i][j] = maze[i][j] + maze[i][j - 1];
 		}
 	}
