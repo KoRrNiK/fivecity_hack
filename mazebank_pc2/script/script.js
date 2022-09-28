@@ -9,7 +9,7 @@ const progressBarId = document.getElementById('progress-bar');
 const hacklpm = document.querySelector('.hacklpm');
 const hackrpm = document.querySelector('.hackrpm');
 
-var __timePlay = 22;
+var __timePlay = 15;
 var progressBarInterval;
 var symbols = ['🡪', '🡨', '🡩', '🡫'];
 var symbols1 = [
