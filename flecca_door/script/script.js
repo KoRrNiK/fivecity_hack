@@ -22,6 +22,7 @@ const start = () => {
 	textInfo.innerHTML = 'Przygotuj się...';
 	circle.style.top = 270 + 'px';
 	circle.style.left = 10 + 'px';
+	finish = true;
 	progressBarStart('start', 2);
 };
 
@@ -30,6 +31,7 @@ const gameOver = () => {
 	textInfo.innerHTML = 'Hack nieudany!';
 	hackFunction.style.display = 'none';
 	hackText.style.display = 'none';
+	finish = true;
 	progressBarStart('end', 2);
 };
 
