@@ -57,16 +57,15 @@ function progressBarStart(type, time) {
 				hackInfo.style.display = 'none';
 				finish = false;
 				progressBarStart('game', __timePlay);
-
 				return;
 			}
 
 			if (type == 'game') {
 				hackFunction.style.display = 'none';
 				hackInfo.style.display = 'block';
-				textInfo.innerHTML = 'Hack Udany';
+				textInfo.innerHTML = 'Hack nieudany';
 				hackText.style.display = 'none';
-				progressBarStart('end', 2);
+				gameOver();
 				return;
 			}
 
