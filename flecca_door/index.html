@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Flecca - HACK DOOR ( FIVE CITY )</title>
+
+		<link rel="stylesheet" href="./css/style.css" />
+		<script src="./script/script.js" defer></script>
+	</head>
+	<body>
+		<a href="../">
+			<div class="home"><</div>
+		</a>
+		<div class="container">
+			<div class="hackBox">
+				<div class="hackStart" id="buttonStart" onclick="start()">
+					Zacznij Hackować
+				</div>
+
+				<div class="hackInfo">
+					<h2 id="textInfo"></h2>
+				</div>
+				<div class="hackText">
+					<h2 id="textInfo">Przejdź na drugą stronę</h2>
+				</div>
+
+				<div class="hackFunction" style="display: none">
+					<div
+						id="circle"
+						class="circle"
+						style="top: 270px; left: 10px"
+					></div>
+					<div id="line1" class="allLine">
+						<div
+							style="--color: rgba(255 0 58)"
+							class="line up"
+							id="0"
+						></div>
+						<div
+							style="--color: rgba(255 0 58)"
+							class="line down"
+							id="1"
+						></div>
+					</div>
+					<div id="line2" class="allLine">
+						<div
+							style="--color: rgba(255 0 58)"
+							class="line up"
+							id="2"
+						></div>
+						<div
+							style="--color: rgba(255 0 58)"
+							class="line down"
+							id="3"
+						></div>
+					</div>
+					<div id="line3" class="allLine">
+						<div
+							style="--color: rgba(75 69 255)"
+							class="line up"
+							id="4"
+						></div>
+						<div
+							style="--color: rgba(75 69 255)"
+							class="line down"
+							id="5"
+						></div>
+					</div>
+					<div id="line4" class="allLine">
+						<div
+							style="--color: rgba(255 0 58)"
+							class="line up"
+							id="6"
+						></div>
+						<div
+							style="--color: rgba(255 0 58)"
+							class="line down"
+							id="7"
+						></div>
+					</div>
+					<div id="line5" class="allLine">
+						<div
+							style="--color: rgba(0 249 255)"
+							class="line up"
+							id="8"
+						></div>
+						<div
+							style="--color: rgba(0 249 255)"
+							class="line down"
+							id="9"
+						></div>
+					</div>
+					<div id="line6" class="allLine">
+						<div
+							style="--color: rgba(75 69 255)"
+							class="line up"
+							id="10"
+						></div>
+						<div
+							style="--color: rgba(75 69 255)"
+							class="line down"
+							id="11"
+						></div>
+					</div>
+					<div id="line7" class="allLine">
+						<div
+							style="--color: rgba(255 0 58)"
+							class="line up"
+							id="12"
+						></div>
+						<div
+							style="--color: rgba(255 0 58)"
+							class="line down"
+							id="13"
+						></div>
+					</div>
+					<div id="line8" class="allLine">
+						<div
+							style="--color: rgba(255 75 2)"
+							class="line up"
+							id="14"
+						></div>
+						<div
+							style="--color: rgba(255 75 2)"
+							class="line down"
+							id="15"
+						></div>
+					</div>
+					<div id="line9" class="allLine">
+						<div
+							style="--color: rgba(0 255 23)"
+							class="line up"
+							id="16"
+						></div>
+						<div
+							style="--color: rgba(0 255 23)"
+							class="line down"
+							id="17"
+						></div>
+					</div>
+					<div id="line10" class="allLine">
+						<div
+							style="--color: rgba(0 255 23)"
+							class="line up"
+							id="18"
+						></div>
+						<div
+							style="--color: rgba(0 255 23)"
+							class="line down"
+							id="19"
+						></div>
+					</div>
+					<div id="line11" class="allLine">
+						<div
+							style="--color: rgba(0 255 23)"
+							class="line up"
+							id="20"
+						></div>
+						<div
+							style="--color: rgba(0 255 23)"
+							class="line down"
+							id="21"
+						></div>
+					</div>
+					<div id="line12" class="allLine">
+						<div
+							style="--color: rgba(0 255 23)"
+							class="line up"
+							id="22"
+						></div>
+						<div
+							style="--color: rgba(0 255 23)"
+							class="line down"
+							id="23"
+						></div>
+					</div>
+					<div id="line13" class="allLine">
+						<div
+							style="--color: rgba(0 255 23)"
+							class="line up"
+							id="24"
+						></div>
+						<div
+							style="--color: rgba(0 255 23)"
+							class="line down"
+							id="25"
+						></div>
+					</div>
+					<div id="line14" class="allLine">
+						<div
+							style="--color: rgba(75 69 255)"
+							class="line up"
+							id="26"
+						></div>
+						<div
+							style="--color: rgba(75 69 255)"
+							class="line down"
+							id="27"
+						></div>
+					</div>
+					<div id="line15" class="allLine">
+						<div
+							style="--color: rgba(75 69 255)"
+							class="line up"
+							id="28"
+						></div>
+						<div
+							style="--color: rgba(255 230 0)"
+							class="line down"
+							id="29"
+						></div>
+					</div>
+				</div>
+
+				<div class="hackFooter">
+					<div id="progressBox" style="display: none">
+						<div class="progressBox">
+							<div class="progressBar" id="progress-bar"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

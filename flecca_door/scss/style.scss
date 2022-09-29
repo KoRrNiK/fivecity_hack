@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	font-family: 'Poppins', sans-serif;
+}
+
+::-webkit-scrollbar {
+	display: none;
+}
+
+body {
+	background-color: black;
+	height: 100vh;
+}
+
+a .home {
+	z-index: 5;
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	left: -150px;
+	animation: animation-left-author 1s cubic-bezier(0.55, 0.5, 0.45, 0.5)
+		forwards;
+	animation-delay: -0.5s;
+	top: 15px;
+	width: 32px;
+	height: 32px;
+	border-radius: 0 5px 5px 0px;
+	background-color: rgba(38 38 38);
+	color: #aaa;
+	cursor: pointer;
+	border-left: 1px solid rgba(16 255 205 / 20%);
+	text-shadow: 0 0 3px #aaa;
+	opacity: 0.8;
+	user-select: none;
+	&::before {
+		content: '';
+		position: absolute;
+		height: 100%;
+		width: 2px;
+		background-color: rgba(16 255 205 / 70%);
+		left: -5px;
+		top: 0px;
+		filter: blur(3px);
+		animation: animation-left-author-blur 5s linear infinite;
+	}
+	&:hover {
+		opacity: 1;
+		color: #fff;
+		text-shadow: 0 0 3px #fff;
+	}
+}
+
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 20px;
+	user-select: none;
+	margin-top: 0px;
+	position: relative;
+	top: 15px;
+
+	.hackBox {
+		width: 720px;
+		height: 720px;
+		background-color: rgba(14 14 14);
+		padding: 10px;
+
+		.hackStart {
+			margin-bottom: 20px;
+			display: flex;
+			border: none !important;
+			background-color: rgba(38 38 38);
+			padding: 15px;
+			color: #fff;
+			cursor: pointer;
+			border-radius: 5px;
+			font-size: 13px;
+			border: 1px solid;
+			text-align: center;
+			justify-content: space-around;
+			transition: all 0.2s;
+			&:hover {
+				background-color: rgba(7 125 58);
+			}
+		}
+
+		.hackButton {
+			margin-top: 10px;
+			margin-bottom: 10px;
+			display: flex;
+			background-color: rgba(34 34 34);
+			border-radius: 5px;
+			width: 100%;
+			text-align: center;
+			justify-content: space-between;
+			text-transform: uppercase;
+			transition: all 0.2s;
+
+			&:hover {
+				box-shadow: 0 0 0 3px rgba(16 255 205 / 10%),
+					0 0 0 1px rgba(16 255 205 / 15%),
+					0 0 10px rgba(16 255 205 / 5%);
+			}
+
+			.progress {
+				background: rgba(50 50 50);
+				border-left: 2px solid rgba(16 255 205 / 20%);
+				border-right: 2px solid rgba(16 255 205 / 20%);
+				border-radius: 6px;
+				height: 4px;
+				width: 300px;
+				outline: none;
+				opacity: 0.8;
+				margin: auto;
+				display: block;
+				-webkit-appearance: none;
+			}
+
+			.progress::-webkit-slider-thumb {
+				width: 10px;
+				height: 10px;
+				background: rgba(16 255 205 / 100%);
+				box-shadow: 0 0 10px rgba(16 255 205),
+					0 0 0 3px rgba(16 255 205 / 20%);
+				border-radius: 50%;
+				cursor: pointer;
+				-webkit-appearance: none;
+			}
+
+			.progress:hover {
+				opacity: 1;
+			}
+		}
+
+		.hackInfo {
+			font-size: 20px;
+			display: flex;
+			height: 310px;
+			justify-content: space-around;
+			transform: translateY(100%);
+			text-align: center;
+			color: #fff;
+
+			h2 {
+				font-size: 13px;
+				font-weight: 500;
+			}
+		}
+
+		.hackText {
+			display: flex;
+			justify-content: space-around;
+			transform: translateY(100%);
+			text-align: center;
+			color: #fff;
+
+			h2 {
+				font-size: 16px;
+				font-weight: 600;
+				margin-top: -5px;
+			}
+		}
+
+		.hackFunction {
+			position: absolute;
+			display: block;
+
+			width: 720px;
+			height: 600px;
+			margin: 0 auto;
+			margin-top: 50px;
+			margin-bottom: 50px;
+			overflow: hidden;
+			z-index: 2;
+
+			.circle {
+				position: relative;
+				background: yellow;
+				border-radius: 10px;
+				border: 1px solid black;
+				top: 45%;
+				left: 10px;
+				width: 8px;
+				height: 8px;
+			}
+
+			.allLine {
+				@for $i from 1 to 16 {
+					&#line#{$i} {
+						left: 75 + (35 * $i) + px;
+						position: absolute;
+					}
+				}
+
+				.line {
+					position: relative;
+					width: 13px;
+					height: 500px;
+					background-color: var(--color);
+
+					&.up {
+						top: 0px;
+						border-bottom-right-radius: 10px;
+						border-bottom-left-radius: 10px;
+					}
+					&.down {
+						bottom: -120px;
+						border-top-right-radius: 10px;
+						border-top-left-radius: 10px;
+					}
+				}
+			}
+		}
+
+		.hackFooter {
+			width: 720px;
+			position: absolute;
+			bottom: 20px;
+
+			.progressBox {
+				height: 4px;
+				width: 100%;
+				background-color: rgba(34 34 34);
+				border-radius: 5px;
+
+				.progressBar {
+					height: 4px;
+					background-color: rgba(16 255 205);
+				}
+			}
+		}
+	}
+}
+
+@keyframes animation-left-author {
+	from {
+		left: -500px;
+	}
+	to {
+		left: 20px;
+	}
+}
+
+@keyframes animation-left-author-blur {
+	0% {
+		filter: blur(3px);
+	}
+	50% {
+		filter: blur(4px);
+	}
+	100% {
+		filter: blur(3px);
+	}
+}
