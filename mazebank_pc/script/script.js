@@ -6,21 +6,26 @@ const buttonStart = document.getElementById('buttonStart');
 const hackInfo = document.querySelector('.hackInfo');
 const textInfo = document.getElementById('textInfo');
 const progressBarId = document.getElementById('progress-bar');
-
 const hacklpm = document.querySelector('.hacklpm');
 const hackrpm = document.querySelector('.hackrpm');
 
 var __timePlay = 22;
-
 var progressBarInterval;
 var allSquares;
-
 var lpm = {};
 var rpm = {};
-
 var allClickSquare = 0;
 
-const start = () => {
+const gameInit = () => {
+	hackFunction.style.display = 'none';
+	hackFunction2.style.display = 'none';
+	hackText.style.display = 'none';
+	progressBar.style.display = 'none';
+	hackInfo.style.display = 'none';
+	document.addEventListener('contextmenu', event => event.preventDefault());
+};
+
+const gameStart = () => {
 	allClickSquare = 0;
 	buttonStart.style.display = 'none';
 	progressBar.style.display = 'block';
@@ -56,17 +61,14 @@ function progressBarStart(type, time) {
 				createNumbers();
 				return;
 			}
-
 			if (type == 'game') {
 				hackFunction.style.display = 'none';
 				hackFunction2.style.display = 'none';
 				hackInfo.style.display = 'block';
-				textInfo.innerHTML = 'Hack Udany';
 				hackText.style.display = 'none';
 				gameOver();
 				return;
 			}
-
 			if (type == 'end') {
 				hackFunction.style.display = 'none';
 				hackFunction2.style.display = 'none';
@@ -120,9 +122,6 @@ function createNumbers() {
 					if (good) {
 						el.classList.add('lpm');
 						allClickSquare++;
-
-						console.log(allClickSquare);
-
 						if (allClickSquare >= 10) {
 							hackInfo.style.display = 'block';
 							textInfo.innerHTML = 'Hack Udany';
@@ -131,10 +130,7 @@ function createNumbers() {
 							hackText.style.display = 'none';
 							progressBarStart('end', 2);
 						}
-					} else {
-						gameOver();
-					}
-
+					} else gameOver();
 					break;
 				}
 				case 3: {
@@ -149,9 +145,6 @@ function createNumbers() {
 					if (good) {
 						el.classList.add('rpm');
 						allClickSquare++;
-
-						console.log(allClickSquare);
-
 						if (allClickSquare >= 10) {
 							hackInfo.style.display = 'block';
 							textInfo.innerHTML = 'Hack Udany';
@@ -160,15 +153,12 @@ function createNumbers() {
 							hackText.style.display = 'none';
 							progressBarStart('end', 2);
 						}
-					} else {
-						gameOver();
-					}
+					} else gameOver();
 					break;
 				}
 			}
 		};
 	}
-
 	for (let j = 0; j < Math.random() * (10 - 5) + 5; j++) {
 		random = Math.floor(Math.random() * 47);
 		if (!document.getElementById(random).classList.contains('default')) {
@@ -226,20 +216,7 @@ function generatePos() {
 			el.textContent = rpm[x].x + ', ' + rpm[x].y;
 			hackrpm.appendChild(el);
 		}
-
 		x++;
-
-		//console.log(lpm);
-		//console.log(rpm);
-
 		if (--count === 0) break;
 	}
 }
-
-hackFunction.style.display = 'none';
-hackFunction2.style.display = 'none';
-hackText.style.display = 'none';
-progressBar.style.display = 'none';
-hackInfo.style.display = 'none';
-
-document.addEventListener('contextmenu', event => event.preventDefault());

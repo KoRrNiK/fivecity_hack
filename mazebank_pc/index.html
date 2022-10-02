@@ -9,32 +9,32 @@
 		<link rel="stylesheet" href="./css/style.css" />
 		<script src="./script/script.js" defer></script>
 	</head>
-	<body>
+	<body onload="gameInit()">
 		<a href="../">
 			<div class="home"><</div>
 		</a>
 		<div class="container">
 			<div class="hackBox">
-				<div class="hackStart" id="buttonStart" onclick="start()">
+				<div class="hackStart" id="buttonStart" onclick="gameStart()">
 					Zacznij Hackować
 				</div>
 
-				<div class="hackInfo">
+				<div class="hackInfo" style="display: none">
 					<h2 id="textInfo"></h2>
 				</div>
-				<div class="hackText">
+				<div class="hackText" style="display: none">
 					<h2 id="textInfo">WYŁĄCZ ZABEZPIECZENIE SEJFU</h2>
 					<h4>-LPM | RPM-</h4>
 				</div>
 
-				<div class="hackFunction"></div>
-				<div class="hackFunction2">
+				<div class="hackFunction" style="display: none"></div>
+				<div class="hackFunction2" style="display: none">
 					<div class="hacklpm"></div>
 					<div class="hackrpm"></div>
 				</div>
 
 				<div class="hackFooter">
-					<div id="progressBox">
+					<div id="progressBox" style="display: none">
 						<div class="progressBox">
 							<div class="progressBar" id="progress-bar"></div>
 						</div>

@@ -9,13 +9,13 @@
 		<link rel="stylesheet" href="./css/style.css" />
 		<script src="./script/script.js" defer></script>
 	</head>
-	<body>
+	<body onload="gameInit()">
 		<a href="../">
 			<div class="home"><</div>
 		</a>
 		<div class="container">
 			<div class="hackBox">
-				<div class="hackStart" id="buttonStart" onclick="start()">
+				<div class="hackStart" id="buttonStart" onclick="gameStart()">
 					Zacznij Hackować
 				</div>
 
@@ -43,27 +43,47 @@
 							type="range"
 							min="100"
 							max="1000"
-							value="350"
+							value="300"
 							step="50"
 							oninput="spawnChangeFunction()"
 							id="spawnChangeInput"
 						/>
 						<div class="hackCount" id="spawnChangeId"></div>
 					</div>
+					<div class="hackButton">
+						<div class="hackDesc">
+							MAX. ilość kwadratów aby przegrać
+						</div>
+						<input
+							class="progress"
+							type="range"
+							min="1"
+							max="20"
+							value="10"
+							step="1"
+							oninput="maxsquareChangeFunction()"
+							id="maxsquareChangeInput"
+						/>
+						<div class="hackCount" id="maxsquareChangeId"></div>
+					</div>
 				</div>
 
-				<div class="hackInfo">
+				<div class="hackInfo" style="display: none">
 					<h2 id="textInfo"></h2>
 				</div>
-				<div class="hackText">
+				<div class="hackText" style="display: none">
 					<h2 id="textInfo">KLIKAJ JAK NAJSZYBCIEJ</h2>
 				</div>
 
-				<div class="hackFunction"></div>
-				<div id="hackFunction2"></div>
+				<div class="hackFunction" style="display: none"></div>
+				<div
+					id="hackFunction2"
+					onclick="gameOver();"
+					style="display: none"
+				></div>
 
 				<div class="hackFooter">
-					<div id="progressBox">
+					<div id="progressBox" style="display: none">
 						<div class="progressBox">
 							<div class="progressBar" id="progress-bar"></div>
 						</div>

@@ -9,28 +9,32 @@
 		<link rel="stylesheet" href="./css/style.css" />
 		<script src="./script/script.js" defer></script>
 	</head>
-	<body>
+	<body onload="gameInit()">
 		<a href="../">
 			<div class="home"><</div>
 		</a>
 		<div class="container">
 			<div class="hackBox">
-				<div class="hackStart" id="buttonStart" onclick="start()">
+				<div class="hackStart" id="buttonStart" onclick="gameStart()">
 					Zacznij Hackować
 				</div>
-				<div class="hackInfo">
+				<div class="hackInfo" style="display: none">
 					<h2 id="textInfo"></h2>
 				</div>
-				<div class="hackText">
+				<div class="hackText" style="display: none">
 					<h3><span id="levelHack">1</span>/3</h3>
 					<h3 id="textGame"></h3>
 					<h2 id="searchNumber"></h2>
 				</div>
 
-				<div class="hackFunction" id="changeGrid"></div>
+				<div
+					class="hackFunction"
+					id="changeGrid"
+					style="display: none"
+				></div>
 
 				<div class="hackFooter">
-					<div id="progressBox">
+					<div id="progressBox" style="display: none">
 						<div class="progressBox">
 							<div class="progressBar" id="progress-bar"></div>
 						</div>

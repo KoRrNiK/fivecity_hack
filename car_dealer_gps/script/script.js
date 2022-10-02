@@ -10,15 +10,28 @@ const progressBarId = document.getElementById('progress-bar');
 
 var __timePlay = document.getElementById('timeChangeInput');
 var __spawnPlay = document.getElementById('spawnChangeInput');
-
+var __maxsquare = document.getElementById('maxsquareChangeInput');
 var progressBarInterval;
 var squaresInterval;
 var allSquares;
-
 var defaultTime = 20;
-var defaultSpawn = 350;
+var defaultSpawn = 300;
+var defaultMaxsquare = 10;
 
-const start = () => {
+const gameInit = () => {
+	hackFunction.style.display = 'none';
+	hackText.style.display = 'none';
+	progressBar.style.display = 'none';
+	hackInfo.style.display = 'none';
+	hackFunction2.style.display = 'none';
+	document.getElementById('timeChangeId').innerHTML = String(defaultTime);
+	document.getElementById('spawnChangeId').innerHTML = String(defaultSpawn);
+	document.getElementById('maxsquareChangeId').innerHTML =
+		String(defaultMaxsquare);
+	document.addEventListener('contextmenu', event => event.preventDefault());
+};
+
+const gameStart = () => {
 	allSquares = 0;
 	buttonStart.style.display = 'none';
 	hackOptions.style.display = 'none';
@@ -29,6 +42,15 @@ const start = () => {
 	progressBarStart('start', 2);
 };
 
+const gameWin = () => {
+	hackFunction.style.display = 'none';
+	hackInfo.style.display = 'block';
+	textInfo.innerHTML = 'Hack Udany';
+	hackText.style.display = 'none';
+	hackFunction2.style.display = 'none';
+	progressBarStart('end', 2);
+};
+
 const gameOver = () => {
 	hackInfo.style.display = 'block';
 	textInfo.innerHTML = 'Hack nieudany!';
@@ -37,10 +59,6 @@ const gameOver = () => {
 	hackFunction2.style.display = 'none';
 	clearInterval(squaresInterval);
 	progressBarStart('end', 2);
-};
-
-hackFunction2.onclick = function () {
-	gameOver();
 };
 
 function progressBarStart(type, time) {
@@ -60,18 +78,11 @@ function progressBarStart(type, time) {
 				createNumbers();
 				return;
 			}
-
 			if (type == 'game') {
-				hackFunction.style.display = 'none';
-				hackInfo.style.display = 'block';
-				textInfo.innerHTML = 'Hack Udany';
-				hackText.style.display = 'none';
-				hackFunction2.style.display = 'none';
+				gameWin();
 				clearInterval(squaresInterval);
-				progressBarStart('end', 2);
 				return;
 			}
-
 			if (type == 'end') {
 				hackFunction.style.display = 'none';
 				hackText.style.display = 'none';
@@ -89,8 +100,8 @@ function progressBarStart(type, time) {
 function createNumbers() {
 	hackFunction.innerHTML = '';
 
-	let currentIndex = 0;
-
+	var currentIndex = 0;
+	var random;
 	while (currentIndex <= 48) {
 		const el = document.createElement('div');
 		el.classList.add('el');
@@ -98,7 +109,7 @@ function createNumbers() {
 
 		hackFunction.appendChild(el);
 
-		el.onclick /*onmousedown*/ = function () {
+		el.onclick = function () {
 			if (el.classList.contains('select')) {
 				el.classList.remove('select');
 				allSquares--;
@@ -108,7 +119,6 @@ function createNumbers() {
 		currentIndex++;
 	}
 
-	var random;
 	squaresInterval = setInterval(() => {
 		random = Math.floor(Math.random() * 47);
 		if (!document.getElementById(random).classList.contains('select')) {
@@ -119,21 +129,11 @@ function createNumbers() {
 			document.getElementById(random).classList.add('select');
 			allSquares++;
 		}
-
-		if (allSquares > 10) gameOver();
+		if (allSquares > __maxsquare.value) gameOver();
 	}, __spawnPlay.value);
 
 	hackFunction2.style.display = '';
 }
-
-hackFunction.style.display = 'none';
-hackText.style.display = 'none';
-progressBar.style.display = 'none';
-hackInfo.style.display = 'none';
-hackFunction2.style.display = 'none';
-
-document.getElementById('timeChangeId').innerHTML = String(defaultTime);
-document.getElementById('spawnChangeId').innerHTML = String(defaultSpawn);
 
 function timeChangeFunction() {
 	document.getElementById('timeChangeId').innerHTML =
@@ -145,4 +145,7 @@ function spawnChangeFunction() {
 		document.getElementById('spawnChangeInput').value;
 }
 
-document.addEventListener('contextmenu', event => event.preventDefault());
+function maxsquareChangeFunction() {
+	document.getElementById('maxsquareChangeId').innerHTML =
+		document.getElementById('maxsquareChangeInput').value;
+}

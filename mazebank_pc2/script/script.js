@@ -5,7 +5,6 @@ const buttonStart = document.getElementById('buttonStart');
 const hackInfo = document.querySelector('.hackInfo');
 const textInfo = document.getElementById('textInfo');
 const progressBarId = document.getElementById('progress-bar');
-
 const hacklpm = document.querySelector('.hacklpm');
 const hackrpm = document.querySelector('.hackrpm');
 
@@ -18,9 +17,7 @@ var symbols1 = [
 	['🡪', '🡨', '🡩', '🡫'],
 	['🡪', '🡩', '🡨', '🡫'],
 ];
-
 var path;
-
 var R = 6;
 var C = 6;
 var arrayDefault = [
@@ -32,7 +29,15 @@ var arrayDefault = [
 	[-1, -1, -1, -1, -1, -1],
 ];
 
-const start = () => {
+const gameInit = () => {
+	hackFunction.style.display = 'none';
+	hackText.style.display = 'none';
+	progressBar.style.display = 'none';
+	hackInfo.style.display = 'none';
+	document.addEventListener('contextmenu', event => event.preventDefault());
+};
+
+const gameStart = () => {
 	path = randomPath(R, C);
 	buttonStart.style.display = 'none';
 	progressBar.style.display = 'block';
@@ -49,7 +54,7 @@ const gameOver = () => {
 	progressBarStart('end', 2);
 };
 
-const gameFinish = () => {
+const gameWin = () => {
 	hackInfo.style.display = 'block';
 	textInfo.innerHTML = 'Hack udany!';
 	hackFunction.style.display = 'none';
@@ -74,7 +79,6 @@ function progressBarStart(type, time) {
 				createNumbers();
 				return;
 			}
-
 			if (type == 'game') {
 				hackFunction.style.display = 'none';
 				hackInfo.style.display = 'block';
@@ -83,7 +87,6 @@ function progressBarStart(type, time) {
 				gameOver();
 				return;
 			}
-
 			if (type == 'end') {
 				hackFunction.style.display = 'none';
 				hackText.style.display = 'none';
@@ -100,17 +103,15 @@ function progressBarStart(type, time) {
 function createNumbers() {
 	hackFunction.innerHTML = '';
 
-	var width = 6;
-	var height = 6;
 	var random = 0;
 
-	for (let i = 0; i < width * height; i++) {
+	for (let i = 0; i < R * C; i++) {
 		const el = document.createElement('div');
 		el.classList.add('el');
 		if (i != 0) el.classList.add('block');
 
-		var yCoord = Math.floor(i / width) + 1;
-		var xCoord = (i % width) + 1;
+		var yCoord = Math.floor(i / R) + 1;
+		var xCoord = (i % R) + 1;
 
 		el.dataset.x = xCoord;
 		el.dataset.y = yCoord;
@@ -208,7 +209,7 @@ function createNumbers() {
 					) {
 						arrayDefault[0][0] = 0;
 						if (countPaths(arrayDefault) > 0) {
-							gameFinish();
+							gameWin();
 						}
 					}
 				}
@@ -241,12 +242,6 @@ function generateArrows() {
 		}
 	}
 }
-hackFunction.style.display = 'none';
-hackText.style.display = 'none';
-progressBar.style.display = 'none';
-hackInfo.style.display = 'none';
-
-document.addEventListener('contextmenu', event => event.preventDefault());
 
 function countPaths(maze) {
 	if (maze[0][0] == -1) return 0;
@@ -271,15 +266,11 @@ function countPaths(maze) {
 	return maze[R - 1][C - 1] > 0 ? maze[R - 1][C - 1] : 0;
 }
 
-function randint(range) {
-	return Math.floor(Math.random() * range);
-}
-
 function randomPath(sizeX, sizeY) {
 	let x = R - 1;
 	let path = [];
 	for (let y = sizeY - 1; y >= 0; y--) {
-		let upX = y ? randint(sizeX) : 0;
+		let upX = y ? Math.floor(Math.random() * sizeX) : 0;
 		while (x != upX) {
 			path.push([x, y]);
 			if (x < upX) x++;

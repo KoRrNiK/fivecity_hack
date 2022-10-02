@@ -16,13 +16,21 @@ let min = 2;
 let max = 10;
 var stageLevel = 0;
 let randomColor = 0;
-
 var colors = ['białego', 'zielonego', 'fioletowego'];
 var colorsCount = {};
-
 var progressBarInterval;
 
-const start = () => {
+const gameInit = () => {
+	hackFunction.style.display = 'none';
+	hackFunction2.style.display = 'none';
+	hackCount2.style.display = 'none';
+	hackText.style.display = 'none';
+	progressBar.style.display = 'none';
+	hackInfo.style.display = 'none';
+	document.addEventListener('contextmenu', event => event.preventDefault());
+};
+
+const gameStart = () => {
 	buttonStart.style.display = 'none';
 	progressBar.style.display = 'block';
 	hackInfo.style.display = 'block';
@@ -41,7 +49,7 @@ const gameOver = () => {
 	progressBarStart('end', 2);
 };
 
-const gameFinish = () => {
+const gameWin = () => {
 	hackInfo.style.display = 'block';
 	textInfo.innerHTML = 'Hack udany!';
 	hackFunction.style.display = 'none';
@@ -109,7 +117,6 @@ function progressBarStart(type, time) {
 				createNumbers();
 				return;
 			}
-
 			if (type == 'game') {
 				hackFunction.style.display = '';
 				hackFunction2.style.display = 'none';
@@ -119,7 +126,6 @@ function progressBarStart(type, time) {
 				nextStage();
 				return;
 			}
-
 			if (type == 'next') {
 				hackFunction.style.display = 'none';
 				hackFunction2.style.display = 'none';
@@ -130,7 +136,6 @@ function progressBarStart(type, time) {
 				checkClick();
 				return;
 			}
-
 			if (type == 'end') {
 				hackFunction.style.display = 'none';
 				hackFunction2.style.display = 'none';
@@ -171,7 +176,7 @@ function createNumbers() {
 	levelHackId.textContent = stageLevel;
 }
 
-const generateColors = color => {
+function generateColors(color) {
 	let randomColors = Math.floor(Math.random() * (max - min + 1) + min);
 	for (let j = 0; j < randomColors; j++) {
 		let random = Math.floor(Math.random() * 98);
@@ -188,9 +193,9 @@ const generateColors = color => {
 
 		if (good) document.getElementById(random).classList.add(color);
 	}
-};
+}
 
-const checkClick = () => {
+function checkClick() {
 	for (let i = 0; i < 3; i++) {
 		if (randomColor === colors[i]) {
 			if (input.value == colorsCount[i]) {
@@ -199,26 +204,17 @@ const checkClick = () => {
 					createNumbers();
 					return;
 				} else {
-					gameFinish();
+					gameWin();
 					return;
 				}
 			}
 		}
 	}
 	gameOver();
-};
+}
 
 input.addEventListener('keyup', function (event) {
 	if (event.key === 'Enter') {
 		checkClick();
 	}
 });
-
-hackFunction.style.display = 'none';
-hackFunction2.style.display = 'none';
-hackCount2.style.display = 'none';
-hackText.style.display = 'none';
-progressBar.style.display = 'none';
-hackInfo.style.display = 'none';
-
-document.addEventListener('contextmenu', event => event.preventDefault());

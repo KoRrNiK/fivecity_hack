@@ -9,22 +9,65 @@ const progressBarId = document.getElementById('progress-bar');
 const changeGrid = document.getElementById('changeGrid');
 const levelHackId = document.getElementById('levelHack');
 const textGame = document.getElementById('textGame');
-
-//const characters = 'ΩωΘθΞξΓγΖζΛλΦφΧχμΨψΣσςΠπ';
 const characters = 'ΑαΒβΓγΔδΕεΖζΗηΘθΙιΚκΛλΜμΝνΞξΟοΠπΡρΣσςΤτΥυΦφΧχΨψΩω';
 
 var stop = 36;
-
 var arrayListNumbers = [];
 var arrayRandomCharacter = [];
 var levelHack = 0;
 var chooseCorrect = false;
-
 var resetStatus = 1000;
-
 var progressBarInterval;
-
 var arrayEnd = [];
+
+const gameInit = () => {
+	hackFunction.style.display = 'none';
+	hackText.style.display = 'none';
+	progressBar.style.display = 'none';
+	hackInfo.style.display = 'none';
+	document.addEventListener('contextmenu', event => event.preventDefault());
+};
+
+const gameStart = () => {
+	arrayListNumbers = [];
+	arrayRandomCharacter = [];
+	arrayEnd = [];
+	randomCharacter();
+	createNumbers(arrayListNumbers);
+	searchNumber.textContent =
+		arrayListNumbers[Math.floor(Math.random() * stop)];
+	levelHackId.textContent = levelHack + 1;
+	textGame.innerHTML = 'Znajdź i zapamiętaj';
+	arrayRandomCharacter.push(searchNumber.textContent);
+	chooseCorrect = false;
+	levelHack = 0;
+	resetStatus = 1000;
+	buttonStart.style.display = 'none';
+	progressBar.style.display = 'block';
+	hackInfo.style.display = 'block';
+	textInfo.innerHTML = 'Przygotuj się...';
+	changeGrid.style.gridTemplateColumns = 'repeat(6, minmax(0, 1fr))';
+	changeGrid.style.padding = '140px';
+	levelHackId.textContent = levelHack + 1;
+	searchNumber.style.opacity = '1';
+	progressBarStart('start', 2);
+};
+
+const gameWin = () => {
+	hackInfo.style.display = 'block';
+	textInfo.innerHTML = 'Hack Udany';
+	hackFunction.style.display = 'none';
+	hackText.style.display = 'none';
+	progressBarStart('end', 2);
+};
+
+const gameOver = () => {
+	hackInfo.style.display = 'block';
+	textInfo.innerHTML = 'Hack nieudany!';
+	hackFunction.style.display = 'none';
+	hackText.style.display = 'none';
+	progressBarStart('end', 2);
+};
 
 function generateEndArray(id) {
 	arrayEnd = [];
@@ -111,22 +154,11 @@ function createNumbers(array) {
 						arrayRandomCharacter.push(searchNumber.textContent);
 					}
 				} else {
-					//console.log(arrayEnd);
+					if (levelHack == 0) generateEndArray(1);
 
-					if (levelHack == 0) {
-						generateEndArray(1);
-					}
-					if (levelHack == 1) {
-						generateEndArray(2);
-					}
-					if (levelHack == 2) {
-						hackInfo.style.display = 'block';
-						textInfo.innerHTML = 'Hack Udany';
-						hackFunction.style.display = 'none';
-						hackText.style.display = 'none';
+					if (levelHack == 1) generateEndArray(2);
 
-						progressBarStart('end', 2);
-					}
+					if (levelHack == 2) gameWin();
 
 					levelHack++;
 					levelHackId.textContent = levelHack + 1;
@@ -138,16 +170,7 @@ function createNumbers(array) {
 	}
 }
 
-const gameOver = () => {
-	hackInfo.style.display = 'block';
-	textInfo.innerHTML = 'Hack nieudany!';
-	hackFunction.style.display = 'none';
-	hackText.style.display = 'none';
-
-	progressBarStart('end', 2);
-};
-
-const randomCharacter = () => {
+function randomCharacter() {
 	arrayListNumbers = [];
 
 	var n = '';
@@ -180,34 +203,6 @@ const randomCharacter = () => {
 
 		n = '';
 	}
-};
-
-function start() {
-	arrayListNumbers = [];
-	arrayRandomCharacter = [];
-	arrayEnd = [];
-
-	randomCharacter();
-	createNumbers(arrayListNumbers);
-	searchNumber.textContent =
-		arrayListNumbers[Math.floor(Math.random() * stop)];
-
-	levelHackId.textContent = levelHack + 1;
-	textGame.innerHTML = 'Znajdź i zapamiętaj';
-	arrayRandomCharacter.push(searchNumber.textContent);
-	chooseCorrect = false;
-	levelHack = 0;
-	resetStatus = 1000;
-	buttonStart.style.display = 'none';
-	progressBar.style.display = 'block';
-	hackInfo.style.display = 'block';
-	textInfo.innerHTML = 'Przygotuj się...';
-	changeGrid.style.gridTemplateColumns = 'repeat(6, minmax(0, 1fr))';
-	changeGrid.style.padding = '140px';
-	levelHackId.textContent = levelHack + 1;
-	searchNumber.style.opacity = '1';
-
-	progressBarStart('start', 2);
 }
 
 function progressBarStart(type = 'start', time, width) {
@@ -218,7 +213,6 @@ function progressBarStart(type = 'start', time, width) {
 			if (type == 'start' || type == 'end') width = width - 3;
 			else width--;
 			progressBarId.style.width = (width * 100.0) / maxwidth + '%';
-
 			if (type == 'game') {
 				resetStatus--;
 				if (resetStatus % 200 == 1) {
@@ -235,32 +229,23 @@ function progressBarStart(type = 'start', time, width) {
 				progressBarStart('game', 40);
 				return;
 			}
-
 			if (type == 'game') {
 				hackFunction.style.display = '';
 				hackText.style.display = '';
 				hackInfo.style.display = 'none';
 				gameOver();
 				return;
-			} else if (type == 'end') {
+			}
+			if (type == 'end') {
 				hackFunction.style.display = 'none';
 				hackText.style.display = 'none';
 				hackInfo.style.display = 'none';
 				buttonStart.style.display = '';
 				progressBar.style.display = 'none';
 			}
-
 			clearInterval(progressBarInterval);
 		}
 	};
-
 	clearInterval(progressBarInterval);
 	progressBarInterval = setInterval(process, time);
 }
-
-hackFunction.style.display = 'none';
-hackText.style.display = 'none';
-progressBar.style.display = 'none';
-hackInfo.style.display = 'none';
-
-document.addEventListener('contextmenu', event => event.preventDefault());

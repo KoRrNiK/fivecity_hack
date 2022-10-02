@@ -9,13 +9,21 @@ const circle = document.getElementById('circle');
 
 var progressBarInterval;
 var finish = true;
-
 var __timePlay = 30;
+var keyCodes = { left: 65, up: 87, right: 68, down: 83 };
+var keys = [];
+var lineMove = [];
 
-var keyCodes = { left: 65, up: 87, right: 68, down: 83 },
-	keys = [];
+const gameInit = () => {
+	hackFunction.style.display = 'none';
+	hackText.style.display = 'none';
+	progressBar.style.display = 'none';
+	hackInfo.style.display = 'none';
+	document.addEventListener('contextmenu', event => event.preventDefault());
+	moveCircleAndLines();
+};
 
-const start = () => {
+const gameStart = () => {
 	buttonStart.style.display = 'none';
 	progressBar.style.display = 'block';
 	hackInfo.style.display = 'block';
@@ -61,7 +69,6 @@ function progressBarStart(type, time) {
 				progressBarStart('game', __timePlay);
 				return;
 			}
-
 			if (type == 'game') {
 				hackFunction.style.display = 'none';
 				hackInfo.style.display = 'block';
@@ -70,7 +77,6 @@ function progressBarStart(type, time) {
 				gameOver();
 				return;
 			}
-
 			if (type == 'end') {
 				hackFunction.style.display = 'none';
 				hackText.style.display = 'none';
@@ -84,31 +90,9 @@ function progressBarStart(type, time) {
 	progressBarInterval = setInterval(process, time);
 }
 
-hackFunction.style.display = 'none';
-hackText.style.display = 'none';
-progressBar.style.display = 'none';
-hackInfo.style.display = 'none';
-
-document.addEventListener('contextmenu', event => event.preventDefault());
-
-window.addEventListener('keydown', function (evt) {
-	keys[evt.keyCode] = true;
-});
-
-window.addEventListener('keyup', function (evt) {
-	keys[evt.keyCode] = false;
-});
-
 function getRndInteger(min, max) {
 	return Math.floor(Math.random() * (max - min)) + min;
 }
-
-for (let i = 1; i < 16; i++) {
-	document.getElementById('line' + i).style.top =
-		getRndInteger(-40, -450) + 'px';
-}
-
-let lineMove = [];
 
 function isColliding(a, b) {
 	const rect1 = a.getBoundingClientRect();
@@ -121,53 +105,71 @@ function isColliding(a, b) {
 	return isOverlapping;
 }
 
-setInterval(function () {
-	if (!finish) {
-		for (let i = 0; i < 30; i++) {
-			if (isColliding(circle, document.getElementById(i))) {
-				gameOver();
-				break;
-			}
-		}
-
-		for (let i = 1; i < 16; i++) {
-			var y = parseInt(document.getElementById('line' + i).style.top, 10);
-
-			let randomY = getRndInteger(-400, -450);
-
-			if (y < randomY) {
-				lineMove[i] = true;
-			}
-
-			if (y > randomY && !lineMove[i]) {
-				y--;
-			} else if (y < getRndInteger(-40, -60) && lineMove[i]) {
-				y++;
-			} else lineMove[i] = false;
-
-			document.getElementById('line' + i).style.top = y + 'px';
-		}
-
-		var x = parseInt(circle.style.left, 10),
-			y = parseInt(circle.style.top, 10);
-
-		if (keys[keyCodes.left]) {
-			if (x > 0) x -= 1;
-		} else if (keys[keyCodes.right]) {
-			if (x < 700) x += 1;
-		}
-
-		if (keys[keyCodes.up]) {
-			if (y > 0) y -= 1;
-		} else if (keys[keyCodes.down]) {
-			if (y < 590) y += 1;
-		}
-
-		circle.style.left = x + 'px';
-		circle.style.top = y + 'px';
-
-		if (x >= 650) {
-			gameFinish();
-		}
+function moveCircleAndLines() {
+	for (let i = 1; i < 16; i++) {
+		document.getElementById('line' + i).style.top =
+			getRndInteger(-40, -450) + 'px';
 	}
-}, 15);
+
+	setInterval(function () {
+		if (!finish) {
+			for (let i = 0; i < 30; i++) {
+				if (isColliding(circle, document.getElementById(i))) {
+					gameOver();
+					break;
+				}
+			}
+
+			for (let i = 1; i < 16; i++) {
+				var y = parseInt(
+					document.getElementById('line' + i).style.top,
+					10
+				);
+
+				let randomY = getRndInteger(-400, -450);
+
+				if (y < randomY) {
+					lineMove[i] = true;
+				}
+
+				if (y > randomY && !lineMove[i]) {
+					y--;
+				} else if (y < getRndInteger(-40, -60) && lineMove[i]) {
+					y++;
+				} else lineMove[i] = false;
+
+				document.getElementById('line' + i).style.top = y + 'px';
+			}
+
+			var x = parseInt(circle.style.left, 10),
+				y = parseInt(circle.style.top, 10);
+
+			if (keys[keyCodes.left]) {
+				if (x > 0) x -= 1;
+			} else if (keys[keyCodes.right]) {
+				if (x < 700) x += 1;
+			}
+
+			if (keys[keyCodes.up]) {
+				if (y > 0) y -= 1;
+			} else if (keys[keyCodes.down]) {
+				if (y < 590) y += 1;
+			}
+
+			circle.style.left = x + 'px';
+			circle.style.top = y + 'px';
+
+			if (x >= 650) {
+				gameFinish();
+			}
+		}
+	}, 15);
+}
+
+window.addEventListener('keydown', function (evt) {
+	keys[evt.keyCode] = true;
+});
+
+window.addEventListener('keyup', function (evt) {
+	keys[evt.keyCode] = false;
+});
