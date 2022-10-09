@@ -45,9 +45,10 @@ const gameStart = () => {
 const gameWin = () => {
 	hackFunction.style.display = 'none';
 	hackInfo.style.display = 'block';
-	textInfo.innerHTML = 'Hack Udany';
+	textInfo.innerHTML = 'Hack Udany!';
 	hackText.style.display = 'none';
 	hackFunction2.style.display = 'none';
+	hackFunction.innerHTML = '';
 	progressBarStart('end', 2);
 };
 
@@ -57,6 +58,7 @@ const gameOver = () => {
 	hackFunction.style.display = 'none';
 	hackText.style.display = 'none';
 	hackFunction2.style.display = 'none';
+	hackFunction.innerHTML = '';
 	clearInterval(squaresInterval);
 	progressBarStart('end', 2);
 };
@@ -119,20 +121,30 @@ function createNumbers() {
 		currentIndex++;
 	}
 
+	generateNewSquare();
+
+	hackFunction2.style.display = '';
+}
+
+function hasClass(element, className) {
+	return (' ' + element.className + ' ').indexOf(' ' + className + ' ') > -1;
+}
+
+function generateNewSquare() {
 	squaresInterval = setInterval(() => {
-		random = Math.floor(Math.random() * 47);
-		if (!document.getElementById(random).classList.contains('select')) {
-			document.getElementById(random).classList.add('select');
-			allSquares++;
-		} else {
-			random = Math.floor(Math.random() * 47);
+		let random = Math.floor(Math.random() * 47);
+		let element = document.getElementById(random);
+		let good = true;
+
+		if (hasClass(element, 'select')) good = false;
+
+		if (good) {
 			document.getElementById(random).classList.add('select');
 			allSquares++;
 		}
+
 		if (allSquares > __maxsquare.value) gameOver();
 	}, __spawnPlay.value);
-
-	hackFunction2.style.display = '';
 }
 
 function timeChangeFunction() {
