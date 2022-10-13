@@ -50,6 +50,12 @@ body {
 				font-size: 12px;
 				border-radius: 15px 0 15px 0;
 				margin-bottom: 5px;
+
+				&.new {
+					filter: hue-rotate(70deg);
+					color: #fff9 !important;
+					padding: 10px !important;
+				}
 			}
 
 			&::-webkit-scrollbar {
