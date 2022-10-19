@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./css/style.css" />
+
+		<script src="./script/words.js" defer></script>
+		<script src="./script/script.js" defer></script>
+
+		<title>SGOC - HACK PC ( FIVE CITY ) SOLVER</title>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="hackBox">
+				<div class="hackGroup">
+					<div class="form-flex" id="form-green">
+						<input type="text" data-index="0" />
+						<input type="text" data-index="1" />
+						<input type="text" data-index="2" />
+						<input type="text" data-index="3" />
+						<input type="text" data-index="4" />
+					</div>
+				</div>
+				<div class="hackGroup">
+					<input
+						id="input-purple"
+						autocomplete="off"
+						type="text"
+						placeholder="Litery nie we właściwej pozycji"
+					/>
+				</div>
+
+				<div class="hackGroup">
+					<input
+						id="input-none"
+						autocomplete="off"
+						type="text"
+						placeholder="Litery które nie występują w słowie"
+					/>
+				</div>
+				<div id="results"></div>
+				<p class="hackFind" style="display: none">
+					Znalezionych słów: <span id="findWords"></span>
+				</p>
+			</div>
+		</div>
+	</body>
+</html>

@@ -232,12 +232,14 @@ a .home {
 					z-index: 4;
 					background-color: rgba(35 81 73);
 					border: 1px solid rgba(122 219 198);
+					cursor: default;
 				}
 
 				&.first {
 					z-index: 4;
 					background-color: rgba(61 49 81);
 					border: 1px solid rgb(124 101 169);
+					cursor: default;
 				}
 			}
 		}

@@ -126,15 +126,12 @@ function createNumbers(array) {
 
 					if (firstClick == el.innerHTML) {
 						el.classList.add('second');
-						el.style.cursor = 'default';
 						document
 							.getElementById(firstId)
 							.classList.add('second');
 						document
 							.getElementById(firstId)
 							.classList.remove('first');
-						document.getElementById(firstId).style.cursor =
-							'default';
 						firstClick = -1;
 						level++;
 						hackLevel.innerHTML = level + '/5';
@@ -146,7 +143,6 @@ function createNumbers(array) {
 						return;
 					} else {
 						el.classList.add('first');
-						el.style.cursor = 'default';
 					}
 
 					if (firstClick != el.innerHTML && firstClick != -1) {
