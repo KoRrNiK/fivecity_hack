@@ -7,6 +7,7 @@ const textInfo = document.getElementById('textInfo');
 const textInfo2 = document.getElementById('textInfo2');
 const progressBarId = document.getElementById('progress-bar');
 const keyboard = document.getElementById('hackKeyboard');
+const buttonHelp = document.getElementById('buttonHelp');
 
 var __timePlay = 240;
 
@@ -35,6 +36,7 @@ const gameStart = () => {
 	textInfo2.textContent = 'Złam hasło';
 	guessesRemaining = 6;
 	buttonStart.style.display = 'none';
+	buttonHelp.style.display = 'none';
 	progressBar.style.display = 'block';
 	hackInfo.style.display = 'block';
 	textInfo.innerHTML = 'Przygotuj sie...';
@@ -80,6 +82,7 @@ function progressBarStart(type, time) {
 				keyboard.style.display = 'none';
 				hackText.style.display = 'none';
 				buttonStart.style.display = '';
+				buttonHelp.style.display = '';
 				progressBar.style.display = 'none';
 				hackInfo.style.display = 'none';
 			}

@@ -75,13 +75,15 @@ a .home {
 	user-select: none;
 	margin-top: 0px;
 	position: relative;
-	top: 15px;
+	align-content: center;
+	height: 100%;
 
 	.hackBox {
 		width: 900px;
 		height: 720px;
 		background-color: rgba(14 14 14);
 		padding: 10px;
+		position: relative;
 
 		.hackStart {
 			margin-bottom: 20px;
@@ -278,7 +280,7 @@ a .home {
 		.hackFooter {
 			width: 900px;
 			position: absolute;
-			bottom: 20px;
+			bottom: 10px;
 
 			.progressBox {
 				height: 4px;
