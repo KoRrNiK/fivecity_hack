@@ -24,8 +24,11 @@ a .home {
 	align-items: center;
 	justify-content: center;
 	left: -150px;
+	-webkit-animation: animation-left-author 1s
+		cubic-bezier(0.55, 0.5, 0.45, 0.5) forwards;
 	animation: animation-left-author 1s cubic-bezier(0.55, 0.5, 0.45, 0.5)
 		forwards;
+	-webkit-animation-delay: -0.5s;
 	animation-delay: -0.5s;
 	top: 15px;
 	width: 32px;
@@ -37,6 +40,9 @@ a .home {
 	border-left: 1px solid rgba(16 255 205 / 20%);
 	text-shadow: 0 0 3px #aaa;
 	opacity: 0.8;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
 	user-select: none;
 	&::before {
 		content: '';
@@ -46,7 +52,9 @@ a .home {
 		background-color: rgba(16 255 205 / 70%);
 		left: -5px;
 		top: 0px;
+		-webkit-filter: blur(3px);
 		filter: blur(3px);
+		-webkit-animation: animation-left-author-blur 5s linear infinite;
 		animation: animation-left-author-blur 5s linear infinite;
 	}
 	&:hover {
@@ -61,16 +69,21 @@ a .home {
 	align-items: center;
 	justify-content: center;
 	margin: 20px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
 	user-select: none;
 	margin-top: 0px;
 	position: relative;
-	top: 15px;
+	align-content: center;
+	height: 100%;
 
 	.hackBox {
 		width: 720px;
 		height: 720px;
 		background-color: rgba(14 14 14);
 		padding: 10px;
+		position: relative;
 
 		.hackStart {
 			margin-bottom: 20px;
@@ -141,6 +154,8 @@ a .home {
 				margin: auto;
 				display: block;
 				-webkit-appearance: none;
+				-moz-appearance: none;
+				appearance: none;
 			}
 
 			.progress::-webkit-slider-thumb {
@@ -152,6 +167,7 @@ a .home {
 				border-radius: 50%;
 				cursor: pointer;
 				-webkit-appearance: none;
+				appearance: none;
 			}
 
 			.progress:hover {
@@ -263,11 +279,11 @@ a .home {
 		}
 
 		.hackFunction2 {
-			width: 564px;
-			top: 296px;
-			position: fixed;
+			width: 565px;
+			top: 280px;
+			position: absolute;
 			display: flex;
-			margin-left: 75px;
+			left: 85px;
 			flex-direction: row;
 			justify-content: space-between;
 			align-items: stretch;
@@ -288,7 +304,7 @@ a .home {
 		.hackFooter {
 			width: 720px;
 			position: absolute;
-			bottom: 20px;
+			bottom: 10px;
 
 			.progressBox {
 				height: 4px;
@@ -305,6 +321,15 @@ a .home {
 	}
 }
 
+@-webkit-keyframes animation-left-author {
+	from {
+		left: -500px;
+	}
+	to {
+		left: 20px;
+	}
+}
+
 @keyframes animation-left-author {
 	from {
 		left: -500px;
@@ -314,14 +339,32 @@ a .home {
 	}
 }
 
-@keyframes animation-left-author-blur {
+@-webkit-keyframes animation-left-author-blur {
 	0% {
+		-webkit-filter: blur(3px);
 		filter: blur(3px);
 	}
 	50% {
+		-webkit-filter: blur(4px);
 		filter: blur(4px);
 	}
 	100% {
+		-webkit-filter: blur(3px);
+		filter: blur(3px);
+	}
+}
+
+@keyframes animation-left-author-blur {
+	0% {
+		-webkit-filter: blur(3px);
+		filter: blur(3px);
+	}
+	50% {
+		-webkit-filter: blur(4px);
+		filter: blur(4px);
+	}
+	100% {
+		-webkit-filter: blur(3px);
 		filter: blur(3px);
 	}
 }
