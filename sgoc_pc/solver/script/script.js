@@ -21,7 +21,9 @@ const generateSuggestion = collection => {
 				? 'greenColor'
 				: '';
 
-			letters += `<i class="${purpleColor + greenColor}"> ${letter} </i>`;
+			letters += `<i class="${
+				purpleColor + ' ' + greenColor
+			}"> ${letter} </i>`;
 		}
 		wordEl += `<span class="word">${letters}</span>`;
 	}
