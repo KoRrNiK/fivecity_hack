@@ -10,7 +10,8 @@ const circle = document.getElementById('circle');
 var progressBarInterval;
 var finish = true;
 var __timePlay = 30;
-var keyCodes = { left: 65, up: 87, right: 68, down: 83 };
+//var keyCodes = { left: 65, up: 87, right: 68, down: 83 };
+var keyCodes = { left: 37, up: 38, right: 39, down: 40 };
 var keys = [];
 var lineMove = [];
 

@@ -11,13 +11,11 @@ const progressBarId = document.getElementById('progress-bar');
 const input = document.getElementsByClassName('input')[0];
 const levelHackId = document.getElementById('levelHack');
 
+let numbers = [];
 var __timePlay = 5;
-let min = 2;
-let max = 10;
 var stageLevel = 0;
 let randomColor = 0;
 var colors = ['białego', 'zielonego', 'fioletowego'];
-var colorsCount = {};
 var progressBarInterval;
 
 const gameInit = () => {
@@ -60,24 +58,19 @@ const gameWin = () => {
 };
 
 const nextStage = () => {
-	let hackId = document.getElementById('hackId');
-	colorsCount[0] = hackId.getElementsByClassName('white').length;
-	colorsCount[1] = hackId.getElementsByClassName('green').length;
-	colorsCount[2] = hackId.getElementsByClassName('purple').length;
-
 	console.log(
 		'%c' +
 			colors[0] +
 			' | ' +
-			colorsCount[0] +
+			numbers[0] +
 			'\n%c' +
 			colors[1] +
 			' | ' +
-			colorsCount[1] +
+			numbers[1] +
 			'\n%c' +
 			colors[2] +
 			' | ' +
-			colorsCount[2],
+			numbers[2],
 		'color: white',
 		'color: green',
 		'color: purple'
@@ -154,6 +147,8 @@ function progressBarStart(type, time) {
 function createNumbers() {
 	hackFunction.innerHTML = '';
 
+	randomColors(3, Math.floor(Math.random() * (15 - 7 + 1) + 7));
+
 	var width = 10;
 	var height = 10;
 
@@ -164,9 +159,9 @@ function createNumbers() {
 		hackFunction.appendChild(el);
 	}
 
-	generateColors('white');
-	generateColors('green');
-	generateColors('purple');
+	generateColors('white', numbers[0]);
+	generateColors('green', numbers[1]);
+	generateColors('purple', numbers[2]);
 
 	stageLevel++;
 
@@ -176,9 +171,23 @@ function createNumbers() {
 	levelHackId.textContent = stageLevel;
 }
 
-function generateColors(color) {
-	let randomColors = Math.floor(Math.random() * (max - min + 1) + min);
-	for (let j = 0; j < randomColors; j++) {
+function randomColors(m, n) {
+	let arr = new Array(m);
+	for (let i = 0; i < arr.length; i++) {
+		arr[i] = 0;
+	}
+
+	for (let i = 0; i < n; i++) {
+		arr[Math.floor(Math.random() * n) % m]++;
+	}
+
+	for (let i = 0; i < m; i++) {
+		numbers[i] = arr[i];
+	}
+}
+
+function generateColors(color, count) {
+	for (let j = 0; j < count; j++) {
 		let random = Math.floor(Math.random() * 98);
 		let element = document.getElementById(random);
 		let good = true;
@@ -188,6 +197,7 @@ function generateColors(color) {
 			hasClass(element, 'green') ||
 			hasClass(element, 'purple')
 		) {
+			generateColors(color, 1);
 			good = false;
 		}
 
@@ -198,7 +208,7 @@ function generateColors(color) {
 function checkClick() {
 	for (let i = 0; i < 3; i++) {
 		if (randomColor === colors[i]) {
-			if (input.value == colorsCount[i]) {
+			if (input.value == numbers[i]) {
 				if (stageLevel < 5) {
 					progressBarStart('game', __timePlay);
 					createNumbers();
