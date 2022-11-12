@@ -17,6 +17,53 @@ body {
 	height: 100vh;
 }
 
+a .home {
+	z-index: 5;
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	left: -150px;
+	-webkit-animation: animation-left-author 1s
+		cubic-bezier(0.55, 0.5, 0.45, 0.5) forwards;
+	animation: animation-left-author 1s cubic-bezier(0.55, 0.5, 0.45, 0.5)
+		forwards;
+	-webkit-animation-delay: -0.5s;
+	animation-delay: -0.5s;
+	top: 15px;
+	width: 32px;
+	height: 32px;
+	border-radius: 0 5px 5px 0px;
+	background-color: rgba(38 38 38);
+	color: #aaa;
+	cursor: pointer;
+	border-left: 1px solid rgba(16 255 205 / 20%);
+	text-shadow: 0 0 3px #aaa;
+	opacity: 0.8;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	&::before {
+		content: '';
+		position: absolute;
+		height: 100%;
+		width: 2px;
+		background-color: rgba(16 255 205 / 70%);
+		left: -5px;
+		top: 0px;
+		-webkit-filter: blur(3px);
+		filter: blur(3px);
+		-webkit-animation: animation-left-author-blur 5s linear infinite;
+		animation: animation-left-author-blur 5s linear infinite;
+	}
+	&:hover {
+		opacity: 1;
+		color: #fff;
+		text-shadow: 0 0 3px #fff;
+	}
+}
+
 .container {
 	display: flex;
 	align-items: center;
@@ -28,7 +75,8 @@ body {
 	user-select: none;
 	margin-top: 0px;
 	position: relative;
-	top: 15px;
+	align-content: center;
+	height: 100%;
 
 	.hackBox {
 		width: 720px;
@@ -38,6 +86,7 @@ body {
 
 		.hackGroup:first-child {
 			padding-left: 15px;
+			margin-top: 30px;
 		}
 
 		.hackGroup:last-child {
@@ -90,10 +139,32 @@ body {
 			grid-template-columns: repeat(4, 1fr);
 			margin: 0 auto;
 			overflow-y: scroll;
-			height: 500px;
+			height: 465px;
 			padding: 10px;
 			text-align: left;
 			margin-top: 30px;
+
+			&:not(:empty) {
+				&::before {
+					content: '';
+					width: 700px;
+					height: 30px;
+					transform: translateY(-10px);
+					background: linear-gradient(180deg, #0e0e0e, transparent);
+					position: absolute;
+					z-index: 5;
+				}
+
+				&::after {
+					content: '';
+					width: 700px;
+					height: 30px;
+					transform: translateY(445px);
+					background: linear-gradient(360deg, #0e0e0e, transparent);
+					position: absolute;
+					z-index: 5;
+				}
+			}
 
 			&:empty::after {
 				content: 'Nie znaleziono żadnego słowa';
@@ -105,6 +176,7 @@ body {
 				transform: translate(-50%, -50%);
 				white-space: nowrap;
 				border-bottom: 1px solid rgba(16 255 205);
+				-webkit-filter: drop-shadow(0 2px 30px rgba(16 255 205 / 20%));
 				filter: drop-shadow(0 2px 30px rgba(16 255 205 / 20%));
 			}
 
@@ -145,11 +217,60 @@ body {
 		.hackFind {
 			color: #fff;
 			font-size: 9px;
-			margin-top: 3px;
+			margin-top: 6px;
 			span {
 				color: rgba(16 255 205 / 90%);
+				-webkit-filter: drop-shadow(0 0 5px rgba(16 255 205 / 80%));
 				filter: drop-shadow(0 0 5px rgba(16 255 205 / 80%));
 			}
 		}
+	}
+}
+
+@-webkit-keyframes animation-left-author {
+	from {
+		left: -500px;
+	}
+	to {
+		left: 20px;
+	}
+}
+
+@keyframes animation-left-author {
+	from {
+		left: -500px;
+	}
+	to {
+		left: 20px;
+	}
+}
+
+@-webkit-keyframes animation-left-author-blur {
+	0% {
+		-webkit-filter: blur(3px);
+		filter: blur(3px);
+	}
+	50% {
+		-webkit-filter: blur(4px);
+		filter: blur(4px);
+	}
+	100% {
+		-webkit-filter: blur(3px);
+		filter: blur(3px);
+	}
+}
+
+@keyframes animation-left-author-blur {
+	0% {
+		-webkit-filter: blur(3px);
+		filter: blur(3px);
+	}
+	50% {
+		-webkit-filter: blur(4px);
+		filter: blur(4px);
+	}
+	100% {
+		-webkit-filter: blur(3px);
+		filter: blur(3px);
 	}
 }
