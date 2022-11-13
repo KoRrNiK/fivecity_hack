@@ -10,7 +10,7 @@ const levelHack = document.getElementById('levelHack');
 const hackCorrect = document.getElementById('hackCorrect');
 const input = document.getElementsByClassName('input')[0];
 
-var __timePlay = 200;
+var __timePlay = 20;
 var progressBarInterval;
 var check = true;
 var stageLevel = 0;
