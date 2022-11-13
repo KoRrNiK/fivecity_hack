@@ -34,10 +34,10 @@ a .home {
 	width: 32px;
 	height: 32px;
 	border-radius: 0 5px 5px 0px;
-	background-color: rgba(38 38 38);
+	background-color: #0a0020;
 	color: #aaa;
 	cursor: pointer;
-	border-left: 1px solid rgba(16 255 205 / 20%);
+	border-left: 1px solid #6000ff;
 	text-shadow: 0 0 3px #aaa;
 	opacity: 0.8;
 	-webkit-user-select: none;
@@ -49,7 +49,7 @@ a .home {
 		position: absolute;
 		height: 100%;
 		width: 2px;
-		background-color: rgba(16 255 205 / 70%);
+		background-color: #6000ff;
 		left: -5px;
 		top: 0px;
 		-webkit-filter: blur(3px);
