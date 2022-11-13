@@ -84,7 +84,7 @@ const nextStage = () => {
 	hackFunction.style.display = 'none';
 	hackFunction2.style.display = '';
 	hackCount2.style.display = '';
-	progressBarStart('next', 5);
+	progressBarStart('next', __timePlay);
 };
 
 function hasClass(element, className) {
