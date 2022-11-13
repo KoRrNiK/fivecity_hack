@@ -172,9 +172,7 @@ input.addEventListener('keyup', function (event) {
 
 function checkClick() {
 	let percent = Math.floor(
-		Math.abs(
-			((allSelect - parseInt(input.value)) / parseInt(input.value)) * 100
-		)
+		Math.abs((parseInt(input.value) - allSelect) / allSelect) * 100
 	);
 
 	hackCorrect.style.display = '';
