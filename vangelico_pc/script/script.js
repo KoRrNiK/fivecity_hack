@@ -11,7 +11,7 @@ var progressBarInterval;
 var circleInterval;
 var finish = true;
 
-var allCircles = 4;
+var allCircles = 8;
 
 var redTimeout, yellowTimeout, pinkTimeout, greenTimeout;
 
