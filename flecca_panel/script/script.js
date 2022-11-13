@@ -12,7 +12,7 @@ const input = document.getElementsByClassName('input')[0];
 const levelHackId = document.getElementById('levelHack');
 
 let numbers = [];
-var __timePlay = 5;
+var __timePlay = 5 * 2;
 var stageLevel = 0;
 let randomColor = 0;
 var colors = ['białego', 'zielonego', 'fioletowego'];
@@ -97,7 +97,7 @@ function progressBarStart(type, time) {
 	const process = () => {
 		if (width > 0) {
 			if (type == 'start' || type == 'end') width = width - 3;
-			else width--;
+			else width = width - 2;
 			progressBarId.style.width = (width * 100.0) / maxwidth + '%';
 		} else {
 			if (type == 'start') {
