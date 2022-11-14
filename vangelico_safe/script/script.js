@@ -20,10 +20,11 @@ const symbol = document.getElementById('symbol');
 var __timePlay = 20;
 var progressBarInterval;
 var stageLevel = 0;
+var check = false;
 
 const gameInit = () => {
 	body.addEventListener('keypress', function (event) {
-		if (event.key === 'Enter') {
+		if (event.key === 'Enter' && check) {
 			if (input.value == resaultQuestion) {
 				generateQuestion();
 				levelHack.textContent = stageLevel + '/5';
@@ -45,6 +46,7 @@ const gameInit = () => {
 
 const gameStart = () => {
 	stageLevel = 0;
+	check = false;
 	levelHack.textContent = '1/5';
 	buttonStart.style.display = 'none';
 	progressBar.style.display = 'block';
@@ -54,6 +56,7 @@ const gameStart = () => {
 };
 
 const gameOver = () => {
+	check = false;
 	hackInfo.style.display = 'block';
 	textInfo.innerHTML = 'Hack nieudany!';
 	hackFunction.style.display = 'none';
@@ -63,6 +66,7 @@ const gameOver = () => {
 };
 
 const gameWin = () => {
+	check = false;
 	hackInfo.style.display = 'block';
 	textInfo.innerHTML = 'Hack udany!';
 	hackFunction.style.display = 'none';
@@ -85,6 +89,7 @@ function progressBarStart(type, time) {
 				hackFunction2.style.display = '';
 				hackText.style.display = '';
 				hackInfo.style.display = 'none';
+				check = true;
 				generateQuestion();
 				progressBarStart('game', __timePlay);
 				return;
