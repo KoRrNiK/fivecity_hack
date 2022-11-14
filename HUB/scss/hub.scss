@@ -94,6 +94,24 @@ body {
 			inset 7px 7px 10px rgb(18 32 47 / 35%),
 			inset -7px -7px 10px rgb(24 18 45 / 35%);
 
+		h3 {
+			font-size: 10px;
+			color: #ffffff50;
+			display: flex;
+			float: right;
+			margin-top: 10px;
+			font-weight: 400;
+
+			b {
+				margin-left: 5px;
+				margin-right: 10px;
+				color: rgb(24 18 45 / 100%);
+				filter: saturate(5) drop-shadow(0 0 10px rgb(24 18 45 / 100%))
+					drop-shadow(0 0 20px rgb(18 32 47 / 100%))
+					drop-shadow(0 0 10px rgb(24 18 45 / 100%));
+			}
+		}
+
 		.hackList {
 			max-height: 600px;
 			overflow: auto;

@@ -1,4 +1,5 @@
 const hackList = document.querySelector('.hackList');
+const hackCount = document.getElementById('hackCount');
 
 const listCategory = [
 	{ name: 'CarDealer', category: 'CAR', new: 0 },
@@ -11,13 +12,13 @@ const listCategory = [
 const listHacks = [
 	{
 		name: 'CAR - DEALER',
-		desc: 'ZNAJDŹ NUMER I ZAPAMIĘTAJ',
+		desc: 'Znajdź number i zapamiętaj',
 		category: 'CAR',
 		link: 'car_dealer_number',
 	},
 	{
 		name: 'CAR - DEALER',
-		desc: 'ZDEJMOWANIE NADANIA',
+		desc: 'Zdejmowanie nadajnika',
 		category: 'CAR',
 		link: 'car_dealer_gps',
 	},
@@ -96,6 +97,8 @@ const listHacks = [
 ];
 
 const hubInit = () => {
+	hackCount.textContent = listHacks.length;
+
 	for (let i = 0; i < listCategory.length; i++) {
 		const el1 = document.createElement('h3');
 		if (listCategory[i].new) {
