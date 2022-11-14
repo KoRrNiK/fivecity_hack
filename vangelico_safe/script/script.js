@@ -1,3 +1,4 @@
+const body = document.querySelector('body');
 const hackFunction = document.querySelector('.hackFunction');
 const hackFunction2 = document.querySelector('.hackFunction2');
 const hackText = document.querySelector('.hackText');
@@ -21,7 +22,7 @@ var progressBarInterval;
 var stageLevel = 0;
 
 const gameInit = () => {
-	input.addEventListener('keypress', function (event) {
+	body.addEventListener('keypress', function (event) {
 		if (event.key === 'Enter') {
 			if (input.value == resaultQuestion) {
 				generateQuestion();
