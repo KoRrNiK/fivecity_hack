@@ -22,7 +22,39 @@ body {
 	user-select: none;
 	margin-top: 0px;
 	position: relative;
-	top: calc(15px * 2);
+	flex-direction: column;
+	top: 30px;
+
+	.contact {
+		color: rgba(255 255 255 / 60%);
+		position: relative;
+		background: linear-gradient(
+			135deg,
+			rgb(18 32 47 / 45%),
+			rgb(24 18 45 / 45%)
+		);
+
+		padding: 15px;
+		margin: 5px auto;
+		border-radius: 0 0 0 20px;
+		width: 400px;
+		text-align: center;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		font-size: 12px;
+
+		a {
+			color: rgba(255 255 255 / 80%);
+			text-decoration: none;
+
+			&:hover {
+				color: rgba(255 255 255 / 100%);
+				opacity: 0.5;
+			}
+		}
+	}
 
 	.hackBox {
 		width: 720px;
@@ -127,37 +159,6 @@ body {
 			&:hover {
 				opacity: 1;
 			}
-		}
-	}
-}
-
-.contact {
-	color: rgba(255 255 255 / 60%);
-	position: relative;
-	background: linear-gradient(
-		135deg,
-		rgb(18 32 47 / 45%),
-		rgb(24 18 45 / 45%)
-	);
-
-	padding: 15px;
-	margin: calc(15px * 2 + 5px) auto;
-	border-radius: 0 0 0 20px;
-	width: 400px;
-	text-align: center;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	font-size: 12px;
-
-	a {
-		color: rgba(255 255 255 / 80%);
-		text-decoration: none;
-
-		&:hover {
-			color: rgba(255 255 255 / 100%);
-			opacity: 0.5;
 		}
 	}
 }
