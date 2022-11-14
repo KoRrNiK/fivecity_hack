@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Vangelico - HACK PC ( FIVE CITY )</title>
+
+		<link rel="stylesheet" href="./css/style.css" />
+		<script src="./script/script.js" defer></script>
+	</head>
+	<body onload="gameInit()">
+		<a href="../">
+			<div class="home"><</div>
+		</a>
+		<div class="container">
+			<div class="hackBox">
+				<div class="hackStart" id="buttonStart" onclick="gameStart()">
+					Zacznij Hackować
+				</div>
+
+				<div class="hackInfo" style="display: none">
+					<h2 id="textInfo"></h2>
+				</div>
+				<div class="hackText" style="display: none">
+					<h3 id="levelHack">1/5</h3>
+					<h2 id="textInfo">Rozwiąż równanie</h2>
+				</div>
+
+				<div
+					id="hackFunction"
+					class="hackFunction"
+					style="display: none"
+				>
+					<div class="boxNumber">
+						<span id="upF1"></span><br /><br /><span
+							id="dnF1"
+						></span>
+					</div>
+					<span id="symbol"></span>
+					<div class="boxNumber">
+						<span id="upF2"></span><br /><br /><span
+							id="dnF2"
+						></span>
+					</div>
+					<span>=</span>
+					<div class="boxNumber">
+						<span class="green">?</span><br /><br /><span
+							id="resault"
+						></span>
+					</div>
+				</div>
+				<div class="hackFunction2" style="display: none">
+					<h3 id="resultChangeId">0</h3>
+					<input
+						class="progress"
+						type="range"
+						min="0"
+						max="0"
+						value="0"
+						step="1"
+						oninput="resultChangeFunction()"
+						id="resultChangeInput"
+					/>
+					<h3>WYBIERZ CYFRĘ</h3>
+				</div>
+				<div class="hackFooter">
+					<div id="progressBox" style="display: none">
+						<div class="progressBox">
+							<div class="progressBar" id="progress-bar"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
