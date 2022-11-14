@@ -95,34 +95,36 @@ const listHacks = [
 	},
 ];
 
-for (let i = 0; i < listCategory.length; i++) {
-	const el1 = document.createElement('h3');
-	if (listCategory[i].new) {
-		el1.textContent = listCategory[i].name + ' (new)';
-		el1.classList.add('new');
-	} else el1.textContent = listCategory[i].name;
+const hubInit = () => {
+	for (let i = 0; i < listCategory.length; i++) {
+		const el1 = document.createElement('h3');
+		if (listCategory[i].new) {
+			el1.textContent = listCategory[i].name + ' (new)';
+			el1.classList.add('new');
+		} else el1.textContent = listCategory[i].name;
 
-	hackList.appendChild(el1);
+		hackList.appendChild(el1);
 
-	for (let x = 0; x < listHacks.length; x++) {
-		if (listHacks[x].category !== listCategory[i].category) continue;
+		for (let x = 0; x < listHacks.length; x++) {
+			if (listHacks[x].category !== listCategory[i].category) continue;
 
-		const el2 = document.createElement('a');
+			const el2 = document.createElement('a');
 
-		el2.setAttribute('href', './' + listHacks[x].link + '/');
+			el2.setAttribute('href', './' + listHacks[x].link + '/');
 
-		hackList.appendChild(el2);
+			hackList.appendChild(el2);
 
-		const button = document.createElement('button');
-		button.classList.add('boxButton');
-		el2.appendChild(button);
+			const button = document.createElement('button');
+			button.classList.add('boxButton');
+			el2.appendChild(button);
 
-		const div1 = document.createElement('div');
-		div1.textContent = listHacks[x].name;
-		button.appendChild(div1);
+			const div1 = document.createElement('div');
+			div1.textContent = listHacks[x].name;
+			button.appendChild(div1);
 
-		const div2 = document.createElement('div');
-		div2.textContent = listHacks[x].desc;
-		button.appendChild(div2);
+			const div2 = document.createElement('div');
+			div2.textContent = listHacks[x].desc;
+			button.appendChild(div2);
+		}
 	}
-}
+};

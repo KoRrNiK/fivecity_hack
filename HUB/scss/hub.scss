@@ -23,9 +23,11 @@ body {
 	margin-top: 0px;
 	position: relative;
 	flex-direction: column;
-	top: 30px;
+	height: 100%;
+	-webkit-filter: saturate(1.5);
+	filter: saturate(1.5);
 
-	.contact {
+	.hackContact {
 		color: rgba(255 255 255 / 60%);
 		position: relative;
 		background: linear-gradient(
@@ -34,10 +36,15 @@ body {
 			rgb(24 18 45 / 45%)
 		);
 
+		box-shadow: -1px -1px 0 0.5px rgb(18 32 47 / 125%),
+			1px 1px 0 0.5px rgb(24 18 45 / 125%),
+			inset 7px 7px 10px rgb(18 32 47 / 35%),
+			inset -7px -7px 10px rgb(24 18 45 / 35%);
+
 		padding: 15px;
 		margin: 5px auto;
-		border-radius: 0 0 0 20px;
-		width: 400px;
+		border-radius: 5px 15px 5px 20px;
+		width: 420px;
 		text-align: center;
 		-webkit-user-select: none;
 		-moz-user-select: none;
@@ -54,6 +61,20 @@ body {
 				opacity: 0.5;
 			}
 		}
+
+		.github,
+		.discord {
+			width: 16px;
+			height: 16px;
+			text-align: center;
+			margin-left: 3px;
+			position: relative;
+			top: 3px;
+
+			&.discord {
+				margin-left: 0px !important;
+			}
+		}
 	}
 
 	.hackBox {
@@ -66,6 +87,12 @@ body {
 		);
 		padding: 10px 10px 30px 10px;
 		border-radius: 0 40px 0 40px;
+		position: relative;
+
+		box-shadow: -1px -1px 0 0.5px rgb(18 32 47 / 125%),
+			1px 1px 0 0.5px rgb(24 18 45 / 125%),
+			inset 7px 7px 10px rgb(18 32 47 / 35%),
+			inset -7px -7px 10px rgb(24 18 45 / 35%);
 
 		.hackList {
 			max-height: 600px;
@@ -117,13 +144,31 @@ body {
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			flex-direction: column;
+			flex-direction: row;
 			text-align: center;
 			color: rgba(255 255 255 / 80%);
 			padding: 20px;
 			border-bottom: 2px solid rgba(255 255 255 / 2%);
 			margin: 10px 20px 20px;
 			border-radius: 2px;
+			font-size: 20px;
+
+			img.hack-r {
+				width: 32px;
+				height: 32px;
+				text-align: center;
+				margin-left: 10px;
+				position: relative;
+				top: 3px;
+			}
+			img.hack-l {
+				transform: scale(-1, 1);
+				width: 32px;
+				height: 32px;
+				text-align: center;
+				margin-right: 10px;
+				position: relative;
+			}
 		}
 
 		.boxButton {
