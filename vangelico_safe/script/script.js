@@ -119,8 +119,6 @@ function getRndInteger(min, max) {
 let resaultQuestion = 0;
 
 function generateQuestion() {
-	stageLevel++;
-
 	let a1 = getRndInteger(1, 10);
 	let a2 = getRndInteger(1, 10);
 
@@ -152,6 +150,7 @@ function generateQuestion() {
 		generateQuestion();
 	} else {
 		console.log(a4);
+		stageLevel++;
 		input.value = 0;
 		input.max = a4[0] + getRndInteger(0, 50);
 		resaultQuestion = a4[0];
