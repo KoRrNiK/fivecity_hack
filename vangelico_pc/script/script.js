@@ -72,6 +72,7 @@ const gameOver = () => {
 	textInfo.innerHTML = 'Hack nieudany!';
 	hackFunction.style.display = 'none';
 	hackText.style.display = 'none';
+	progressBar.style.display = '';
 	finish = true;
 	progressBarStart('end', 2);
 };
