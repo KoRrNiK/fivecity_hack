@@ -178,6 +178,13 @@ document.addEventListener(
 		if (finish) return;
 
 		if (
+			!(
+				(event.keyCode > 64 && event.keyCode < 91) ||
+				(event.keyCode > 96 && event.keyCode < 123)
+			)
+		)
+			return;
+		if (
 			isColliding(
 				document.getElementById('button' + clickButtons),
 				document.getElementById('hackClick')
