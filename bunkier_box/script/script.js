@@ -16,7 +16,7 @@ var clickButton = 0;
 var allButtons = 50;
 var clickButtons = 0;
 
-var alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+var symbols = 'ASDFG';
 
 const gameInit = () => {
 	gameReset();
@@ -127,7 +127,7 @@ function isColliding(a, b) {
 function createButton() {
 	if (clickButton >= allButtons) return;
 
-	const randomChar = alphabet[Math.floor(Math.random() * alphabet.length)];
+	const randomChar = symbols[Math.floor(Math.random() * symbols.length)];
 	const hackAllButtons = document.getElementById('hackAllButtons');
 	const button = document.createElement('div');
 	button.classList.add('button');
