@@ -6,6 +6,12 @@ const buttonStart = document.getElementById('buttonStart');
 const hackInfo = document.querySelector('.hackInfo');
 const textInfo = document.getElementById('textInfo');
 const progressBarId = document.getElementById('progress-bar');
+const hackClickButtons = document.getElementById('hackClickButtons');
+const hackClick = document.getElementById('hackClick');
+
+const button = i => {
+	return document.getElementById('button' + i);
+};
 
 var __timePlay = 6666;
 var progressBarInterval;
@@ -154,13 +160,13 @@ function moveButtons() {
 				if (!allB) gameWin();
 			}
 			for (let i = clickButtons; i < clickButton; i++) {
-				var y = parseInt(document.getElementById('button' + i).style.top, 10);
+				var y = parseInt(button(i).style.top, 10);
 				y += 2;
 				if (y >= 590) {
 					gameOver();
 					return;
 				}
-				document.getElementById('button' + i).style.top = y + 'px';
+				button(i).style.top = y + 'px';
 			}
 		}
 	}, 15);
@@ -174,12 +180,12 @@ document.addEventListener(
 
 		if (!((event.keyCode > 64 && event.keyCode < 91) || (event.keyCode > 96 && event.keyCode < 123))) return;
 
-		if (isColliding(document.getElementById('button' + clickButtons), document.getElementById('hackClick'))) {
-			if (document.getElementById('button' + clickButtons).dataset.char === name.toLocaleUpperCase()) {
-				document.getElementById('button' + clickButtons).remove();
-				document.getElementById('hackClickButtons').classList.add('click');
+		if (isColliding(button(clickButtons), hackClick)) {
+			if (button(clickButtons).dataset.char === name.toLocaleUpperCase()) {
+				button(clickButtons).remove();
+				hackClickButtons.classList.add('click');
 				setTimeout(() => {
-					document.getElementById('hackClickButtons').classList.remove('click');
+					hackClickButtons.classList.remove('click');
 				}, 100);
 			} else {
 				gameOver();
