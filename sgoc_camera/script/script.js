@@ -135,40 +135,17 @@ function createBox() {
 		if (i >= numbers[0] && i <= numbers[0] + numbers[1]) {
 			el.setAttribute('id', 'green');
 		}
-		if (
-			i >= numbers[0] + numbers[1] &&
-			i < numbers[0] + numbers[1] + numbers[2]
-		) {
+		if (i >= numbers[0] + numbers[1] && i < numbers[0] + numbers[1] + numbers[2]) {
 			el.setAttribute('id', 'red');
 		}
-		if (
-			i >= numbers[0] + numbers[1] + numbers[2] &&
-			i < numbers[0] + numbers[1] + numbers[2] + numbers[3]
-		) {
+		if (i >= numbers[0] + numbers[1] + numbers[2] && i < numbers[0] + numbers[1] + numbers[2] + numbers[3]) {
 			el.setAttribute('id', 'orange');
 		}
-		if (
-			i >= numbers[0] + numbers[1] + numbers[2] + numbers[3] &&
-			i < numbers[0] + numbers[1] + numbers[2] + numbers[3] + numbers[4]
-		) {
+		if (i >= numbers[0] + numbers[1] + numbers[2] + numbers[3] && i < numbers[0] + numbers[1] + numbers[2] + numbers[3] + numbers[4]) {
 			el.setAttribute('id', 'pink');
 		}
 
-		if (
-			i >=
-				numbers[0] +
-					numbers[1] +
-					numbers[2] +
-					numbers[3] +
-					numbers[4] &&
-			i <
-				numbers[0] +
-					numbers[1] +
-					numbers[2] +
-					numbers[3] +
-					numbers[4] +
-					numbers[5]
-		) {
+		if (i >= numbers[0] + numbers[1] + numbers[2] + numbers[3] + numbers[4] && i < numbers[0] + numbers[1] + numbers[2] + numbers[3] + numbers[4] + numbers[5]) {
 			el.setAttribute('id', 'yellow');
 		}
 
@@ -184,15 +161,7 @@ function createBox() {
 			if (colorSelect == 'color6') color = 'yellow';
 
 			if (colorSelect != 0) {
-				if (
-					hasClass(this, 'blue') ||
-					hasClass(this, 'green') ||
-					hasClass(this, 'red') ||
-					hasClass(this, 'orange') ||
-					hasClass(this, 'pink') ||
-					hasClass(this, 'yellow')
-				)
-					return;
+				if (hasClass(this, 'blue') || hasClass(this, 'green') || hasClass(this, 'red') || hasClass(this, 'orange') || hasClass(this, 'pink') || hasClass(this, 'yellow')) return;
 				this.classList.add(color);
 				allClickSquare++;
 			}
@@ -205,16 +174,8 @@ function createBox() {
 				}
 			}
 
-			if (
-				allClickSquareGood >= width * height &&
-				allClickSquareGood >= width * height
-			)
-				gameWin();
-			else if (
-				allClickSquare >= width * height &&
-				allClickSquareGood < width * height
-			)
-				gameOver();
+			if (allClickSquareGood >= width * height && allClickSquareGood >= width * height) gameWin();
+			else if (allClickSquare >= width * height && allClickSquareGood < width * height) gameOver();
 		};
 	}
 }

@@ -30,16 +30,9 @@ body {
 	.hackContact {
 		color: rgba(255 255 255 / 60%);
 		position: relative;
-		background: linear-gradient(
-			135deg,
-			rgb(18 32 47 / 45%),
-			rgb(24 18 45 / 45%)
-		);
+		background: linear-gradient(135deg, rgb(18 32 47 / 45%), rgb(24 18 45 / 45%));
 
-		box-shadow: -1px -1px 0 0.5px rgb(18 32 47 / 125%),
-			1px 1px 0 0.5px rgb(24 18 45 / 125%),
-			inset 7px 7px 10px rgb(18 32 47 / 35%),
-			inset -7px -7px 10px rgb(24 18 45 / 35%);
+		box-shadow: -1px -1px 0 0.5px rgb(18 32 47 / 125%), 1px 1px 0 0.5px rgb(24 18 45 / 125%), inset 7px 7px 10px rgb(18 32 47 / 35%), inset -7px -7px 10px rgb(24 18 45 / 35%);
 
 		padding: 15px;
 		margin: 5px auto;
@@ -80,19 +73,12 @@ body {
 	.hackBox {
 		width: 720px;
 		height: 720px;
-		background: linear-gradient(
-			135deg,
-			rgb(18 32 47 / 45%),
-			rgb(24 18 45 / 45%)
-		);
+		background: linear-gradient(135deg, rgb(18 32 47 / 45%), rgb(24 18 45 / 45%));
 		padding: 10px 10px 30px 10px;
 		border-radius: 0 40px 0 40px;
 		position: relative;
 
-		box-shadow: -1px -1px 0 0.5px rgb(18 32 47 / 125%),
-			1px 1px 0 0.5px rgb(24 18 45 / 125%),
-			inset 7px 7px 10px rgb(18 32 47 / 35%),
-			inset -7px -7px 10px rgb(24 18 45 / 35%);
+		box-shadow: -1px -1px 0 0.5px rgb(18 32 47 / 125%), 1px 1px 0 0.5px rgb(24 18 45 / 125%), inset 7px 7px 10px rgb(18 32 47 / 35%), inset -7px -7px 10px rgb(24 18 45 / 35%);
 
 		h3 {
 			font-size: 10px;
@@ -106,9 +92,7 @@ body {
 				margin-left: 5px;
 				margin-right: 10px;
 				color: rgb(24 18 45 / 100%);
-				filter: saturate(5) drop-shadow(0 0 10px rgb(24 18 45 / 100%))
-					drop-shadow(0 0 20px rgb(18 32 47 / 100%))
-					drop-shadow(0 0 10px rgb(24 18 45 / 100%));
+				filter: saturate(5) drop-shadow(0 0 10px rgb(24 18 45 / 100%)) drop-shadow(0 0 20px rgb(18 32 47 / 100%)) drop-shadow(0 0 10px rgb(24 18 45 / 100%));
 			}
 		}
 
@@ -118,11 +102,7 @@ body {
 			padding: 5px 15px 10px 10px;
 
 			h3 {
-				background: linear-gradient(
-					135deg,
-					rgb(18 32 47 / 45%),
-					rgb(24 18 45 / 45%)
-				);
+				background: linear-gradient(135deg, rgb(18 32 47 / 45%), rgb(24 18 45 / 45%));
 				font-weight: 500;
 				color: rgba(255 255 255 / 20%);
 				padding: 5px;
@@ -193,12 +173,7 @@ body {
 			margin-bottom: 10px;
 			display: flex;
 			background: rgba(30 30 30 / 20%);
-			background-image: linear-gradient(
-					90deg,
-					rgb(18 32 47 / 40%) 10%,
-					rgb(18 32 47 / 40%) 50%,
-					rgb(18 32 47 / 40%) 100%
-				),
+			background-image: linear-gradient(90deg, rgb(18 32 47 / 40%) 10%, rgb(18 32 47 / 40%) 50%, rgb(18 32 47 / 40%) 100%),
 				url("data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 16c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zm33.414-6l5.95-5.95L45.95.636 40 6.586 34.05.636 32.636 2.05 38.586 8l-5.95 5.95 1.414 1.414L40 9.414l5.95 5.95 1.414-1.414L41.414 8zM40 48c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zM9.414 40l5.95-5.95-1.414-1.414L8 38.586l-5.95-5.95L.636 34.05 6.586 40l-5.95 5.95 1.414 1.414L8 41.414l5.95 5.95 1.414-1.414L9.414 40z' fill='%2003826' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E");
 			-webkit-animation: background-rotate forwards linear infinite 30s;
 			animation: background-rotate forwards linear infinite 30s;

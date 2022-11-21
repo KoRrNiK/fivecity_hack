@@ -26,8 +26,7 @@ const gameInit = () => {
 	hackFunction2.style.display = 'none';
 	document.getElementById('timeChangeId').innerHTML = String(defaultTime);
 	document.getElementById('spawnChangeId').innerHTML = String(defaultSpawn);
-	document.getElementById('maxsquareChangeId').innerHTML =
-		String(defaultMaxsquare);
+	document.getElementById('maxsquareChangeId').innerHTML = String(defaultMaxsquare);
 	document.addEventListener('contextmenu', event => event.preventDefault());
 };
 
@@ -148,16 +147,13 @@ function generateNewSquare() {
 }
 
 function timeChangeFunction() {
-	document.getElementById('timeChangeId').innerHTML =
-		document.getElementById('timeChangeInput').value;
+	document.getElementById('timeChangeId').innerHTML = document.getElementById('timeChangeInput').value;
 }
 
 function spawnChangeFunction() {
-	document.getElementById('spawnChangeId').innerHTML =
-		document.getElementById('spawnChangeInput').value;
+	document.getElementById('spawnChangeId').innerHTML = document.getElementById('spawnChangeInput').value;
 }
 
 function maxsquareChangeFunction() {
-	document.getElementById('maxsquareChangeId').innerHTML =
-		document.getElementById('maxsquareChangeInput').value;
+	document.getElementById('maxsquareChangeId').innerHTML = document.getElementById('maxsquareChangeInput').value;
 }

@@ -155,11 +155,7 @@ function createNumbers() {
 
 	var frag = document.createDocumentFragment();
 	while (hackFunction.children.length) {
-		frag.appendChild(
-			hackFunction.children[
-				Math.floor(Math.random() * hackFunction.children.length)
-			]
-		);
+		frag.appendChild(hackFunction.children[Math.floor(Math.random() * hackFunction.children.length)]);
 	}
 	hackFunction.appendChild(frag);
 }
@@ -171,9 +167,7 @@ input.addEventListener('keyup', function (event) {
 });
 
 function checkClick() {
-	let percent = Math.floor(
-		Math.abs((parseInt(input.value) - allSelect) / allSelect) * 100
-	);
+	let percent = Math.floor(Math.abs((parseInt(input.value) - allSelect) / allSelect) * 100);
 
 	hackCorrect.style.display = '';
 	document.getElementById('correct').textContent = allSelect;

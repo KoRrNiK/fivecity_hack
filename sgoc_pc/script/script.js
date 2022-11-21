@@ -117,8 +117,7 @@ function hasClass(element, className) {
 }
 
 function randomString() {
-	rightGuessString =
-		COLLECTION[Math.floor(Math.random() * COLLECTION.length)];
+	rightGuessString = COLLECTION[Math.floor(Math.random() * COLLECTION.length)];
 
 	let POLISHSYMBOLS = ['ą', 'ć', 'ę', 'ł', 'ń', 'ó', 'ś', 'ź', 'ż', 'ł'];
 	for (let x = 0; x < POLISHSYMBOLS.length; x++) {
@@ -137,8 +136,7 @@ function shadeKeyBoard(letter, color) {
 			let oldColor = elem.style.backgroundColor;
 			if (oldColor === 'rgba(40 86 78)') return;
 
-			if (oldColor === 'rgba(64 54 86)' && color !== 'rgba(40 86 78)')
-				return;
+			if (oldColor === 'rgba(64 54 86)' && color !== 'rgba(40 86 78)') return;
 
 			elem.style.backgroundColor = color;
 			break;
@@ -175,8 +173,7 @@ function checkGuess() {
 			letterColor = 'rgba(14 14 14)';
 			none = true;
 		} else {
-			if (currentGuess[i] === rightGuess[i])
-				letterColor = 'rgba(40 86 78)';
+			if (currentGuess[i] === rightGuess[i]) letterColor = 'rgba(40 86 78)';
 			else letterColor = 'rgba(64 54 86)';
 			rightGuess[letterPosition] = '#';
 		}

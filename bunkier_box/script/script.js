@@ -116,10 +116,8 @@ function getRndInteger(min, max) {
 function isColliding(a, b) {
 	const rect1 = a.getBoundingClientRect();
 	const rect2 = b.getBoundingClientRect();
-	const isInHoriztonalBounds =
-		rect1.x < rect2.x + rect2.width && rect1.x + rect1.width > rect2.x;
-	const isInVerticalBounds =
-		rect1.y < rect2.y + rect2.height && rect1.y + rect1.height > rect2.y;
+	const isInHoriztonalBounds = rect1.x < rect2.x + rect2.width && rect1.x + rect1.width > rect2.x;
+	const isInVerticalBounds = rect1.y < rect2.y + rect2.height && rect1.y + rect1.height > rect2.y;
 	const isOverlapping = isInHoriztonalBounds && isInVerticalBounds;
 	return isOverlapping;
 }
@@ -156,10 +154,7 @@ function moveButtons() {
 				if (!allB) gameWin();
 			}
 			for (let i = clickButtons; i < clickButton; i++) {
-				var y = parseInt(
-					document.getElementById('button' + i).style.top,
-					10
-				);
+				var y = parseInt(document.getElementById('button' + i).style.top, 10);
 				y += 2;
 				if (y >= 590) {
 					gameOver();
@@ -177,31 +172,14 @@ document.addEventListener(
 		var name = event.key;
 		if (finish) return;
 
-		if (
-			!(
-				(event.keyCode > 64 && event.keyCode < 91) ||
-				(event.keyCode > 96 && event.keyCode < 123)
-			)
-		)
-			return;
-		if (
-			isColliding(
-				document.getElementById('button' + clickButtons),
-				document.getElementById('hackClick')
-			)
-		) {
-			if (
-				document.getElementById('button' + clickButtons).dataset
-					.char === name.toLocaleUpperCase()
-			) {
+		if (!((event.keyCode > 64 && event.keyCode < 91) || (event.keyCode > 96 && event.keyCode < 123))) return;
+
+		if (isColliding(document.getElementById('button' + clickButtons), document.getElementById('hackClick'))) {
+			if (document.getElementById('button' + clickButtons).dataset.char === name.toLocaleUpperCase()) {
 				document.getElementById('button' + clickButtons).remove();
-				document
-					.getElementById('hackClickButtons')
-					.classList.add('click');
+				document.getElementById('hackClickButtons').classList.add('click');
 				setTimeout(() => {
-					document
-						.getElementById('hackClickButtons')
-						.classList.remove('click');
+					document.getElementById('hackClickButtons').classList.remove('click');
 				}, 100);
 			} else {
 				gameOver();

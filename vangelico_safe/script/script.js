@@ -137,18 +137,8 @@ function generateQuestion() {
 	symbol.textContent = a3 ? '+' : '-';
 
 	let a4 = a3
-		? addition(
-				parseInt(upF1.textContent),
-				parseInt(upF2.textContent),
-				parseInt(dnF1.textContent),
-				parseInt(dnF2.textContent)
-		  )
-		: subtraction(
-				parseInt(upF1.textContent),
-				parseInt(upF2.textContent),
-				parseInt(dnF1.textContent),
-				parseInt(dnF2.textContent)
-		  );
+		? addition(parseInt(upF1.textContent), parseInt(upF2.textContent), parseInt(dnF1.textContent), parseInt(dnF2.textContent))
+		: subtraction(parseInt(upF1.textContent), parseInt(upF2.textContent), parseInt(dnF1.textContent), parseInt(dnF2.textContent));
 
 	resault.textContent = a4[1];
 

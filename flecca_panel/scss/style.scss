@@ -28,10 +28,8 @@ a .home {
 	align-items: center;
 	justify-content: center;
 	left: -150px;
-	-webkit-animation: animation-left-author 1s
-		cubic-bezier(0.55, 0.5, 0.45, 0.5) forwards;
-	animation: animation-left-author 1s cubic-bezier(0.55, 0.5, 0.45, 0.5)
-		forwards;
+	-webkit-animation: animation-left-author 1s cubic-bezier(0.55, 0.5, 0.45, 0.5) forwards;
+	animation: animation-left-author 1s cubic-bezier(0.55, 0.5, 0.45, 0.5) forwards;
 	-webkit-animation-delay: -0.5s;
 	animation-delay: -0.5s;
 	top: 15px;
@@ -121,9 +119,7 @@ a .home {
 			transition: all 0.2s;
 
 			&:hover {
-				box-shadow: 0 0 0 3px rgba(16 255 205 / 10%),
-					0 0 0 1px rgba(16 255 205 / 15%),
-					0 0 10px rgba(16 255 205 / 5%);
+				box-shadow: 0 0 0 3px rgba(16 255 205 / 10%), 0 0 0 1px rgba(16 255 205 / 15%), 0 0 10px rgba(16 255 205 / 5%);
 			}
 
 			.hackCount {
@@ -165,8 +161,7 @@ a .home {
 				width: 10px;
 				height: 10px;
 				background: rgba(16 255 205 / 100%);
-				box-shadow: 0 0 10px rgba(16 255 205),
-					0 0 0 3px rgba(16 255 205 / 20%);
+				box-shadow: 0 0 10px rgba(16 255 205), 0 0 0 3px rgba(16 255 205 / 20%);
 				border-radius: 50%;
 				cursor: pointer;
 				-webkit-appearance: none;

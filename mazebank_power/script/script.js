@@ -34,8 +34,7 @@ const gameStart = () => {
 	arrayEnd = [];
 	randomCharacter();
 	createNumbers(arrayListNumbers);
-	searchNumber.textContent =
-		arrayListNumbers[Math.floor(Math.random() * stop)];
+	searchNumber.textContent = arrayListNumbers[Math.floor(Math.random() * stop)];
 	levelHackId.textContent = levelHack + 1;
 	textGame.innerHTML = 'Znajdź i zapamiętaj';
 	arrayRandomCharacter.push(searchNumber.textContent);
@@ -75,9 +74,7 @@ function generateEndArray(id) {
 	var n = '';
 	for (let i = 0; i < 4; i++) {
 		for (let i = 0; i < 4; i++) {
-			n += characters.charAt(
-				Math.floor(Math.random() * characters.length)
-			);
+			n += characters.charAt(Math.floor(Math.random() * characters.length));
 		}
 		var check = arrayEnd.includes(n);
 
@@ -85,9 +82,7 @@ function generateEndArray(id) {
 		else {
 			while (check === true) {
 				for (let i = 0; i < 4; i++) {
-					n += characters.charAt(
-						Math.floor(Math.random() * characters.length)
-					);
+					n += characters.charAt(Math.floor(Math.random() * characters.length));
 				}
 				check = arrayEnd.includes(n);
 				if (check === false) {
@@ -111,10 +106,7 @@ function createNumbers(array) {
 		randomIndex = Math.floor(Math.random() * currentIndex);
 		currentIndex--;
 
-		[array[currentIndex], array[randomIndex]] = [
-			array[randomIndex],
-			array[currentIndex],
-		];
+		[array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
 
 		const el = document.createElement('div');
 		el.classList.add('el');
@@ -135,8 +127,7 @@ function createNumbers(array) {
 						textGame.innerHTML = 'Wybierz poprawny';
 						levelHack = 0;
 						levelHackId.textContent = levelHack + 1;
-						changeGrid.style.gridTemplateColumns =
-							'repeat(5, minmax(0, 1fr))';
+						changeGrid.style.gridTemplateColumns = 'repeat(5, minmax(0, 1fr))';
 						changeGrid.style.padding = '180px';
 						clearInterval(progressBarInterval);
 						searchNumber.style.opacity = '0';
@@ -147,8 +138,7 @@ function createNumbers(array) {
 					} else {
 						createNumbers(arrayListNumbers);
 						resetStatus = 1000;
-						searchNumber.textContent =
-							arrayListNumbers[Math.floor(Math.random() * stop)];
+						searchNumber.textContent = arrayListNumbers[Math.floor(Math.random() * stop)];
 						levelHack++;
 						levelHackId.textContent = levelHack + 1;
 						arrayRandomCharacter.push(searchNumber.textContent);
@@ -178,9 +168,7 @@ function randomCharacter() {
 	for (let i = 0; i < stop; i++) {
 		for (let i = 0; i < 4; i++) {
 			n.slice(9);
-			n += characters.charAt(
-				Math.floor(Math.random() * characters.length)
-			);
+			n += characters.charAt(Math.floor(Math.random() * characters.length));
 		}
 
 		check = arrayListNumbers.includes(n);
@@ -190,9 +178,7 @@ function randomCharacter() {
 		} else {
 			while (check === true) {
 				for (let i = 0; i < 4; i++) {
-					n += characters.charAt(
-						Math.floor(Math.random() * characters.length)
-					);
+					n += characters.charAt(Math.floor(Math.random() * characters.length));
 				}
 				check = arrayListNumbers.includes(n);
 				if (check === false) {

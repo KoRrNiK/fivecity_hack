@@ -104,28 +104,20 @@ function progressBarStart(type, time) {
 				progressBar.style.display = 'none';
 				finish = false;
 
-				if (getRndInteger(1, 100) > 50)
-					createRed(1, 1, getRndInteger(30, 120));
-				if (getRndInteger(1, 100) > 50)
-					createYellow(1, 1, getRndInteger(30, 120));
-				if (getRndInteger(1, 100) > 50)
-					createPink(1, 1, getRndInteger(30, 120));
-				if (getRndInteger(1, 100) > 50)
-					createGreen(1, 1, getRndInteger(30, 120));
+				if (getRndInteger(1, 100) > 50) createRed(1, 1, getRndInteger(30, 120));
+				if (getRndInteger(1, 100) > 50) createYellow(1, 1, getRndInteger(30, 120));
+				if (getRndInteger(1, 100) > 50) createPink(1, 1, getRndInteger(30, 120));
+				if (getRndInteger(1, 100) > 50) createGreen(1, 1, getRndInteger(30, 120));
 
 				clearTimeout(redTimeout);
 				clearTimeout(yellowTimeout);
 				clearTimeout(pinkTimeout);
 				clearTimeout(greenTimeout);
 
-				if (getRndInteger(1, 100) > 50)
-					createRed(1, 1, getRndInteger(-35, 0));
-				if (getRndInteger(1, 100) > 50)
-					createYellow(1, 1, getRndInteger(-35, 0));
-				if (getRndInteger(1, 100) > 50)
-					createPink(1, 1, getRndInteger(-35, 0));
-				if (getRndInteger(1, 100) > 50)
-					createGreen(1, 1, getRndInteger(-35, 0));
+				if (getRndInteger(1, 100) > 50) createRed(1, 1, getRndInteger(-35, 0));
+				if (getRndInteger(1, 100) > 50) createYellow(1, 1, getRndInteger(-35, 0));
+				if (getRndInteger(1, 100) > 50) createPink(1, 1, getRndInteger(-35, 0));
+				if (getRndInteger(1, 100) > 50) createGreen(1, 1, getRndInteger(-35, 0));
 
 				clearTimeout(redTimeout);
 				clearTimeout(yellowTimeout);
@@ -180,10 +172,8 @@ function getRndInteger(min, max) {
 function isColliding(a, b) {
 	const rect1 = a.getBoundingClientRect();
 	const rect2 = b.getBoundingClientRect();
-	const isInHoriztonalBounds =
-		rect1.x < rect2.x + rect2.width && rect1.x + rect1.width > rect2.x;
-	const isInVerticalBounds =
-		rect1.y < rect2.y + rect2.height && rect1.y + rect1.height > rect2.y;
+	const isInHoriztonalBounds = rect1.x < rect2.x + rect2.width && rect1.x + rect1.width > rect2.x;
+	const isInVerticalBounds = rect1.y < rect2.y + rect2.height && rect1.y + rect1.height > rect2.y;
 	const isOverlapping = isInHoriztonalBounds && isInVerticalBounds;
 	return isOverlapping;
 }
@@ -271,12 +261,7 @@ function createGreen(min = 1, max = 1, pos = -35) {
 function moveCircles() {
 	circleInterval = setInterval(function () {
 		if (!finish) {
-			if (
-				allGreen === allCircles &&
-				allPink >= allCircles &&
-				allYellow === allCircles &&
-				allRed === allCircles
-			) {
+			if (allGreen === allCircles && allPink === allCircles && allYellow === allCircles && allRed === allCircles) {
 				let allC = 0;
 				const circles = document.querySelectorAll('.circle');
 				circles.forEach(cir => {
@@ -287,10 +272,7 @@ function moveCircles() {
 			}
 
 			for (let i = clickRed; i < allRed; i++) {
-				var y = parseInt(
-					document.getElementById('red' + i).style.top,
-					10
-				);
+				var y = parseInt(document.getElementById('red' + i).style.top, 10);
 
 				y += 2;
 
@@ -303,10 +285,7 @@ function moveCircles() {
 			}
 
 			for (let i = clickYellow; i < allYellow; i++) {
-				var y = parseInt(
-					document.getElementById('yellow' + i).style.top,
-					10
-				);
+				var y = parseInt(document.getElementById('yellow' + i).style.top, 10);
 
 				y += 2;
 
@@ -319,10 +298,7 @@ function moveCircles() {
 			}
 
 			for (let i = clickPink; i < allPink; i++) {
-				var y = parseInt(
-					document.getElementById('pink' + i).style.top,
-					10
-				);
+				var y = parseInt(document.getElementById('pink' + i).style.top, 10);
 
 				y += 2;
 
@@ -335,10 +311,7 @@ function moveCircles() {
 			}
 
 			for (let i = clickGreen; i < allGreen; i++) {
-				var y = parseInt(
-					document.getElementById('green' + i).style.top,
-					10
-				);
+				var y = parseInt(document.getElementById('green' + i).style.top, 10);
 
 				y += 2;
 
@@ -359,12 +332,7 @@ document.addEventListener(
 		var name = event.key;
 		if (finish) return;
 		if (name === 'a') {
-			if (
-				isColliding(
-					document.getElementById('red' + clickRed),
-					document.getElementById('activeA')
-				)
-			) {
+			if (isColliding(document.getElementById('red' + clickRed), document.getElementById('activeA'))) {
 				document.getElementById('red' + clickRed).remove();
 				document.getElementById('boxA').classList.add('blur');
 				setTimeout(() => {
@@ -376,12 +344,7 @@ document.addEventListener(
 		}
 
 		if (name === 's') {
-			if (
-				isColliding(
-					document.getElementById('yellow' + clickYellow),
-					document.getElementById('activeS')
-				)
-			) {
+			if (isColliding(document.getElementById('yellow' + clickYellow), document.getElementById('activeS'))) {
 				document.getElementById('yellow' + clickYellow).remove();
 				document.getElementById('boxS').classList.add('blur');
 				setTimeout(() => {
@@ -393,12 +356,7 @@ document.addEventListener(
 		}
 
 		if (name === 'k') {
-			if (
-				isColliding(
-					document.getElementById('pink' + clickPink),
-					document.getElementById('activeK')
-				)
-			) {
+			if (isColliding(document.getElementById('pink' + clickPink), document.getElementById('activeK'))) {
 				document.getElementById('pink' + clickPink).remove();
 				document.getElementById('boxK').classList.add('blur');
 				setTimeout(() => {
@@ -410,12 +368,7 @@ document.addEventListener(
 		}
 
 		if (name === 'l') {
-			if (
-				isColliding(
-					document.getElementById('green' + clickGreen),
-					document.getElementById('activeL')
-				)
-			) {
+			if (isColliding(document.getElementById('green' + clickGreen), document.getElementById('activeL'))) {
 				document.getElementById('green' + clickGreen).remove();
 				document.getElementById('boxL').classList.add('blur');
 				setTimeout(() => {

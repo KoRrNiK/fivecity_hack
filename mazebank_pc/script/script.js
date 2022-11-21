@@ -112,10 +112,7 @@ function createNumbers() {
 			switch (event.which) {
 				case 1: {
 					for (let i = 0; i < 5; i++) {
-						if (
-							lpm[i].x == clickEl.dataset.x &&
-							lpm[i].y == clickEl.dataset.y
-						) {
+						if (lpm[i].x == clickEl.dataset.x && lpm[i].y == clickEl.dataset.y) {
 							good = true;
 						}
 					}
@@ -135,10 +132,7 @@ function createNumbers() {
 				}
 				case 3: {
 					for (let i = 5; i < 10; i++) {
-						if (
-							rpm[i].x == clickEl.dataset.x &&
-							rpm[i].y == clickEl.dataset.y
-						) {
+						if (rpm[i].x == clickEl.dataset.x && rpm[i].y == clickEl.dataset.y) {
 							good = true;
 						}
 					}
@@ -181,14 +175,7 @@ function* uniqIter(a) {
 }
 
 function* randomPos() {
-	while (1)
-		yield parseInt(
-			(1 + Math.floor(Math.random() * (7 - 1 + 1)))
-				.toString()
-				.concat(
-					(1 + Math.floor(Math.random() * (7 - 1 + 1))).toString()
-				)
-		);
+	while (1) yield parseInt((1 + Math.floor(Math.random() * (7 - 1 + 1))).toString().concat((1 + Math.floor(Math.random() * (7 - 1 + 1))).toString()));
 }
 
 function generatePos() {

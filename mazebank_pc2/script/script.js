@@ -154,45 +154,31 @@ function createNumbers() {
 							if (clickElement === symbols[0]) {
 								const x = Number(el.dataset.x) + 1;
 								const y = Number(el.dataset.y);
-								const nextElement = document.getElementById(
-									x + ',' + y
-								);
-								if (nextElement)
-									nextElement.classList.remove('block');
+								const nextElement = document.getElementById(x + ',' + y);
+								if (nextElement) nextElement.classList.remove('block');
 							}
 							if (clickElement === symbols[1]) {
 								const x = Number(el.dataset.x) - 1;
 								const y = Number(el.dataset.y);
-								const nextElement = document.getElementById(
-									x + ',' + y
-								);
-								if (nextElement)
-									nextElement.classList.remove('block');
+								const nextElement = document.getElementById(x + ',' + y);
+								if (nextElement) nextElement.classList.remove('block');
 							}
 							if (clickElement === symbols[2]) {
 								const x = Number(el.dataset.x);
 								const y = Number(el.dataset.y) - 1;
-								const nextElement = document.getElementById(
-									x + ',' + y
-								);
-								if (nextElement)
-									nextElement.classList.remove('block');
+								const nextElement = document.getElementById(x + ',' + y);
+								if (nextElement) nextElement.classList.remove('block');
 							}
 							if (clickElement === symbols[3]) {
 								const x = Number(el.dataset.x);
 								const y = Number(el.dataset.y) + 1;
-								const nextElement = document.getElementById(
-									x + ',' + y
-								);
-								if (nextElement)
-									nextElement.classList.remove('block');
+								const nextElement = document.getElementById(x + ',' + y);
+								if (nextElement) nextElement.classList.remove('block');
 							}
 						}
 					}
 
-					arrayDefault[Number(el.dataset.y) - 1][
-						Number(el.dataset.x) - 1
-					] = 0;
+					arrayDefault[Number(el.dataset.y) - 1][Number(el.dataset.x) - 1] = 0;
 
 					for (let i = 0; i < arrayDefault.length; i++) {
 						for (let j = 1; j < 6; j++) {
@@ -203,10 +189,7 @@ function createNumbers() {
 						}
 					}
 
-					if (
-						document.getElementById('6,6') == el &&
-						square.textContent == symbols[3]
-					) {
+					if (document.getElementById('6,6') == el && square.textContent == symbols[3]) {
 						arrayDefault[0][0] = 0;
 						if (countPaths(arrayDefault) > 0) {
 							gameWin();
@@ -279,11 +262,7 @@ function randomPath(sizeX, sizeY) {
 		path.push([x, y]);
 	}
 	for (let i = path.length - 4; i >= 0; i--) {
-		if (
-			i + 3 < path.length &&
-			path[i][1] === path[i + 3][1] + 1 &&
-			path[i][0] === path[i + 3][0]
-		) {
+		if (i + 3 < path.length && path[i][1] === path[i + 3][1] + 1 && path[i][0] === path[i + 3][0]) {
 			path.splice(i + 1, 2);
 		}
 	}

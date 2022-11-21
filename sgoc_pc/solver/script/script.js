@@ -13,17 +13,10 @@ const generateSuggestion = collection => {
 
 		for (let l = 0; l < 5; l++) {
 			const letter = collection[i][l];
-			const purpleColor =
-				includeLetters && includeLetters.includes(letter)
-					? 'purpleColor'
-					: '';
-			const greenColor = correctLetters.includes(letter)
-				? 'greenColor'
-				: '';
+			const purpleColor = includeLetters && includeLetters.includes(letter) ? 'purpleColor' : '';
+			const greenColor = correctLetters.includes(letter) ? 'greenColor' : '';
 
-			letters += `<i class="${
-				purpleColor + ' ' + greenColor
-			}"> ${letter} </i>`;
+			letters += `<i class="${purpleColor + ' ' + greenColor}"> ${letter} </i>`;
 		}
 		wordEl += `<span class="word">${letters}</span>`;
 	}
@@ -31,14 +24,7 @@ const generateSuggestion = collection => {
 };
 
 const preventKeys = (e, n) => {
-	if (
-		!(
-			(e.key.match(/^[A-Za-z]+$/) && e.target.value.length < n) ||
-			e.key === 'Backspace' ||
-			e.code === 'Backspace' ||
-			e.keyCode === 8
-		)
-	) {
+	if (!((e.key.match(/^[A-Za-z]+$/) && e.target.value.length < n) || e.key === 'Backspace' || e.code === 'Backspace' || e.keyCode === 8)) {
 		e.preventDefault();
 	}
 };
@@ -46,12 +32,7 @@ const preventKeys = (e, n) => {
 const validateKeys = (e, n) => {
 	preventKeys(e, n);
 
-	if (
-		(e.key.length === 1 &&
-			includeLetters &&
-			includeLetters.includes(e.key)) ||
-		(e.key.length === 1 && excludeLetters && excludeLetters.includes(e.key))
-	) {
+	if ((e.key.length === 1 && includeLetters && includeLetters.includes(e.key)) || (e.key.length === 1 && excludeLetters && excludeLetters.includes(e.key))) {
 		e.preventDefault();
 	}
 };
@@ -65,11 +46,7 @@ const wordFilter = () => {
 		correctLetters.forEach((latter, i) => {
 			if (latter) {
 				for (let x = 0; x < POLISHSYMBOLS.length; x++) {
-					wordsList = wordsList.filter(
-						word =>
-							word[i] == latter &&
-							!word.includes(POLISHSYMBOLS[x])
-					);
+					wordsList = wordsList.filter(word => word[i] == latter && !word.includes(POLISHSYMBOLS[x]));
 				}
 			}
 		});
@@ -130,8 +107,7 @@ inputNone.addEventListener('input', e => {
 document.querySelectorAll('#form-green input').forEach(correctInput => {
 	correctInput.addEventListener('keydown', e => preventKeys(e, 1));
 	correctInput.addEventListener('input', e => {
-		correctLetters[parseInt(e.target.dataset.index)] =
-			e.target.value.toLowerCase();
+		correctLetters[parseInt(e.target.dataset.index)] = e.target.value.toLowerCase();
 		wordFilter();
 	});
 });

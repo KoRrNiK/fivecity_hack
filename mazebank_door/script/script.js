@@ -83,8 +83,7 @@ function createSymbols() {
 	}
 
 	for (let i = 0; i < 12; i++) {
-		document.getElementById('symbol' + i).innerHTML =
-			symbols[Math.floor(Math.random() * symbols.length)];
+		document.getElementById('symbol' + i).innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
 
 		document.getElementById('number' + i).innerHTML = random[i % 6];
 	}
@@ -244,14 +243,7 @@ function checkValue6() {
 }
 
 function checkValueAll() {
-	if (
-		checkValue1() &&
-		checkValue2() &&
-		checkValue3() &&
-		checkValue4() &&
-		checkValue5() &&
-		checkValue6()
-	) {
+	if (checkValue1() && checkValue2() && checkValue3() && checkValue4() && checkValue5() && checkValue6()) {
 		hackInfo.style.display = 'block';
 		textInfo.innerHTML = 'Hack Udany';
 		hackFunction.style.display = 'none';

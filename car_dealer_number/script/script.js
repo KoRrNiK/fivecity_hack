@@ -35,8 +35,7 @@ function gameStart() {
 	arrayEnd = [];
 	randomNumbers();
 	createNumbers(arrayListNumbers);
-	searchNumber.textContent =
-		arrayListNumbers[Math.floor(Math.random() * stop)];
+	searchNumber.textContent = arrayListNumbers[Math.floor(Math.random() * stop)];
 	levelHackId.textContent = levelHack + 1;
 	textGame.innerHTML = 'Znajdź i zapamiętaj';
 	arrayRandomNumbers.push(parseInt(searchNumber.textContent));
@@ -102,10 +101,7 @@ function createNumbers(array) {
 		randomIndex = Math.floor(Math.random() * currentIndex);
 		currentIndex--;
 
-		[array[currentIndex], array[randomIndex]] = [
-			array[randomIndex],
-			array[currentIndex],
-		];
+		[array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
 
 		const el = document.createElement('div');
 		el.classList.add('el');
@@ -126,8 +122,7 @@ function createNumbers(array) {
 						textGame.innerHTML = 'Wybierz poprawny';
 						levelHack = 0;
 						levelHackId.textContent = levelHack + 1;
-						changeGrid.style.gridTemplateColumns =
-							'repeat(5, minmax(0, 1fr))';
+						changeGrid.style.gridTemplateColumns = 'repeat(5, minmax(0, 1fr))';
 						changeGrid.style.padding = '180px';
 						clearInterval(progressBarInterval);
 						searchNumber.style.opacity = '0';
@@ -137,13 +132,10 @@ function createNumbers(array) {
 					} else {
 						createNumbers(arrayListNumbers);
 						resetStatus = 1000;
-						searchNumber.textContent =
-							arrayListNumbers[Math.floor(Math.random() * stop)];
+						searchNumber.textContent = arrayListNumbers[Math.floor(Math.random() * stop)];
 						levelHack++;
 						levelHackId.textContent = levelHack + 1;
-						arrayRandomNumbers.push(
-							parseInt(searchNumber.textContent)
-						);
+						arrayRandomNumbers.push(parseInt(searchNumber.textContent));
 					}
 				} else {
 					if (levelHack == 0) generateEndArray(1);

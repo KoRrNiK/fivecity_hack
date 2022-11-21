@@ -23,10 +23,8 @@ a .home {
 	align-items: center;
 	justify-content: center;
 	left: -150px;
-	-webkit-animation: animation-left-author 1s
-		cubic-bezier(0.55, 0.5, 0.45, 0.5) forwards;
-	animation: animation-left-author 1s cubic-bezier(0.55, 0.5, 0.45, 0.5)
-		forwards;
+	-webkit-animation: animation-left-author 1s cubic-bezier(0.55, 0.5, 0.45, 0.5) forwards;
+	animation: animation-left-author 1s cubic-bezier(0.55, 0.5, 0.45, 0.5) forwards;
 	-webkit-animation-delay: -0.5s;
 	animation-delay: -0.5s;
 	top: 15px;

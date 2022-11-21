@@ -58,23 +58,7 @@ const gameWin = () => {
 };
 
 const nextStage = () => {
-	console.log(
-		'%c' +
-			colors[0] +
-			' | ' +
-			numbers[0] +
-			'\n%c' +
-			colors[1] +
-			' | ' +
-			numbers[1] +
-			'\n%c' +
-			colors[2] +
-			' | ' +
-			numbers[2],
-		'color: white',
-		'color: green',
-		'color: purple'
-	);
+	console.log('%c' + colors[0] + ' | ' + numbers[0] + '\n%c' + colors[1] + ' | ' + numbers[1] + '\n%c' + colors[2] + ' | ' + numbers[2], 'color: white', 'color: green', 'color: purple');
 
 	randomColor = colors[Math.floor(Math.random() * colors.length)];
 	input.value = '';
@@ -192,11 +176,7 @@ function generateColors(color, count) {
 		let element = document.getElementById(random);
 		let good = true;
 
-		if (
-			hasClass(element, 'white') ||
-			hasClass(element, 'green') ||
-			hasClass(element, 'purple')
-		) {
+		if (hasClass(element, 'white') || hasClass(element, 'green') || hasClass(element, 'purple')) {
 			generateColors(color, 1);
 			good = false;
 		}

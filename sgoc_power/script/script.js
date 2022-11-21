@@ -104,10 +104,7 @@ function createNumbers(array) {
 		randomIndex = Math.floor(Math.random() * currentIndex);
 		currentIndex--;
 
-		[array[currentIndex], array[randomIndex]] = [
-			array[randomIndex],
-			array[currentIndex],
-		];
+		[array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
 
 		const el = document.createElement('div');
 		el.classList.add('el');
@@ -126,12 +123,8 @@ function createNumbers(array) {
 
 					if (firstClick == el.innerHTML) {
 						el.classList.add('second');
-						document
-							.getElementById(firstId)
-							.classList.add('second');
-						document
-							.getElementById(firstId)
-							.classList.remove('first');
+						document.getElementById(firstId).classList.add('second');
+						document.getElementById(firstId).classList.remove('first');
 						firstClick = -1;
 						level++;
 						hackLevel.innerHTML = level + '/5';

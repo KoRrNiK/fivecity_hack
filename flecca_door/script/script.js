@@ -98,18 +98,15 @@ function getRndInteger(min, max) {
 function isColliding(a, b) {
 	const rect1 = a.getBoundingClientRect();
 	const rect2 = b.getBoundingClientRect();
-	const isInHoriztonalBounds =
-		rect1.x < rect2.x + rect2.width && rect1.x + rect1.width > rect2.x;
-	const isInVerticalBounds =
-		rect1.y < rect2.y + rect2.height && rect1.y + rect1.height > rect2.y;
+	const isInHoriztonalBounds = rect1.x < rect2.x + rect2.width && rect1.x + rect1.width > rect2.x;
+	const isInVerticalBounds = rect1.y < rect2.y + rect2.height && rect1.y + rect1.height > rect2.y;
 	const isOverlapping = isInHoriztonalBounds && isInVerticalBounds;
 	return isOverlapping;
 }
 
 function moveCircleAndLines() {
 	for (let i = 1; i < 16; i++) {
-		document.getElementById('line' + i).style.top =
-			getRndInteger(-40, -450) + 'px';
+		document.getElementById('line' + i).style.top = getRndInteger(-40, -450) + 'px';
 	}
 
 	setInterval(function () {
@@ -122,10 +119,7 @@ function moveCircleAndLines() {
 			}
 
 			for (let i = 1; i < 16; i++) {
-				var y = parseInt(
-					document.getElementById('line' + i).style.top,
-					10
-				);
+				var y = parseInt(document.getElementById('line' + i).style.top, 10);
 
 				let randomY = getRndInteger(-400, -450);
 
