@@ -117,7 +117,13 @@ function createNumbers(array) {
 		el.onmousedown = function (event) {
 			switch (event.which) {
 				case 1: {
-					if (hasClass(el, 'second') || hasClass(el, 'first')) {
+					if (hasClass(el, 'first')) {
+						el.classList.remove('first');
+						firstClick = -1;
+						return;
+					}
+
+					if (hasClass(el, 'second')) {
 						return;
 					}
 
