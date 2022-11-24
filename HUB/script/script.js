@@ -101,6 +101,18 @@ const listHacks = [
 		category: 'BUNKIER',
 		link: 'bunkier_box',
 	},
+	{
+		name: 'Bunkier',
+		desc: 'Otwieranie skrzyni',
+		category: 'BUNKIER',
+		link: 'bunkier_case',
+	},
+	{
+		name: 'Bunkier',
+		desc: 'Otwieranie bocznych drzwi',
+		category: 'BUNKIER',
+		link: 'bunkier_door',
+	},
 ];
 
 const hubInit = () => {
