@@ -169,7 +169,7 @@ a .home {
 				top: 0;
 				pointer-events: none;
 				background: transparent;
-				box-shadow: 0 0 20000px 20000px rgba(10 0 32);
+				box-shadow: 0 0 0 20000px rgba(10 0 32);
 				z-index: 2;
 			}
 
@@ -222,6 +222,8 @@ a .home {
 				.progressBar {
 					height: 4px;
 					background-color: rgba(16 255 205);
+					border-top-left-radius: 5px;
+					border-bottom-left-radius: 5px;
 				}
 			}
 		}
