@@ -7,7 +7,7 @@ const listCategory = [
 	{ name: 'Flecca', category: 'FLECCA', new: 0 },
 	{ name: 'Magazyn SGOC', category: 'SGOC', new: 0 },
 	{ name: 'Vangelico', category: 'VANGELICO', new: 0 },
-	{ name: 'Bunkier', category: 'BUNKIER', new: 1 },
+	{ name: 'Bunkier', category: 'BUNKER', new: 1 },
 ];
 
 const listHacks = [
@@ -98,20 +98,20 @@ const listHacks = [
 	{
 		name: 'Bunkier',
 		desc: 'Otwieranie paczki',
-		category: 'BUNKIER',
-		link: 'bunkier_box',
+		category: 'BUNKER',
+		link: 'bunker_box',
 	},
 	{
 		name: 'Bunkier',
 		desc: 'Otwieranie skrzyni',
-		category: 'BUNKIER',
-		link: 'bunkier_case',
+		category: 'BUNKER',
+		link: 'bunker_case',
 	},
 	{
 		name: 'Bunkier',
 		desc: 'Otwieranie bocznych drzwi',
-		category: 'BUNKIER',
-		link: 'bunkier_door',
+		category: 'BUNKER',
+		link: 'bunker_door',
 	},
 ];
 

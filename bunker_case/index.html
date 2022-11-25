@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Bunkier - DOOR ( FIVE CITY )</title>
+		<title>Bunker - CASE ( FIVE CITY )</title>
 
 		<link rel="stylesheet" href="./css/style.css" />
 		<script src="./script/script.js" defer></script>
@@ -17,30 +17,26 @@
 			<div class="hackBox">
 				<div class="hackStart" id="buttonStart" onclick="gameStart()">Zacznij Hackować</div>
 
-				<div class="hackOptions">
-					<div class="hackButton">
-						<div class="hackDesc">Wysokość wieży</div>
-						<input class="progress" type="range" min="3" max="10" value="8" step="1" oninput="towerChangeFunction()" id="towerChangeInput" />
-						<div class="hackCount" id="towerChangeId"></div>
-					</div>
-				</div>
-
 				<div class="hackInfo" style="display: none">
 					<h2 id="textInfo"></h2>
 				</div>
 				<div class="hackText" style="display: none">
-					<h2 id="textInfo">Złam Zamek</h2>
+					<h2 id="textInfo">Znajdź litery i wpisz je w kratki poniżej</h2>
 				</div>
 
 				<div id="hackFunction" class="hackFunction" style="display: none">
-					<div id="a"></div>
-					<div id="b"></div>
-					<div id="c"></div>
+					<div id="cursor"></div>
+					<div id="boxLetters" class="boxLetters"></div>
 				</div>
 				<div id="hackFunction2" class="hackFunction2" style="display: none">
-					<div id="a1"></div>
-					<div id="a2"></div>
-					<div id="a3"></div>
+					<input id="input0" placeholder="•" onkeyup="validate(this);" />
+					<input id="input1" placeholder="•" onkeyup="validate(this);" />
+					<input id="input2" placeholder="•" onkeyup="validate(this);" />
+					<input id="input3" placeholder="•" onkeyup="validate(this);" />
+					<input id="input4" placeholder="•" onkeyup="validate(this);" />
+					<input id="input5" placeholder="•" onkeyup="validate(this);" />
+					<input id="input6" placeholder="•" onkeyup="validate(this);" />
+					<input id="input7" placeholder="•" onkeyup="validate(this);" />
 				</div>
 
 				<div class="hackFooter">
