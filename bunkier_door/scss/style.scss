@@ -140,6 +140,71 @@ a .home {
 			}
 		}
 
+		.hackCount {
+			color: #fff;
+			padding: 10px;
+			font-size: 12px;
+			font-weight: 500;
+			width: 100px;
+			display: flex;
+			justify-content: flex-end;
+		}
+
+		.hackButton {
+			margin-top: 10px;
+			margin-bottom: 10px;
+			display: flex;
+			background-color: rgba(15 0 40);
+			border-radius: 5px;
+			width: 100%;
+			text-align: center;
+			justify-content: space-between;
+			text-transform: uppercase;
+			transition: all 0.2s;
+		}
+
+		.hackDesc {
+			color: #fff;
+			padding: 10px;
+			font-size: 12px;
+			font-weight: 500;
+			width: 300px;
+			display: flex;
+			justify-content: flex-start;
+		}
+
+		.progress {
+			background: rgba(50 50 50);
+			border-left: 2px solid rgba(16 255 205 / 20%);
+			border-right: 2px solid rgba(16 255 205 / 20%);
+			border-radius: 6px;
+			height: 4px;
+			width: 300px;
+			outline: none;
+			opacity: 0.8;
+			margin: auto;
+			display: block;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+		}
+
+		.progress::-webkit-slider-thumb {
+			width: 10px;
+			height: 10px;
+			background: rgba(16 255 205 / 100%);
+			box-shadow: 0 0 10px rgba(16 255 205), 0 0 0 3px rgba(16 255 205 / 20%);
+			border-radius: 50%;
+			cursor: pointer;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+		}
+
+		.progress:hover {
+			opacity: 1;
+		}
+
 		#a1 {
 			position: absolute;
 			background-color: transparent;
@@ -151,7 +216,7 @@ a .home {
 			opacity: 0.5;
 
 			width: 30px;
-			height: 400px;
+			height: 450px;
 			left: 255px;
 			bottom: 78px;
 			z-index: 1;
@@ -168,7 +233,7 @@ a .home {
 			opacity: 0.5;
 
 			width: 30px;
-			height: 400px;
+			height: 450px;
 			left: 620px;
 			bottom: 78px;
 			z-index: 1;
@@ -185,7 +250,7 @@ a .home {
 			opacity: 0.5;
 
 			width: 30px;
-			height: 400px;
+			height: 450px;
 			left: 1000px;
 			bottom: 78px;
 			z-index: 1;
@@ -224,12 +289,12 @@ a .home {
 				}
 
 				#tower_1 {
-					width: 60px;
+					width: 80px;
 					background-color: rgba(88 200 130);
 				}
 
 				#tower_2 {
-					width: 80px;
+					width: 100px;
 					background-color: rgba(80 178 118);
 				}
 
@@ -262,6 +327,16 @@ a .home {
 				#tower_8 {
 					width: 220px;
 					background-color: rgba(31 58 49);
+				}
+
+				#tower_9 {
+					width: 240px;
+					background-color: rgba(21 41 34);
+				}
+
+				#tower_10 {
+					width: 260px;
+					background-color: rgba(17 32 27);
 				}
 			}
 		}

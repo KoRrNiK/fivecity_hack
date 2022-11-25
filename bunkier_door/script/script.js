@@ -1,6 +1,7 @@
 const hackFunction = document.querySelector('.hackFunction');
 const hackFunction2 = document.querySelector('.hackFunction2');
 const hackText = document.querySelector('.hackText');
+const hackOptions = document.querySelector('.hackOptions');
 const progressBar = document.getElementById('progressBox');
 const buttonStart = document.getElementById('buttonStart');
 const hackInfo = document.querySelector('.hackInfo');
@@ -10,22 +11,28 @@ const tower1 = document.getElementById('a');
 const tower2 = document.getElementById('b');
 const tower3 = document.getElementById('c');
 
+const towerChangeInput = document.getElementById('towerChangeInput');
+
+var defaultBoxes = 8;
+var allBoxes;
+
 var __timePlay = 600;
 var progressBarInterval;
-
-var allBoxes = 8;
 
 const gameReset = () => {
 	tower1.innerHTML = '';
 	tower2.innerHTML = '';
 	tower3.innerHTML = '';
-	for (var i = 1; i <= allBoxes; i++) tower1.innerHTML += '<div class="cube" id="tower_' + i + '" draggable="true"></div>';
-
+	for (var i = 1; i <= allBoxes; i++) {
+		tower1.innerHTML += '<div class="cube" id="tower_' + i + '" draggable="true"></div>';
+	}
 	draged_drop();
 };
 
 const gameInit = () => {
 	gameReset();
+	document.getElementById('towerChangeId').innerHTML = String(defaultBoxes);
+	hackOptions.style.display = '';
 	hackFunction.style.display = 'none';
 	hackFunction2.style.display = 'none';
 	hackText.style.display = 'none';
@@ -36,6 +43,7 @@ const gameInit = () => {
 
 const gameStart = () => {
 	gameReset();
+	hackOptions.style.display = 'none';
 	buttonStart.style.display = 'none';
 	progressBar.style.display = 'block';
 	hackInfo.style.display = 'block';
@@ -97,6 +105,7 @@ function progressBarStart(type, time) {
 				buttonStart.style.display = '';
 				progressBar.style.display = 'none';
 				hackInfo.style.display = 'none';
+				hackOptions.style.display = '';
 			}
 		}
 	};
@@ -129,7 +138,7 @@ function dragStart(e) {
 function stopDrag(e) {
 	e.preventDefault();
 	var final = document.getElementById('c');
-	if (final.childNodes.length === allBoxes) {
+	if (final.childNodes.length == allBoxes) {
 		gameWin();
 	}
 }
@@ -150,6 +159,8 @@ function dropFinal(e) {
 		boxes.id != 'tower_6' &&
 		boxes.id != 'tower_7' &&
 		boxes.id != 'tower_8' &&
+		boxes.id != 'tower_9' &&
+		boxes.id != 'tower_10' &&
 		item != ''
 	) {
 		var rem = document.getElementById(item);
@@ -164,4 +175,9 @@ function compareArray(array, string) {
 	if (array[0] == undefined) string = true;
 	else var string = string.split('_')[1] < array[0].id.split('_')[1] ? true : false;
 	return string;
+}
+
+function towerChangeFunction() {
+	document.getElementById('towerChangeId').innerHTML = towerChangeInput.value;
+	allBoxes = towerChangeInput.value;
 }
