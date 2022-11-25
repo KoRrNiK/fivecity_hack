@@ -14,7 +14,7 @@ const tower3 = document.getElementById('c');
 const towerChangeInput = document.getElementById('towerChangeInput');
 
 var defaultBoxes = 8;
-var allBoxes;
+var allBoxes = defaultBoxes;
 
 var __timePlay = 600;
 var progressBarInterval;
