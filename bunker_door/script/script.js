@@ -12,11 +12,16 @@ const tower2 = document.getElementById('b');
 const tower3 = document.getElementById('c');
 
 const towerChangeInput = document.getElementById('towerChangeInput');
+const timeChangeInput = document.getElementById('timeChangeInput');
 
-var defaultBoxes = 8;
-var allBoxes = defaultBoxes;
+var pressTower = [8, 6];
+var pressTime = [10, 5];
 
-var __timePlay = 600;
+var multiply = 60;
+
+var allBoxes = pressTower[0];
+var allTime = pressTime[0] * multiply;
+
 var progressBarInterval;
 
 const gameReset = () => {
@@ -31,7 +36,8 @@ const gameReset = () => {
 
 const gameInit = () => {
 	gameReset();
-	document.getElementById('towerChangeId').innerHTML = String(defaultBoxes);
+	document.getElementById('towerChangeId').innerHTML = pressTower[0];
+	document.getElementById('timeChangeId').innerHTML = pressTime[0];
 	hackOptions.style.display = '';
 	hackFunction.style.display = 'none';
 	hackFunction2.style.display = 'none';
@@ -85,7 +91,7 @@ function progressBarStart(type, time) {
 				hackFunction2.style.display = '';
 				hackText.style.display = '';
 				hackInfo.style.display = 'none';
-				progressBarStart('game', __timePlay);
+				progressBarStart('game', allTime);
 				return;
 			}
 
@@ -180,4 +186,25 @@ function compareArray(array, string) {
 function towerChangeFunction() {
 	document.getElementById('towerChangeId').innerHTML = towerChangeInput.value;
 	allBoxes = towerChangeInput.value;
+}
+
+function timeChangeFunction() {
+	document.getElementById('timeChangeId').innerHTML = timeChangeInput.value;
+	allTime = timeChangeInput.value * multiply;
+}
+
+function hackPresset(type) {
+	if (!type) {
+		towerChangeInput.value = pressTower[0];
+		timeChangeInput.value = pressTime[0];
+	} else {
+		towerChangeInput.value = pressTower[1];
+		timeChangeInput.value = pressTime[1];
+	}
+
+	document.getElementById('towerChangeId').innerHTML = towerChangeInput.value;
+	document.getElementById('timeChangeId').innerHTML = timeChangeInput.value;
+
+	allBoxes = towerChangeInput.value;
+	allTime = timeChangeInput.value * multiply;
 }

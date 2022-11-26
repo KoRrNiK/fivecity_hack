@@ -163,6 +163,30 @@ a .home {
 			transition: all 0.2s;
 		}
 
+		.hackBoxSettings {
+			display: flex;
+			justify-content: center;
+			.hackPresset {
+				width: 100%;
+				margin: 20px;
+				display: flex;
+				border: none !important;
+				background-color: rgba(15 0 40);
+				padding: 15px;
+				color: #fff;
+				cursor: pointer;
+				border-radius: 5px;
+				font-size: 13px;
+				border: 1px solid;
+				text-align: center;
+				justify-content: space-around;
+				transition: all 0.2s;
+				&:hover {
+					background-color: rgba(7 125 58);
+				}
+			}
+		}
+
 		.hackDesc {
 			color: #fff;
 			padding: 10px;

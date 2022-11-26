@@ -23,6 +23,15 @@
 						<input class="progress" type="range" min="3" max="10" value="8" step="1" oninput="towerChangeFunction()" id="towerChangeInput" />
 						<div class="hackCount" id="towerChangeId"></div>
 					</div>
+					<div class="hackButton">
+						<div class="hackDesc">Czas hackowania</div>
+						<input class="progress" type="range" min="1" max="20" value="10" step="1" oninput="timeChangeFunction()" id="timeChangeInput" />
+						<div class="hackCount" id="timeChangeId"></div>
+					</div>
+					<div class="hackBoxSettings">
+						<div class="hackPresset" onclick="hackPresset(0)">Wysokość wieży 8</div>
+						<div class="hackPresset" onclick="hackPresset(1)">Wysokość wieży 6</div>
+					</div>
 				</div>
 
 				<div class="hackInfo" style="display: none">
