@@ -42,6 +42,12 @@ const listHacks = [
 		link: 'mazebank_pc2',
 	},
 	{
+		name: 'Maze - Bank',
+		desc: 'SOLVER MATH',
+		category: 'MAZEBANK',
+		link: 'mazebank_solver',
+	},
+	{
 		name: 'Flecca - Bank',
 		desc: 'Otwieranie głównych drzwi sejfu',
 		category: 'FLECCA',
