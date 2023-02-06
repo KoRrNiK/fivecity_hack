@@ -128,17 +128,31 @@ h2 {
 	padding: 15px;
 }
 
+.all {
+	background-color: rgb(70 70 255 / 10%);
+	border: 1px solid rgb(70 70 255 / 20%);
+	border-radius: 0 0 6px 0;
+	box-shadow: 0 0 0 2px rgb(70 70 255 / 5%);
+	filter: drop-shadow(0 0 30px rgb(70 70 255 / 10%));
+}
+.all:hover {
+	background-color: rgb(70 70 255 / 20%);
+	border: 1px solid rgb(70 70 255 / 30%);
+	box-shadow: 0 0 0 2px rgb(70 70 255 / 10%);
+	filter: drop-shadow(0 0 30px rgb(70 70 255 / 20%));
+	cursor: pointer;
+}
+
 .check {
 	background-color: rgb(70 255 70 / 10%);
 	border: 1px solid rgb(70 255 70 / 20%);
-	border-radius: 0 6px 0 6px;
+	border-radius: 6px 0 0;
 	box-shadow: 0 0 0 2px rgb(70 255 70 / 5%);
 	filter: drop-shadow(0 0 30px rgb(70 255 70 / 10%));
 }
 .check:hover {
 	background-color: rgb(70 255 70 / 20%);
 	border: 1px solid rgb(70 255 70 / 30%);
-	border-radius: 0 6px 0 6px;
 	box-shadow: 0 0 0 2px rgb(70 255 70 / 10%);
 	filter: drop-shadow(0 0 30px rgb(70 255 70 / 20%));
 	cursor: pointer;
@@ -147,14 +161,13 @@ h2 {
 .reset {
 	background-color: rgb(255 70 70 / 10%);
 	border: 1px solid rgb(255 70 70 / 20%);
-	border-radius: 6px 0 6px 0;
+	border-radius: 0;
 	box-shadow: 0 0 0 2px rgb(255 70 70 / 5%);
 	filter: drop-shadow(0 0 30px rgb(255 70 70 / 10%));
 }
 .reset:hover {
 	background-color: rgb(255 70 70 / 20%);
 	border: 1px solid rgb(255 70 70 / 30%);
-	border-radius: 6px 0 6px 0;
 	box-shadow: 0 0 0 2px rgb(255 70 70 / 10%);
 	filter: drop-shadow(0 0 30px rgb(255 70 70 / 20%));
 	cursor: pointer;
