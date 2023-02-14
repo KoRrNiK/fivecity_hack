@@ -1,5 +1,6 @@
 const hackList = document.querySelector('.hackList');
 const hackCount = document.getElementById('hackCount');
+const credits = document.getElementById('credits');
 
 const listCategory = [
 	{ name: 'CarDealer', category: 'CAR', new: 0 },
@@ -8,6 +9,15 @@ const listCategory = [
 	{ name: 'Magazyn SGOC', category: 'SGOC', new: 0 },
 	{ name: 'Vangelico', category: 'VANGELICO', new: 0 },
 	{ name: 'Bunkier', category: 'BUNKER', new: 1 },
+];
+
+const fixed_credits = [
+	{
+		hack: 'Vangelico - Jubiler',
+		name: 'Vistar#5482',
+		desc: 'Naprawa szybkosci opadania i szybkosci pojawiania się kulek',
+		link: 'https://github.com/mateusz-brzozowski',
+	},
 ];
 
 const listHacks = [
@@ -79,7 +89,7 @@ const listHacks = [
 	},
 	{
 		name: 'Vangelico - Jubiler',
-		desc: 'Wyłączanie zabezpieczenia małego sejfu  fixed by Vistar#5482',
+		desc: 'Wyłączanie zabezpieczenia małego sejfu',
 		category: 'VANGELICO',
 		link: 'vangelico_pc',
 	},
@@ -154,5 +164,17 @@ const hubInit = () => {
 			div2.textContent = listHacks[x].desc;
 			button.appendChild(div2);
 		}
+	}
+
+	for (let i = 0; i < fixed_credits.length; i++) {
+		const el2 = document.createElement('div');
+		el2.innerHTML = 'Hack: ' + fixed_credits[i].hack + '</br> Fixed:' + fixed_credits[i].name + '</br> Desc:' + fixed_credits[i].desc;
+		el2.classList.add('box_credits');
+
+		el2.onclick = function () {
+			return window.open(fixed_credits[i].link, '_blank');
+		};
+
+		credits.appendChild(el2);
 	}
 };
