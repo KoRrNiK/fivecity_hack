@@ -78,7 +78,7 @@ const listHacks = [
 		link: 'sgoc_power',
 	},
 	{
-		name: 'Vangelico - Jubiler',
+		name: 'Vangelico - Jubiler fixed by Vistar#5482',
 		desc: 'Wyłączanie zabezpieczenia małego sejfu',
 		category: 'VANGELICO',
 		link: 'vangelico_pc',
