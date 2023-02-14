@@ -25,6 +25,17 @@ var clickRed = 0,
 	clickPink = 0,
 	clickGreen = 0;
 
+var minVelocity = 2500;
+var maxVelocity = 3200;
+
+var minTimeout = 600;
+var maxTimeout = 2000;
+
+var velocityRed =  getRndInteger(minVelocity, maxVelocity) / 1000;
+var velocityYellow =  getRndInteger(minVelocity, maxVelocity) / 1000;
+var velocityPink =  getRndInteger(minVelocity, maxVelocity) / 1000;
+var velocityGreen =  getRndInteger(minVelocity, maxVelocity) / 1000;
+
 const gameInit = () => {
 	gameReset();
 	hackFunction.style.display = 'none';
@@ -54,6 +65,11 @@ const gameReset = () => {
 	clearTimeout(pinkTimeout);
 	clearTimeout(greenTimeout);
 	clearInterval(circleInterval);
+
+	velocityRed =  getRndInteger(minVelocity, maxVelocity) / 1000;
+	velocityYellow =  getRndInteger(minVelocity, maxVelocity) / 1000;
+	velocityPink =  getRndInteger(minVelocity, maxVelocity) / 1000;
+	velocityGreen =  getRndInteger(minVelocity, maxVelocity) / 1000;
 };
 
 const gameStart = () => {
@@ -114,31 +130,31 @@ function progressBarStart(type, time) {
 				clearTimeout(pinkTimeout);
 				clearTimeout(greenTimeout);
 
-				if (getRndInteger(1, 100) > 50) createRed(1, 1, getRndInteger(-35, 0));
-				if (getRndInteger(1, 100) > 50) createYellow(1, 1, getRndInteger(-35, 0));
-				if (getRndInteger(1, 100) > 50) createPink(1, 1, getRndInteger(-35, 0));
-				if (getRndInteger(1, 100) > 50) createGreen(1, 1, getRndInteger(-35, 0));
+				// if (getRndInteger(1, 100) > 50) createRed(1, 1, getRndInteger(-35, 0));
+				// if (getRndInteger(1, 100) > 50) createYellow(1, 1, getRndInteger(-35, 0));
+				// if (getRndInteger(1, 100) > 50) createPink(1, 1, getRndInteger(-35, 0));
+				// if (getRndInteger(1, 100) > 50) createGreen(1, 1, getRndInteger(-35, 0));
 
-				clearTimeout(redTimeout);
-				clearTimeout(yellowTimeout);
-				clearTimeout(pinkTimeout);
-				clearTimeout(greenTimeout);
+				// clearTimeout(redTimeout);
+				// clearTimeout(yellowTimeout);
+				// clearTimeout(pinkTimeout);
+				// clearTimeout(greenTimeout);
 
 				setTimeout(() => {
 					createRed();
-				}, getRndInteger(1000, 2500));
+				}, getRndInteger(minTimeout, maxTimeout));
 
 				setTimeout(() => {
 					createYellow();
-				}, getRndInteger(1000, 2500));
+				}, getRndInteger(minTimeout, maxTimeout));
 
 				setTimeout(() => {
 					createPink();
-				}, getRndInteger(1000, 2500));
+				}, getRndInteger(minTimeout, maxTimeout));
 
 				setTimeout(() => {
 					createGreen();
-				}, getRndInteger(1000, 2500));
+				}, getRndInteger(minTimeout, maxTimeout));
 
 				moveCircles();
 
@@ -172,10 +188,8 @@ function getRndInteger(min, max) {
 function isColliding(a, b) {
 	const rect1 = a.getBoundingClientRect();
 	const rect2 = b.getBoundingClientRect();
-	const isInHoriztonalBounds = rect1.x < rect2.x + rect2.width && rect1.x + rect1.width > rect2.x;
-	const isInVerticalBounds = rect1.y < rect2.y + rect2.height && rect1.y + rect1.height > rect2.y;
-	const isOverlapping = isInHoriztonalBounds && isInVerticalBounds;
-	return isOverlapping;
+	const isInVerticalBounds = rect1.y < rect2.y + rect2.height - rect1.height/2 && rect1.y + rect1.height/2 > rect2.y;
+	return isInVerticalBounds;
 }
 
 function createRed(min = 1, max = 1, pos = -35) {
@@ -195,7 +209,7 @@ function createRed(min = 1, max = 1, pos = -35) {
 
 	redTimeout = setTimeout(() => {
 		createRed();
-	}, getRndInteger(1000, 2000));
+	}, getRndInteger(minTimeout, maxTimeout));
 }
 
 function createYellow(min = 1, max = 1, pos = -35) {
@@ -215,7 +229,7 @@ function createYellow(min = 1, max = 1, pos = -35) {
 
 	yellowTimeout = setTimeout(() => {
 		createYellow();
-	}, getRndInteger(1000, 2000));
+	}, getRndInteger(minTimeout, maxTimeout));
 }
 
 function createPink(min = 1, max = 1, pos = -35) {
@@ -235,7 +249,7 @@ function createPink(min = 1, max = 1, pos = -35) {
 
 	pinkTimeout = setTimeout(() => {
 		createPink();
-	}, getRndInteger(1000, 2000));
+	}, getRndInteger(minTimeout, maxTimeout));
 }
 
 function createGreen(min = 1, max = 1, pos = -35) {
@@ -255,7 +269,7 @@ function createGreen(min = 1, max = 1, pos = -35) {
 
 	greenTimeout = setTimeout(() => {
 		createGreen();
-	}, getRndInteger(1000, 2000));
+	}, getRndInteger(minTimeout, maxTimeout));
 }
 
 function moveCircles() {
@@ -274,7 +288,7 @@ function moveCircles() {
 			for (let i = clickRed; i < allRed; i++) {
 				var y = parseInt(document.getElementById('red' + i).style.top, 10);
 
-				y += 2;
+				y += velocityRed;
 
 				if (y >= 590) {
 					gameOver();
@@ -287,7 +301,7 @@ function moveCircles() {
 			for (let i = clickYellow; i < allYellow; i++) {
 				var y = parseInt(document.getElementById('yellow' + i).style.top, 10);
 
-				y += 2;
+				y += velocityYellow;
 
 				if (y >= 590) {
 					gameOver();
@@ -300,7 +314,7 @@ function moveCircles() {
 			for (let i = clickPink; i < allPink; i++) {
 				var y = parseInt(document.getElementById('pink' + i).style.top, 10);
 
-				y += 2;
+				y += velocityPink;
 
 				if (y >= 590) {
 					gameOver();
@@ -313,7 +327,7 @@ function moveCircles() {
 			for (let i = clickGreen; i < allGreen; i++) {
 				var y = parseInt(document.getElementById('green' + i).style.top, 10);
 
-				y += 2;
+				y += velocityGreen;
 
 				if (y >= 590) {
 					gameOver();
