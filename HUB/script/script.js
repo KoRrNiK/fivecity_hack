@@ -168,12 +168,24 @@ const hubInit = () => {
 
 	for (let i = 0; i < fixed_credits.length; i++) {
 		const el2 = document.createElement('div');
+		el2.style.left = '-300px';
 		el2.innerHTML = 'Hack: ' + fixed_credits[i].hack + '</br> Fixed:' + fixed_credits[i].name + '</br> Desc:' + fixed_credits[i].desc;
 		el2.classList.add('box_credits');
+		el2.style.animationDelay = 0.5 * i + 's';
 
 		el2.onclick = function () {
 			return window.open(fixed_credits[i].link, '_blank');
 		};
+
+		setTimeout(() => {
+			setTimeout(() => {
+				el2.style.left = '10px';
+				el2.style.animation = 'animation-right-credits 1s cubic-bezier(0.55, 0.5, 0.45, 0.5) forwards';
+				setTimeout(() => {
+					el2.remove();
+				}, 500);
+			}, 4000 * i);
+		}, 10000);
 
 		credits.appendChild(el2);
 	}

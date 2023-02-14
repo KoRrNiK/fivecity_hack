@@ -15,29 +15,22 @@ body {
 #credits {
 	z-index: 5;
 	position: fixed;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	left: -150px;
-	top: 15px;
-	-webkit-animation: animation-left-credits 1s cubic-bezier(0.55, 0.5, 0.45, 0.5) forwards;
-	animation: animation-left-credits 1s cubic-bezier(0.55, 0.5, 0.45, 0.5) forwards;
-	-webkit-animation-delay: -0.5s;
-	animation-delay: -0.5s;
-	display: flex;
-	flex-direction: column;
 
 	.box_credits {
-		margin: 5px;
-		padding: 10px;
-		top: 15px;
-		border-radius: 0 5px 5px 0px;
+		transition: 0.5s all;
+		position: relative;
+		margin: 0 0 10px;
+		padding: 5px;
+		top: 10px;
+		border-radius: 0 5px 5px 3px;
 		background: linear-gradient(135deg, rgb(18 32 47 / 45%), rgb(24 18 45 / 45%));
 		box-shadow: -1px -1px 0 0.5px rgb(18 32 47 / 125%), 1px 1px 0 0.5px rgb(24 18 45 / 125%), inset 7px 7px 10px rgb(18 32 47 / 35%), inset -7px -7px 10px rgb(24 18 45 / 35%);
 		color: rgba(255 255 255 / 60%);
 		cursor: pointer;
 		max-width: 150px;
 		font-size: 11px;
+		-webkit-animation: animation-left-credits 1s cubic-bezier(0.55, 0.5, 0.45, 0.5) forwards;
+		animation: animation-left-credits 1s cubic-bezier(0.55, 0.5, 0.45, 0.5) forwards;
 	}
 }
 
@@ -254,7 +247,7 @@ body {
 		left: -500px;
 	}
 	to {
-		left: 20px;
+		left: 10px;
 	}
 }
 
@@ -263,7 +256,7 @@ body {
 		left: -500px;
 	}
 	to {
-		left: 20px;
+		left: 10px;
 	}
 }
 
@@ -294,5 +287,14 @@ body {
 	100% {
 		-webkit-filter: blur(3px);
 		filter: blur(3px);
+	}
+}
+
+@keyframes animation-right-credits {
+	from {
+		left: 10px;
+	}
+	to {
+		left: -500px;
 	}
 }
