@@ -8,7 +8,8 @@ const listCategory = [
 	{ name: 'Flecca', category: 'FLECCA', new: 0 },
 	{ name: 'Magazyn SGOC', category: 'SGOC', new: 0 },
 	{ name: 'Vangelico', category: 'VANGELICO', new: 0 },
-	{ name: 'Bunkier', category: 'BUNKER', new: 1 },
+	{ name: 'Bunkier', category: 'BUNKER', new: 0 },
+	{ name: 'Boosting', category: 'BOOSTING', new: 1 }
 ];
 
 const fixed_credits = [
@@ -129,6 +130,12 @@ const listHacks = [
 		category: 'BUNKER',
 		link: 'bunker_door',
 	},
+	{ 
+		name: 'Boosting',
+		desc: 'Zapamiętywanie ciągu znaków',
+		category: 'BOOSTING',
+		link: 'boosting_memory',
+	}
 ];
 
 const hubInit = () => {
