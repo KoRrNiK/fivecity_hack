@@ -150,7 +150,7 @@ a .home {
 			color: #fff;
 			font-size: 28px;
 			text-align: center;
-			font-weight: bold;	
+			font-weight: bold;
 
 			h1 {
 				letter-spacing: 0.2em;
@@ -163,16 +163,17 @@ a .home {
 			input {
 				width: 80%;
 				background-color: transparent;
-				border-width: 0 0 1px;
-				font-size: 40px;
+				border-width: 0 0 0.2rem;
+				padding: 1.5rem 0;
+				font-size: 2.5rem;
 				border-color: white;
 				color: white;
-			  }
-			  
+				font-weight: bold;
+			}
+
 			input:focus {
 				outline: none;
 			}
-
 		}
 
 		.hackFooter {

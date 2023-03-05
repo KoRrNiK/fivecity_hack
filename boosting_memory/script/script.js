@@ -5,17 +5,20 @@ const progressBar = document.getElementById('progressBox');
 const buttonStart = document.getElementById('buttonStart');
 const hackInfo = document.querySelector('.hackInfo');
 const textInfo = document.getElementById('textInfo');
-const textInfo1 = document.getElementById('textInfo1')
+const textInfo1 = document.getElementById('textInfo1');
 const progressBarId = document.getElementById('progress-bar');
-const hackValue = document.getElementById('hackValue')
-const hackMemoryValue = document.getElementById('hackMemoryValue')
+const hackValue = document.getElementById('hackValue');
+const hackMemoryValue = document.getElementById('hackMemoryValue');
 
 var __timePlay = 10;
 var progressBarInterval;
-var passwordValue = ''
+var passwordValue = '';
+var check_passwoord = false;
 
 const gameInit = () => {
 	body.addEventListener('keypress', function (event) {
+		if (!check_passwoord) return;
+
 		if (event.key === 'Enter') {
 			if (checkResult(hackMemoryValue.value)) {
 				gameWin();
@@ -28,20 +31,22 @@ const gameInit = () => {
 	hackText.style.display = 'none';
 	progressBar.style.display = 'none';
 	hackInfo.style.display = 'none';
-	hackMemoryValue.style.display = 'none'
+	hackMemoryValue.style.display = 'none';
 	document.addEventListener('contextmenu', event => event.preventDefault());
 };
 
 const gameStart = () => {
+	check_passwoord = false;
 	buttonStart.style.display = 'none';
 	progressBar.style.display = 'block';
 	hackInfo.style.display = 'block';
 	textInfo.innerHTML = 'Przygotuj sie...';
-	hackMemoryValue.value = ''
+	hackMemoryValue.value = '';
 	progressBarStart('start', 2);
 };
 
 const gameOver = () => {
+	check_passwoord = false;
 	hackInfo.style.display = 'block';
 	textInfo.innerHTML = 'Hack nieudany!';
 	hackFunction.style.display = 'none';
@@ -50,6 +55,7 @@ const gameOver = () => {
 };
 
 const gameWin = () => {
+	check_passwoord = false;
 	hackInfo.style.display = 'block';
 	textInfo.innerHTML = 'Hack udany!';
 	hackFunction.style.display = 'none';
@@ -68,7 +74,7 @@ function progressBarStart(type, time) {
 		} else {
 			if (type == 'start') {
 				hackFunction.style.display = '';
-				hackValue.style.display = ''
+				hackValue.style.display = '';
 				hackText.style.display = '';
 				hackMemoryValue.style.display = 'none';
 				hackInfo.style.display = 'none';
@@ -80,10 +86,11 @@ function progressBarStart(type, time) {
 			}
 
 			if (type == 'game') {
-				hackValue.style.display = 'none'
-				hackMemoryValue.style.display = ''
-				hackText.style.display = ''
+				hackValue.style.display = 'none';
+				hackMemoryValue.style.display = '';
+				hackText.style.display = '';
 				textInfo1.innerHTML = 'Wpisz ciąg znaków';
+				check_passwoord = true;
 				progressBarStart('result', __timePlay);
 				return;
 			}
@@ -109,16 +116,15 @@ function progressBarStart(type, time) {
 }
 
 function randomString(length) {
-    var chars = '0123456789abcdefghijklmnopqrstuvwxyz';
-    var result = '';
-    for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
-    return result;
+	var chars = '0123456789abcdefghijklmnopqrstuvwxyz';
+	var result = '';
+	for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+	return result;
 }
 
 function checkResult(result) {
-	return result.toUpperCase() == passwordValue.toUpperCase()
+	return result.toUpperCase() == passwordValue.toUpperCase();
 }
-
 
 function resultChangeFunction() {
 	valueInput.innerHTML = input.value;

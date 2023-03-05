@@ -9,7 +9,7 @@ const listCategory = [
 	{ name: 'Magazyn SGOC', category: 'SGOC', new: 0 },
 	{ name: 'Vangelico', category: 'VANGELICO', new: 0 },
 	{ name: 'Bunkier', category: 'BUNKER', new: 0 },
-	{ name: 'Boosting', category: 'BOOSTING', new: 1 }
+	{ name: 'Boosting', category: 'BOOSTING', new: 1 },
 ];
 
 const fixed_credits = [
@@ -18,6 +18,12 @@ const fixed_credits = [
 		name: 'Vistar#5482',
 		desc: 'Naprawa szybkosci opadania i szybkosci pojawiania się kulek',
 		link: 'https://github.com/mateusz-brzozowski',
+	},
+	{
+		hack: 'Boosting - Memory',
+		name: 'posialero#0001',
+		desc: 'Napisanie Hacku',
+		link: 'https://github.com/dnajdrowski',
 	},
 ];
 
@@ -130,12 +136,12 @@ const listHacks = [
 		category: 'BUNKER',
 		link: 'bunker_door',
 	},
-	{ 
+	{
 		name: 'Boosting',
 		desc: 'Zapamiętywanie ciągu znaków',
 		category: 'BOOSTING',
 		link: 'boosting_memory',
-	}
+	},
 ];
 
 const hubInit = () => {
